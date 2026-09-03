@@ -145,6 +145,12 @@ Adaptation ohne räumliche Kopplung. Modellraum, technische Zulassung, drei
 Aufgaben, neue Seeds und Auswahlregel sind in
 `ADAPTATION_VORREGISTRIERUNG.md` festgelegt.
 
+Der vorregistrierte Adaptationslauf wurde ausgeführt. `22` von `24` Varianten
+sind technisch zugelassen, aber keine erfüllt die Auswahlregel. Der stärkste
+zugelassene Befund beträgt `+1,02` Prozentpunkte und unterschreitet die
+Mindestwirkung; zudem ist sein Mittel bei Rauschstufe `0,35` negativ. Der
+Mechanismus endet deshalb ohne Kandidaten für einen Bestätigungslauf.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist

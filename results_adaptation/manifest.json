@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "experiment": "exploration_lokale_begrenzte_adaptation",
+  "seeds": [
+    401,
+    431,
+    463
+  ],
+  "tasks": [
+    "kontinuitaet",
+    "zeitskalen",
+    "adaptation"
+  ],
+  "noise_levels": [
+    0.15,
+    0.35,
+    0.55
+  ],
+  "models": [
+    {
+      "name": "baseline_ein_zustand",
+      "adaptation_rate": 0.0,
+      "feedback_strength": 0.0,
+      "adaptation_limit": 0.0,
+      "state_count": 1
+    },
+    {
+      "name": "adaptation_r0.6_b0.25_a0.5",
+      "adaptation_rate": 0.6,
+      "feedback_strength": 0.25,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.6_b0.25_a1",
+      "adaptation_rate": 0.6,
+      "feedback_strength": 0.25,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.6_b0.5_a0.5",
+      "adaptation_rate": 0.6,
+      "feedback_strength": 0.5,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.6_b0.5_a1",
+      "adaptation_rate": 0.6,
+      "feedback_strength": 0.5,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.6_b0.75_a0.5",
+      "adaptation_rate": 0.6,
+      "feedback_strength": 0.75,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.6_b0.75_a1",
+      "adaptation_rate": 0.6,
+      "feedback_strength": 0.75,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.6_b1_a0.5",
+      "adaptation_rate": 0.6,
+      "feedback_strength": 1.0,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.6_b1_a1",
+      "adaptation_rate": 0.6,
+      "feedback_strength": 1.0,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.9_b0.25_a0.5",
+      "adaptation_rate": 0.9,
+      "feedback_strength": 0.25,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.9_b0.25_a1",
+      "adaptation_rate": 0.9,
+      "feedback_strength": 0.25,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.9_b0.5_a0.5",
+      "adaptation_rate": 0.9,
+      "feedback_strength": 0.5,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.9_b0.5_a1",
+      "adaptation_rate": 0.9,
+      "feedback_strength": 0.5,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.9_b0.75_a0.5",
+      "adaptation_rate": 0.9,
+      "feedback_strength": 0.75,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.9_b0.75_a1",
+      "adaptation_rate": 0.9,
+      "feedback_strength": 0.75,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.9_b1_a0.5",
+      "adaptation_rate": 0.9,
+      "feedback_strength": 1.0,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r0.9_b1_a1",
+      "adaptation_rate": 0.9,
+      "feedback_strength": 1.0,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r1.2_b0.25_a0.5",
+      "adaptation_rate": 1.2,
+      "feedback_strength": 0.25,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r1.2_b0.25_a1",
+      "adaptation_rate": 1.2,
+      "feedback_strength": 0.25,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r1.2_b0.5_a0.5",
+      "adaptation_rate": 1.2,
+      "feedback_strength": 0.5,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r1.2_b0.5_a1",
+      "adaptation_rate": 1.2,
+      "feedback_strength": 0.5,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r1.2_b0.75_a0.5",
+      "adaptation_rate": 1.2,
+      "feedback_strength": 0.75,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r1.2_b0.75_a1",
+      "adaptation_rate": 1.2,
+      "feedback_strength": 0.75,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r1.2_b1_a0.5",
+      "adaptation_rate": 1.2,
+      "feedback_strength": 1.0,
+      "adaptation_limit": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "adaptation_r1.2_b1_a1",
+      "adaptation_rate": 1.2,
+      "feedback_strength": 1.0,
+      "adaptation_limit": 1.0,
+      "state_count": 2
+    }
+  ],
+  "technically_admitted": [
+    "baseline_ein_zustand",
+    "adaptation_r0.6_b0.25_a0.5",
+    "adaptation_r0.6_b0.25_a1",
+    "adaptation_r0.6_b0.5_a0.5",
+    "adaptation_r0.6_b0.5_a1",
+    "adaptation_r0.6_b0.75_a0.5",
+    "adaptation_r0.6_b1_a0.5",
+    "adaptation_r0.9_b0.25_a0.5",
+    "adaptation_r0.9_b0.25_a1",
+    "adaptation_r0.9_b0.5_a0.5",
+    "adaptation_r0.9_b0.5_a1",
+    "adaptation_r0.9_b0.75_a0.5",
+    "adaptation_r0.9_b0.75_a1",
+    "adaptation_r0.9_b1_a0.5",
+    "adaptation_r0.9_b1_a1",
+    "adaptation_r1.2_b0.25_a0.5",
+    "adaptation_r1.2_b0.25_a1",
+    "adaptation_r1.2_b0.5_a0.5",
+    "adaptation_r1.2_b0.5_a1",
+    "adaptation_r1.2_b0.75_a0.5",
+    "adaptation_r1.2_b0.75_a1",
+    "adaptation_r1.2_b1_a0.5",
+    "adaptation_r1.2_b1_a1"
+  ],
+  "selected_confirmation_candidate": null,
+  "interpretation": "Explorative Auswahl; kein bestätigender Nachweis."
+}

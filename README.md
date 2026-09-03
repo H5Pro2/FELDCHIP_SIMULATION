@@ -24,8 +24,11 @@ Energie-, Leistungs- oder Verarbeitungsvorteil.
 - Das Intervall liegt bei `+0,15` bis `+2,21` Punkten. Da nicht alle
   vorregistrierten Bedingungen erfüllt sind, gilt der Vorteil als nicht
   bestätigt.
+- Lokale begrenzte Adaptation lieferte ebenfalls keinen Kandidaten. Die stärkste
+  technisch zugelassene Variante erreichte `+1,02` Punkte, verfehlte damit die
+  Mindestwirkung und lag bei einer Rauschstufe unter der Baseline.
 
-![Aktueller Bestätigungsvergleich](results_multiscale_confirmation/current_comparison.svg)
+![Aktueller Adaptationsvergleich](results_adaptation/current_comparison.svg)
 
 Der Bestätigungslauf wurde vor Ausführung in
 [`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md)
@@ -33,9 +36,9 @@ festgelegt. Sein negativer Entscheidungsbefund wird nicht durch nachträgliche
 Grenzwertänderung weiterverfolgt. Der Forschungsrahmen steht in
 [`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md).
 
-Als neuer Mechanismus ist lokale begrenzte Adaptation ohne räumliche Kopplung
-in [`ADAPTATION_VORREGISTRIERUNG.md`](ADAPTATION_VORREGISTRIERUNG.md)
-festgelegt. Der Ergebnislauf wurde noch nicht gestartet.
+Die lokale begrenzte Adaptation wurde vor Ausführung in
+[`ADAPTATION_VORREGISTRIERUNG.md`](ADAPTATION_VORREGISTRIERUNG.md) festgelegt.
+Der Ergebnisbericht liegt unter [`results_adaptation/`](results_adaptation/).
 
 ## Reproduzieren
 
@@ -53,6 +56,7 @@ python run_return_experiment.py
 python run_anisotropic_experiment.py
 python run_multiscale_experiment.py
 python run_multiscale_confirmation.py
+python run_adaptation_experiment.py
 ```
 
 Die veröffentlichten Hauptläufe wurden jeweils vollständig wiederholt. Die
@@ -68,7 +72,7 @@ zugehörigen Berichte enthalten die bitgenau verglichenen SHA-256-Prüfsummen.
 | Gerichtete und anisotrope Kopplung | [`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md`](ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md) | [`results_anisotropic/`](results_anisotropic/) |
 | Mehrere lokale Zeitskalen | [`MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md`](MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale/`](results_multiscale/) |
 | Unabhängige Zeitskalen-Bestätigung | [`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale_confirmation/`](results_multiscale_confirmation/) |
-| Lokale begrenzte Adaptation | [`ADAPTATION_VORREGISTRIERUNG.md`](ADAPTATION_VORREGISTRIERUNG.md) | noch nicht ausgeführt |
+| Lokale begrenzte Adaptation | [`ADAPTATION_VORREGISTRIERUNG.md`](ADAPTATION_VORREGISTRIERUNG.md) | [`results_adaptation/`](results_adaptation/) |
 
 Konzept- und Konstruktionspapiere liegen unter [`Docs/`](Docs/).
 

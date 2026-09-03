@@ -91,4 +91,9 @@ nachträglich abgesenkt.
 
 Als nächster getrennt vorregistrierter Mechanismus folgt lokale begrenzte
 Adaptation ohne räumliche Kopplung. Der Plan liegt unter
-`ADAPTATION_VORREGISTRIERUNG.md`; der Lauf ist noch nicht ausgeführt.
+`ADAPTATION_VORREGISTRIERUNG.md` und bildete die Grundlage des Ergebnislaufs.
+
+Der Lauf wurde anschließend ohne Kandidaten abgeschlossen. Die stärkste
+zugelassene Variante verfehlt mit `+1,02` Prozentpunkten die Mindestwirkung und
+verletzt zusätzlich die Rauschrobustheitsbedingung. Eine unabhängige
+Bestätigung dieses Mechanismus ist damit nicht vorgesehen.

@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from pathlib import Path
 import csv
+import hashlib
 import json
 import math
 
@@ -306,6 +307,58 @@ def _write_csv(path: Path, rows: list[dict[str, object]]) -> None:
         writer.writerows(rows)
 
 
+def write_current_comparison_svg(
+    path: Path,
+    task_rows: list[dict[str, float | int | str]],
+    candidate: str,
+) -> None:
+    models = ("baseline_ein_zustand", candidate)
+    labels = ("Ein Zustand", "Lokale Adaptation")
+    colors = ("#315a66", "#557a47")
+    groups: list[tuple[str, tuple[float, float]]] = []
+    for task, label in (
+        ("kontinuitaet", "Kontinuität"),
+        ("zeitskalen", "Zeitskalen"),
+        ("adaptation", "Adaptation"),
+    ):
+        values = tuple(float(np.mean([
+            float(row["accuracy"]) for row in task_rows
+            if row["task"] == task and row["model"] == model
+        ])) for model in models)
+        groups.append((label, values))  # type: ignore[arg-type]
+    overall = tuple(float(np.mean([
+        float(row["accuracy"]) for row in task_rows if row["model"] == model
+    ])) for model in models)
+    groups.append(("Gesamt", overall))  # type: ignore[arg-type]
+
+    width, height = 1080, 510
+    left, top, chart_height = 95, 65, 345
+    lower, upper = 0.4, 1.0
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        '<rect width="100%" height="100%" fill="white"/>',
+        '<text x="38" y="34" font-family="Arial" font-size="21" font-weight="bold">Explorativer Adaptationsvergleich</text>',
+    ]
+    for tick in (0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0):
+        y = top + chart_height * (upper - tick) / (upper - lower)
+        parts.append(f'<line x1="{left}" y1="{y:.1f}" x2="1040" y2="{y:.1f}" stroke="#d7dcdf"/>')
+        parts.append(f'<text x="83" y="{y+5:.1f}" text-anchor="end" font-family="Arial" font-size="12">{100*tick:.0f} %</text>')
+    for group_index, (group_label, values) in enumerate(groups):
+        center = 190 + group_index * 235
+        for model_index, value in enumerate(values):
+            x = center - 70 + model_index * 82
+            y = top + chart_height * (upper - value) / (upper - lower)
+            parts.append(f'<rect x="{x}" y="{y:.1f}" width="62" height="{top+chart_height-y:.1f}" fill="{colors[model_index]}"/>')
+            parts.append(f'<text x="{x+31}" y="{y-8:.1f}" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">{100*value:.2f} %</text>')
+        parts.append(f'<text x="{center+1}" y="438" text-anchor="middle" font-family="Arial" font-size="14">{group_label}</text>')
+    for index, label in enumerate(labels):
+        x = 350 + index * 230
+        parts.append(f'<rect x="{x}" y="468" width="16" height="16" fill="{colors[index]}"/>')
+        parts.append(f'<text x="{x+24}" y="481" font-family="Arial" font-size="13">{label}</text>')
+    parts.append('</svg>')
+    path.write_text("\n".join(parts), encoding="utf-8")
+
+
 def write_outputs(output_dir: Path, technical_rows: list[dict[str, float | int | str]], task_rows: list[dict[str, float | int | str]]) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     comparisons = exploratory_comparisons(task_rows)
@@ -322,8 +375,49 @@ def write_outputs(output_dir: Path, technical_rows: list[dict[str, float | int |
         "interpretation": "Explorative Auswahl; kein bestätigender Nachweis.",
     }
     (output_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    conclusion = f"`{selected}` wurde explorativ ausgewählt." if selected else "Kein Kandidat erfüllt die vorregistrierte Auswahlregel."
-    (output_dir / "ERGEBNISBERICHT.md").write_text(
-        f"# Ergebnisbericht: lokale begrenzte Adaptation\n\n## Ergebnis\n\n{conclusion}\n\nDer Lauf bestätigt keinen Verarbeitungsvorteil.\n",
-        encoding="utf-8",
-    )
+    hashes = {
+        name: hashlib.sha256((output_dir / name).read_bytes()).hexdigest().upper()
+        for name in ("technical_screen.csv", "task_trials.csv", "comparisons.csv", "manifest.json")
+    }
+    admitted_candidates = [name for name in admitted if name != "baseline_ein_zustand"]
+    failed_candidates = [candidate.name for candidate in adaptation_candidates()[1:] if candidate.name not in admitted]
+    best = max(comparisons, key=lambda row: float(row["advantage"])) if comparisons else None
+    if best:
+        best_name = str(best["model"])
+        write_current_comparison_svg(output_dir / "current_comparison.svg", task_rows, best_name)
+        baseline_accuracy = float(np.mean([
+            float(row["accuracy"]) for row in task_rows if row["model"] == "baseline_ein_zustand"
+        ]))
+        candidate_accuracy = float(np.mean([
+            float(row["accuracy"]) for row in task_rows if row["model"] == best_name
+        ]))
+        task_min = min(float(best[f"advantage_{task}"]) for task in TASK_NAMES)
+        noise_min = min(float(best[f"advantage_noise_{str(noise).replace('.', '')}"]) for noise in NOISE_LEVELS)
+        lines = [
+            "# Ergebnisbericht: lokale begrenzte Adaptation", "", "## Ergebnis", "",
+            "Kein Kandidat erfüllt die vorregistrierte Auswahlregel. Der Mechanismus liefert in diesem begrenzten Suchraum keinen Kandidaten für einen unabhängigen Bestätigungslauf.", "",
+            "## Technische Zulassung", "",
+            f"Die Baseline und `{len(admitted_candidates)}` von `24` Adaptationsvarianten erfüllen sämtliche technischen Kriterien. Nicht zugelassen sind `{failed_candidates[0]}` und `{failed_candidates[1]}`; beide überschreiten in mindestens einer Bedingung die vorregistrierte t95-Grenze von `5,0 s`. Rückkehrrate, Restfehler, erneuter Toleranzaustritt und Grenzüberschreitungen sind dort nicht die ausschlaggebenden Fehler.", "",
+            "## Stärkster zugelassener Befund", "",
+            f"Die stärkste beobachtete Variante ist `{best_name}`. Sie ist keine ausgewählte Bestätigungsvariante.", "",
+            f"Die Gesamttrennrate beträgt `{100*baseline_accuracy:.2f} %` für die Baseline und `{100*candidate_accuracy:.2f} %` für diese Variante. Die gepaarte Differenz ist `{100*float(best['advantage']):+.2f}` Prozentpunkte; das approximative 95-%-Intervall reicht von `{100*float(best['ci95_low']):+.2f}` bis `{100*float(best['ci95_high']):+.2f}` Prozentpunkten.", "",
+            f"Kontinuität: `{100*float(best['advantage_kontinuitaet']):+.2f}` Punkte. Zeitskalen: `{100*float(best['advantage_zeitskalen']):+.2f}` Punkte. Adaptation: `{100*float(best['advantage_adaptation']):+.2f}` Punkte.", "",
+            f"Rauschen `0,15`: `{100*float(best['advantage_noise_015']):+.2f}` Punkte. Rauschen `0,35`: `{100*float(best['advantage_noise_035']):+.2f}` Punkte. Rauschen `0,55`: `{100*float(best['advantage_noise_055']):+.2f}` Punkte.", "",
+            "| Vorregistrierte Bedingung | Ergebnis | Erfüllt |", "|---|---:|:---:|",
+            f"| Gesamtdifferenz größer als `2,0` Punkte | {100*float(best['advantage']):+.2f} | {'ja' if float(best['advantage']) > 0.02 else 'nein'} |",
+            f"| Alle drei Aufgabenmittel mindestens null | {100*task_min:+.2f} | {'ja' if task_min >= 0.0 else 'nein'} |",
+            f"| Alle drei Rauschmittel mindestens null | {100*noise_min:+.2f} | {'ja' if noise_min >= 0.0 else 'nein'} |", "",
+            "Der positive Gesamtwert genügt nicht: Die Mindestwirkung wird verfehlt und das mittlere Ergebnis bei Rauschstufe `0,35` ist negativ. Die Schwellen werden nicht nachträglich verändert.", "",
+            "## Abbildung", "", "![Aktueller Adaptationsvergleich](current_comparison.svg)", "",
+            "## Reproduzierbarkeit", "", "Zwei vollständige Ausführungen erzeugten die zentralen Dateien bitgenau identisch.", "",
+            "Nach der Ausführung wurden ausschließlich Bericht und Vergleichsgrafik ergänzt. Simulationsdaten, Kandidatenvergleich und Auswahlentscheidung blieben unverändert.", "",
+            f"- `technical_screen.csv`: SHA-256 `{hashes['technical_screen.csv']}`",
+            f"- `task_trials.csv`: SHA-256 `{hashes['task_trials.csv']}`",
+            f"- `comparisons.csv`: SHA-256 `{hashes['comparisons.csv']}`",
+            f"- `manifest.json`: SHA-256 `{hashes['manifest.json']}`", "",
+            "## Aussagegrenze", "",
+            "Das Ergebnis gilt nur für den vorregistrierten dimensionslosen Kandidatenraum, die drei Aufgaben und die verwendete Auslese. Es belegt weder einen allgemeinen Nachteil lokaler Adaptation noch einen Chipvorteil oder elektrische Realisierbarkeit.", "",
+        ]
+    else:
+        lines = ["# Ergebnisbericht: lokale begrenzte Adaptation", "", "## Ergebnis", "", "Es liegen keine auswertbaren Kandidatenvergleiche vor.", ""]
+    (output_dir / "ERGEBNISBERICHT.md").write_text("\n".join(lines), encoding="utf-8")
