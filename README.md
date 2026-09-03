@@ -96,3 +96,9 @@ neutrale Ergebnisse bleiben Bestandteil der Dokumentation.
 Der nächste Versuch verändert die Felddynamik nicht. Er reduziert jedes Feld
 vor der Auswertung auf acht feste Skalare und prüft damit eine begrenzte
 Auslesebandbreite. Die langsame Rückkehr wird davon getrennt untersucht.
+
+Dieser kompakte Versuch wurde inzwischen ausgeführt. Die beste Feldvariante
+erreichte `63,2 %`, die beste identisch ausgelesene Baseline `62,4 %`. Der
+Vorsprung von `0,8` Prozentpunkten liegt unter der vorab festgelegten Schwelle
+und ist daher kein bestätigter Vorteil. Der vollständige Bericht liegt unter
+[`results_compact/ERGEBNISBERICHT.md`](results_compact/ERGEBNISBERICHT.md).

@@ -430,6 +430,37 @@ def write_report(
     best_field = max(field_rows, key=lambda row: float(row["accuracy_mean"]))
     best_baseline = max((row for row in summary if str(row["model"]).startswith("baseline_")), key=lambda row: float(row["accuracy_mean"]))
     advantage = float(best_field["accuracy_mean"]) - float(best_baseline["accuracy_mean"])
+    threshold = 0.02 if readout == "compact" else 0.01
+    if advantage > threshold:
+        conclusion = "vorläufig sichtbar, aber noch nicht unabhängig bestätigt."
+    elif advantage > 0.0:
+        conclusion = "nicht nachgewiesen; der Vorsprung bleibt unter der vorab festgelegten Schwelle."
+    else:
+        conclusion = "nicht nachgewiesen; die einfachere Baseline ist gleich gut oder besser."
+    paired_note = ""
+    if readout == "compact":
+        field_key = str(best_field["model"])
+        baseline_key = str(best_baseline["model"])
+        field_accuracy = {
+            (int(row["seed"]), float(row["noise_sigma"])): float(row["accuracy"])
+            for row in rows if row["model"] == field_key
+        }
+        baseline_accuracy = {
+            (int(row["seed"]), float(row["noise_sigma"])): float(row["accuracy"])
+            for row in rows if row["model"] == baseline_key
+        }
+        paired = np.asarray([
+            field_accuracy[key] - baseline_accuracy[key]
+            for key in sorted(field_accuracy)
+        ])
+        standard_error = float(np.std(paired, ddof=1) / np.sqrt(paired.size))
+        low = float(np.mean(paired) - 1.96 * standard_error)
+        high = float(np.mean(paired) + 1.96 * standard_error)
+        paired_note = (
+            f"Der gepaarte Unterschied über {paired.size} identische Seed-Rausch-Kombinationen "
+            f"hat ein approximatives 95-%-Intervall von {100*low:+.1f} bis {100*high:+.1f} "
+            "Prozentpunkten. Das Intervall schließt null ein."
+        )
     lines = [
         "# Ergebnisbericht: mathematischer 4×4-Demonstrator",
         "",
@@ -447,12 +478,14 @@ def write_report(
         "",
         f"Differenz beste Feldvariante minus beste Baseline: {100*advantage:+.1f} Prozentpunkte.",
         "",
-        "Damit ist ein Vorteil der Feldarchitektur in dieser Aufgabe " + ("vorläufig sichtbar, aber noch nicht allgemein nachgewiesen." if advantage > 0.01 else "nicht nachgewiesen; die einfachere Baseline ist gleich gut oder besser."),
+        "Damit ist ein Vorteil der Feldarchitektur in dieser Aufgabe " + conclusion,
+        "",
+        paired_note,
         "",
         "## Zentrale Befunde und Nichtnachweise",
         "",
         f"- Die vier Feldkennlinien liegen bei der mittleren Trennrate eng beieinander. Der Abstand zwischen bester und schwächster Feldvariante beträgt nur {100*(max(float(row['accuracy_mean']) for row in field_rows)-min(float(row['accuracy_mean']) for row in field_rows)):.1f} Prozentpunkte. Aus diesem Lauf folgt daher kein besonderer Vorteil von zwei, drei, vier oder geglätteten Regimen.",
-        f"- Die beste Feldvariante liegt {abs(100*advantage):.1f} Prozentpunkte " + ("vor" if advantage > 0 else "hinter") + " der besten Baseline. Für die hier verwendete " + ("kompakte Auslese" if readout == "compact" else "Vollfeldauslese") + " ist ein zusätzlicher Nutzen der nichtlinearen Feldbildung " + ("vorläufig sichtbar, aber noch nicht unabhängig bestätigt." if advantage > 0.01 else "nicht nachgewiesen."),
+        f"- Die beste Feldvariante liegt {abs(100*advantage):.1f} Prozentpunkte " + ("vor" if advantage > 0 else "hinter") + " der besten Baseline. Für die hier verwendete " + ("kompakte Auslese" if readout == "compact" else "Vollfeldauslese") + " ist ein zusätzlicher Nutzen der nichtlinearen Feldbildung " + ("vorläufig sichtbar, aber noch nicht unabhängig bestätigt." if advantage > threshold else "nicht nachgewiesen."),
         f"- Der Rückkehrerfolg der Feldvarianten liegt nach fünf normierten Sekunden nur zwischen {100*min(float(row['return_success_mean']) for row in field_rows):.1f} % und {100*max(float(row['return_success_mean']) for row in field_rows):.1f} %. Die gewählte schwache innere Rückführung erfüllt das Rückkehrkriterium damit nicht.",
         f"- Im regulären Lauf traten bei keiner Feldvariante versuchte Grenzüberschreitungen auf. Der höchste mittlere Betrag blieb bei {max(float(row['max_abs_mean']) for row in field_rows):.3f} und damit deutlich innerhalb des Bereichs −3 bis +3.",
         "- Die feste digitale Diffusion glättet die kleinen 4×4-Muster stark und ist in dieser einzelnen Parametrierung deutlich schlechter. Das ist kein allgemeiner Nachweis gegen digitale Verfahren; dafür wäre ein eigener Parametersweep erforderlich.",

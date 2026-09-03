@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "grid": "4x4",
-  "readout": "full",
-  "readout_channels": 16,
+  "readout": "compact",
+  "readout_channels": 8,
   "models": [
     "feld_2_regime",
     "feld_3_regime",

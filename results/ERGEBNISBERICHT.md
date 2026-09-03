@@ -6,7 +6,7 @@ Geprüft wird, ob gekoppelte kontinuierliche Zellen unter identischen gestörten
 
 ## Vorab festgelegte Aufgabe
 
-Sechs 4×4-Muster werden mit Verstärkungsstreuung, Offset, Pixelausfällen und drei Rauschstufen beaufschlagt. Pro Rauschstufe laufen fünf unabhängige Zufallsstarts. Die Auswertung verwendet ausschließlich die 16 Feldwerte am Ende des Eingangspulses und einen einfachen Nächste-Zentroid-Auswerter.
+Sechs 4×4-Muster werden mit Verstärkungsstreuung, Offset, Pixelausfällen und drei Rauschstufen beaufschlagt. Pro Rauschstufe laufen fünf unabhängige Zufallsstarts. Die Auswertung verwendet ausschließlich die 16 Feldwerte am Ende des Eingangspulses. In beiden Fällen wird ein einfacher Nächste-Zentroid-Auswerter eingesetzt.
 
 ## Gesamtergebnis
 
@@ -15,6 +15,8 @@ Die höchste mittlere Trennrate erreichte `baseline_rohsignal` mit 92.3 %. Die b
 Differenz beste Feldvariante minus beste Baseline: -5.4 Prozentpunkte.
 
 Damit ist ein Vorteil der Feldarchitektur in dieser Aufgabe nicht nachgewiesen; die einfachere Baseline ist gleich gut oder besser.
+
+
 
 ## Zentrale Befunde und Nichtnachweise
 

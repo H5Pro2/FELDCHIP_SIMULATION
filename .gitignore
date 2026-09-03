@@ -2,5 +2,6 @@ __pycache__/
 *.py[cod]
 .venv/
 results/*.png
+results_compact/*.png
 Docs/_render*/
 Docs/PAPER_FELDBASIERTER_WAHRNEHMUNGSCHIP.md
