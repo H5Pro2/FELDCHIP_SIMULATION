@@ -8,6 +8,13 @@ Eingangssignale in kontinuierliche Zustände im normierten Arbeitsbereich
 Der Projektname **Wahrnehmungschip** bezeichnet in den begleitenden Papieren
 ausschließlich diese technisch messbare Sensor-zu-Feld-Abbildung.
 
+Die aktuelle Forschungsfrage betrifft nicht mehr die statische Mustertrennung,
+sondern die kompakte Abbildung zeitlich-räumlicher Eingangsdynamik. Der nächste
+Hauptversuch ist vor seiner Ausführung in
+[`TEMPORALER_VERSUCHSPLAN.md`](TEMPORALER_VERSUCHSPLAN.md) festgelegt. Die
+technische Rückführung wird davon getrennt in
+[`RUECKFUEHRUNGS_ARBEITSPAKET.md`](RUECKFUEHRUNGS_ARBEITSPAKET.md) untersucht.
+
 ## Forschungsstatus
 
 Das Repository enthält eine prüfbare Arbeitshypothese und einen ersten
@@ -76,8 +83,10 @@ erzeugt.
 ```text
 Docs/                         Konzept- und Konstruktionspapiere
 src/feldchip_simulation.py    Modell, Baselines und Auswertung
+src/temporal_experiment.py    vorregistrierter zeitlich-räumlicher Versuch
 tests/test_simulation.py      mathematische und reproduktive Tests
 run_experiment.py             ausführbarer Referenzversuch
+run_temporal_experiment.py    ausführbarer zeitlich-räumlicher Hauptversuch
 results/                      Manifest, Rohwerte, Bericht und Diagramme
 FORSCHUNGSPLAN.md             vorab festgelegte nächste Untersuchung
 ```

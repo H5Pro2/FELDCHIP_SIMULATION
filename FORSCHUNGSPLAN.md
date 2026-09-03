@@ -19,12 +19,13 @@ Die Regimezahl wird deshalb im nächsten Versuch nicht optimiert. Die langsame
 Rückkehr wird als separater Parameterbefund geführt und nicht mit der
 Mustertrennung vermischt.
 
-## Nächster Versuch: kompakte Auslese
+## Abgeschlossener Versuch: kompakte Auslese
 
 ### Hypothese
 
-Eine gekoppelte Feldvorverarbeitung könnte bei begrenzter Auslesebandbreite
-nützlicher sein als bei vollständiger Digitalisierung aller 16 Zellwerte.
+Geprüft wurde, ob eine gekoppelte Feldvorverarbeitung bei begrenzter
+Auslesebandbreite nützlicher ist als bei vollständiger Digitalisierung aller 16
+Zellwerte.
 
 ### Vorab festgelegte Merkmale
 
@@ -63,18 +64,21 @@ Ein Nutzen der Feldbildung ist in dieser Aufgabe nur dann vorläufig sichtbar,
 wenn die beste Feldvariante die beste identisch ausgelesene Baseline um mehr als
 zwei Prozentpunkte übertrifft. Andernfalls bleibt der Nutzen nicht nachgewiesen.
 
+Der beobachtete Vorsprung von `0,8` Prozentpunkten und das gepaarte Intervall von
+`−0,8` bis `+2,3` Prozentpunkten erfüllen das Entscheidungskriterium nicht.
+
+## Aktueller Hauptversuch: zeitlich-räumliche Dynamik
+
+Die Forschungsfrage wird auf wandernde, überlagerte, zeitlich integrierte und
+kurze Eingangsmuster mit Nachlauf verschoben. Sequenzen, gemeinsame Auslese und
+Erfolgskriterium stehen vor Ausführung in `TEMPORALER_VERSUCHSPLAN.md`.
+
 ## Separater Rückführungsversuch
 
-Die Rückführung wird erst nach dem kompakten Auslesetest isoliert untersucht.
+Die Rückführung wird unabhängig von der Sequenztrennung isoliert untersucht.
 Dabei werden keine Musterkennzahlen zur Auswahl der Parameter verwendet.
 Primäre Größe ist der Anteil der Zustände, die innerhalb der festgelegten Zeit
 zum Referenzbereich zurückkehren.
-
-## Späterer zeitlicher Versuch
-
-Falls die kompakte statische Auslese keinen Nutzen zeigt, folgt eine getrennte
-Aufgabe mit wandernden, überlagerten und zeitlich integrierten Eingangsmustern.
-Versuchsablauf und Auswertung werden vor diesem Lauf neu festgelegt.
 
 ## Übergang zu SPICE
 

@@ -3,5 +3,6 @@ __pycache__/
 .venv/
 results/*.png
 results_compact/*.png
+results_temporal/*.png
 Docs/_render*/
 Docs/PAPER_FELDBASIERTER_WAHRNEHMUNGSCHIP.md
