@@ -184,6 +184,13 @@ einziger erster Anwendungsabschnitt ausgewählt. Der Beschluss enthält noch kei
 Modell. Vor jeder Modellierung folgt ein getrennt versioniertes Mess- und
 Parametrisierungsprotokoll.
 
+Dieses Protokoll liegt nun unter
+`Docs/MESS_UND_PARAMETRISIERUNGSPROTOKOLL_DRUCKSENSORFLAECHE.md`. Es legt eine
+piezoresistive Polymer-Sensorfläche, reale Kontaktfolgen, Störgrößen,
+Relaxationskennwerte, sechs Übergabewerte, Pflichtbaselines und den Fehler der
+Kraft-Zeit-Fläche als primäre Erfolgsgröße fest. Messwerte und Modellparameter
+liegen noch nicht vor.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist

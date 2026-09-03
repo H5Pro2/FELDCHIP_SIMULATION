@@ -41,7 +41,11 @@ Forschungsrahmen steht in
 [`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md).
 Die drei Anwendungshypothesen sind im
 [`Hypothesenpapier zur physikalischen Wahrnehmungsebene`](Docs/HYPOTHESENPAPIER_PHYSIKALISCHE_WAHRNEHMUNGSEBENE.md)
-festgehalten; eine Auswahl wurde noch nicht getroffen.
+festgehalten. Szenario A wurde im
+[`Auswahlbeschluss 001`](Docs/AUSWAHLBESCHLUSS_001_DRUCKSENSORFLAECHE.md)
+ausgewählt; das zugehörige
+[`Mess- und Parametrisierungsprotokoll`](Docs/MESS_UND_PARAMETRISIERUNGSPROTOKOLL_DRUCKSENSORFLAECHE.md)
+liegt ohne Simulation vor.
 
 ## Reproduzieren
 
