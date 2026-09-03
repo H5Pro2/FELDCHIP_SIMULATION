@@ -90,6 +90,10 @@ Dabei werden keine Musterkennzahlen zur Auswahl der Parameter verwendet.
 Primäre Größe ist der Anteil der Zustände, die innerhalb der festgelegten Zeit
 zum Referenzbereich zurückkehren.
 
+Parameterraum, Anfangsauslenkungen, Grenzwerte und numerische Bestätigung sind
+in `RUECKFUEHRUNG_VORREGISTRIERUNG.md` festgelegt. Der Sweep ist noch nicht
+ausgeführt.
+
 ## Architektur-Neuausrichtung
 
 Die allgemeinere Architektursuche prüft getrennt gerichtete oder anisotrope

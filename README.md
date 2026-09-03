@@ -14,6 +14,9 @@ Leitfrage und die möglichen Mechanismen sind in
 [`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md) festgelegt.
 Zuvor wird die technische Rückführung getrennt gemäß
 [`RUECKFUEHRUNGS_ARBEITSPAKET.md`](RUECKFUEHRUNGS_ARBEITSPAKET.md) geprüft.
+Das genaue Protokoll ist vor Ausführung in
+[`RUECKFUEHRUNG_VORREGISTRIERUNG.md`](RUECKFUEHRUNG_VORREGISTRIERUNG.md)
+festgelegt.
 
 ## Forschungsstatus
 
@@ -108,13 +111,16 @@ Zeitlich-räumlicher Hauptversuch:
 Docs/                         Konzept- und Konstruktionspapiere
 src/feldchip_simulation.py    Modell, Baselines und Auswertung
 src/temporal_experiment.py    vorregistrierter zeitlich-räumlicher Versuch
+src/return_experiment.py      vorregistrierte Rückführungsprüfung
 tests/test_simulation.py      mathematische und reproduktive Tests
 run_experiment.py             ausführbarer Referenzversuch
 run_temporal_experiment.py    ausführbarer zeitlich-räumlicher Hauptversuch
+run_return_experiment.py      noch nicht ausgeführter Rückführungssweep
 results/                      Manifest, Rohwerte, Bericht und Diagramme
 FORSCHUNGSPLAN.md             aktueller Forschungsstand und Reihenfolge
 ARCHITEKTUR_NEUAUSRICHTUNG.md Regeln für die weitere Mechanismensuche
 RUECKFUEHRUNGS_ARBEITSPAKET.md technische Pflichtprüfung
+RUECKFUEHRUNG_VORREGISTRIERUNG.md festes Prüfprotokoll
 ```
 
 ## Wissenschaftliche Grenze

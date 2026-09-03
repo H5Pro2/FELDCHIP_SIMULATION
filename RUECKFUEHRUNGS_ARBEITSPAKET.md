@@ -33,6 +33,6 @@ Hauptversuchs dürfen die Auswahl nicht beeinflussen.
 - versuchte Grenzüberschreitungen,
 - numerische Stabilität bei verkleinertem Zeitschritt.
 
-Ein konkreter Sweep und seine Grenzwerte werden vor seiner Ausführung gesondert
-vorregistriert. Ergebnisse dieses Arbeitspakets dürfen nicht rückwirkend in den
-zeitlichen Hauptversuch eingesetzt werden.
+Der konkrete Sweep und seine Grenzwerte sind vor seiner Ausführung in
+`RUECKFUEHRUNG_VORREGISTRIERUNG.md` festgelegt. Ergebnisse dieses Arbeitspakets
+dürfen nicht rückwirkend in den zeitlichen Hauptversuch eingesetzt werden.

@@ -68,8 +68,7 @@ kann einen Vorteil vorläufig bestätigen.
 
 ## Nächster Schritt
 
-Zuerst wird die technische Rückführung gemäß
-`RUECKFUEHRUNGS_ARBEITSPAKET.md` vorregistriert und geprüft. Danach wird für den
-ersten Architekturmechanismus ein eigener explorativer Versuchsplan erstellt.
-Ohne diese Vorregistrierungen wird kein neuer Parametersweep ausgeführt.
-
+Die technische Rückführung ist gemäß `RUECKFUEHRUNG_VORREGISTRIERUNG.md`
+vorregistriert und wird als Nächstes geprüft. Danach wird für den ersten
+Architekturmechanismus ein eigener explorativer Versuchsplan erstellt. Ohne
+diese Vorregistrierungen wird kein neuer Parametersweep ausgeführt.
