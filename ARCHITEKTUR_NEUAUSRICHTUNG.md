@@ -81,5 +81,7 @@ weiterer Mechanismus benötigt erneut einen eigenen vorregistrierten Plan.
 Der nächste Mechanismus sind mehrere lokale Zeitskalen ohne räumliche Kopplung.
 Der explorative Plan liegt unter `MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md` vor;
 der Lauf wurde ausgeführt und liefert genau einen Kandidaten für einen späteren
-unabhängigen Bestätigungslauf. Bis zu dessen Vorregistrierung bleibt das
-Ergebnis explorativ.
+unabhängigen Bestätigungslauf. Dieser ist unter
+`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md` vorregistriert, aber noch nicht
+ausgeführt. Bis zu einem positiven Bestätigungsergebnis bleibt der Befund
+explorativ.

@@ -7,5 +7,6 @@ results_temporal/*.png
 results_return/*.png
 results_anisotropic/*.png
 results_multiscale/*.png
+results_multiscale_confirmation/*.png
 Docs/_render*/
 Docs/PAPER_FELDBASIERTER_WAHRNEHMUNGSCHIP.md

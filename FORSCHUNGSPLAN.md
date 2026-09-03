@@ -128,6 +128,12 @@ aus. Der Gesamtvorsprung von `2,38` Prozentpunkten entsteht überwiegend in der
 Zeitskalenaufgabe; die Kontinuitätsaufgabe bleibt leicht positiv. Vor jeder
 Bestätigung ist ein neuer Plan mit frischen Seeds erforderlich.
 
+Dieser Bestätigungsplan liegt unter
+`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md` vor. Er friert Kandidat,
+Ein-Zustands-Baseline, beide Aufgaben, fünf neue Seeds und ein kombiniertes
+Effekt-, Intervall- und Erhaltungskriterium ein. Der Lauf ist noch nicht
+ausgeführt.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist

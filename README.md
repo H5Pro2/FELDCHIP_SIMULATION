@@ -26,8 +26,9 @@ Energie-, Leistungs- oder Verarbeitungsvorteil.
 ![Aktueller Zeitskalenvergleich](results_multiscale/current_comparison.svg)
 
 Das Ergebnis ist explorativ und noch kein Nachweis eines Verarbeitungsvorteils.
-Der nächste Schritt ist ein gesondert vorregistrierter Bestätigungslauf. Der
-Forschungsrahmen steht in
+Der Bestätigungslauf ist vor Ausführung in
+[`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md)
+festgelegt. Der Forschungsrahmen steht in
 [`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md).
 
 ## Reproduzieren
@@ -59,6 +60,7 @@ zugehörigen Berichte enthalten die bitgenau verglichenen SHA-256-Prüfsummen.
 | Technische Rückführung | [`RUECKFUEHRUNG_VORREGISTRIERUNG.md`](RUECKFUEHRUNG_VORREGISTRIERUNG.md) | [`results_return/`](results_return/) |
 | Gerichtete und anisotrope Kopplung | [`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md`](ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md) | [`results_anisotropic/`](results_anisotropic/) |
 | Mehrere lokale Zeitskalen | [`MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md`](MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale/`](results_multiscale/) |
+| Unabhängige Zeitskalen-Bestätigung | [`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md) | noch nicht ausgeführt |
 
 Konzept- und Konstruktionspapiere liegen unter [`Docs/`](Docs/).
 
