@@ -27,6 +27,8 @@ Energie-, Leistungs- oder Verarbeitungsvorteil.
 - Lokale begrenzte Adaptation lieferte ebenfalls keinen Kandidaten. Die stärkste
   technisch zugelassene Variante erreichte `+1,02` Punkte, verfehlte damit die
   Mindestwirkung und lag bei einer Rauschstufe unter der Baseline.
+- Als nächster getrennter Mechanismus ist eine ereignisbasierte zeitliche
+  Auslese bei unveränderter Felddynamik vorregistriert.
 
 ![Aktueller Adaptationsvergleich](results_adaptation/current_comparison.svg)
 
@@ -57,6 +59,7 @@ python run_anisotropic_experiment.py
 python run_multiscale_experiment.py
 python run_multiscale_confirmation.py
 python run_adaptation_experiment.py
+python run_event_readout_experiment.py
 ```
 
 Die veröffentlichten Hauptläufe wurden jeweils vollständig wiederholt. Die
@@ -73,6 +76,7 @@ zugehörigen Berichte enthalten die bitgenau verglichenen SHA-256-Prüfsummen.
 | Mehrere lokale Zeitskalen | [`MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md`](MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale/`](results_multiscale/) |
 | Unabhängige Zeitskalen-Bestätigung | [`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale_confirmation/`](results_multiscale_confirmation/) |
 | Lokale begrenzte Adaptation | [`ADAPTATION_VORREGISTRIERUNG.md`](ADAPTATION_VORREGISTRIERUNG.md) | [`results_adaptation/`](results_adaptation/) |
+| Ereignisbasierte zeitliche Auslese | [`EREIGNISAUSLESE_VORREGISTRIERUNG.md`](EREIGNISAUSLESE_VORREGISTRIERUNG.md) | noch nicht ausgeführt |
 
 Konzept- und Konstruktionspapiere liegen unter [`Docs/`](Docs/).
 

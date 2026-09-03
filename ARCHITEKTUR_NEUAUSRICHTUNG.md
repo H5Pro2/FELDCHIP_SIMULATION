@@ -97,3 +97,8 @@ Der Lauf wurde anschließend ohne Kandidaten abgeschlossen. Die stärkste
 zugelassene Variante verfehlt mit `+1,02` Prozentpunkten die Mindestwirkung und
 verletzt zusätzlich die Rauschrobustheitsbedingung. Eine unabhängige
 Bestätigung dieses Mechanismus ist damit nicht vorgesehen.
+
+Der nächste Versuch verändert die lokale Felddynamik nicht. Eine
+ereignisbasierte zeitliche Auslese wird gegen die bisherige und eine normierte
+Mittelwert-/Steigungs-Auslese bei jeweils `16` externen Werten geprüft. Der
+ergebnisfreie Plan liegt unter `EREIGNISAUSLESE_VORREGISTRIERUNG.md`.

@@ -151,6 +151,11 @@ zugelassene Befund beträgt `+1,02` Prozentpunkte und unterschreitet die
 Mindestwirkung; zudem ist sein Mittel bei Rauschstufe `0,35` negativ. Der
 Mechanismus endet deshalb ohne Kandidaten für einen Bestätigungslauf.
 
+Als nächster klar getrennter Mechanismus wird die Auslese statt der lokalen
+Dynamik variiert. `EREIGNISAUSLESE_VORREGISTRIERUNG.md` friert zwei
+16-Werte-Kontrollen, zwölf Ereignisvarianten, drei bestehende Aufgaben, neue
+Seeds und eine konservative Auswahl gegen beide Kontrollen ein.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist
