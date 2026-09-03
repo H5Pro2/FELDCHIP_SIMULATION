@@ -79,7 +79,7 @@ src/feldchip_simulation.py    Modell, Baselines und Auswertung
 tests/test_simulation.py      mathematische und reproduktive Tests
 run_experiment.py             ausführbarer Referenzversuch
 results/                      Manifest, Rohwerte, Bericht und Diagramme
-FORSCHUNGSPLAN.md             nächste eng begrenzte Untersuchungen
+FORSCHUNGSPLAN.md             vorab festgelegte nächste Untersuchung
 ```
 
 ## Wissenschaftliche Grenze
@@ -92,3 +92,7 @@ Aktivitätswert ist keine elektrische Energiemessung.
 Neue Varianten werden nur dann als Fortschritt gewertet, wenn sie eine vorher
 festgelegte Messgröße gegenüber denselben Baselines verbessern. Negative und
 neutrale Ergebnisse bleiben Bestandteil der Dokumentation.
+
+Der nächste Versuch verändert die Felddynamik nicht. Er reduziert jedes Feld
+vor der Auswertung auf acht feste Skalare und prüft damit eine begrenzte
+Auslesebandbreite. Die langsame Rückkehr wird davon getrennt untersucht.

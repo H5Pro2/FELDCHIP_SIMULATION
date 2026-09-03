@@ -246,13 +246,46 @@ def nearest_centroid_metrics(
     }
 
 
+def compact_readout(fields: np.ndarray) -> np.ndarray:
+    """Acht feste, analog realisierbare Skalare aus einem 4x4-Feld."""
+    if fields.ndim != 3 or fields.shape[1:] != (4, 4):
+        raise ValueError("compact_readout erwartet Felder der Form (n, 4, 4)")
+    magnitude = np.abs(fields)
+    total_magnitude = np.sum(magnitude, axis=(1, 2))
+    safe_total = np.maximum(total_magnitude, 1e-12)
+    axis = np.linspace(-1.0, 1.0, 4)
+    x_grid = np.broadcast_to(axis[None, :], (4, 4))
+    y_grid = np.broadcast_to(axis[:, None], (4, 4))
+    center_x = np.sum(magnitude * x_grid, axis=(1, 2)) / safe_total
+    center_y = np.sum(magnitude * y_grid, axis=(1, 2)) / safe_total
+    spread_x = np.sum(
+        magnitude * (x_grid - center_x[:, None, None]) ** 2, axis=(1, 2)
+    ) / safe_total
+    spread_y = np.sum(
+        magnitude * (y_grid - center_y[:, None, None]) ** 2, axis=(1, 2)
+    ) / safe_total
+    return np.column_stack((
+        np.mean(fields, axis=(1, 2)),
+        np.mean(magnitude, axis=(1, 2)),
+        center_x,
+        center_y,
+        spread_x,
+        spread_y,
+        np.max(fields, axis=(1, 2)),
+        -np.min(fields, axis=(1, 2)),
+    ))
+
+
 def run_campaign(
     seeds: tuple[int, ...] = DEFAULT_SEEDS,
     train_per_pattern: int = DEFAULT_TRAIN_PER_PATTERN,
     test_per_pattern: int = DEFAULT_TEST_PER_PATTERN,
     config: SimulationConfig | None = None,
+    readout: str = "full",
 ) -> tuple[list[dict[str, float | int | str]], dict[str, np.ndarray]]:
     config = config or SimulationConfig()
+    if readout not in {"full", "compact"}:
+        raise ValueError("readout muss 'full' oder 'compact' sein")
     patterns = canonical_patterns()
     rows: list[dict[str, float | int | str]] = []
     examples: dict[str, np.ndarray] = {}
@@ -277,8 +310,10 @@ def run_campaign(
                 test_rng = np.random.default_rng(device_seed)
                 train_fields, train_dynamics = simulate_batch(train_input, model, train_rng, config)
                 test_fields, test_dynamics = simulate_batch(test_input, model, test_rng, config)
+                train_values = compact_readout(train_fields) if readout == "compact" else train_fields
+                test_values = compact_readout(test_fields) if readout == "compact" else test_fields
                 metrics = nearest_centroid_metrics(
-                    train_fields, train_labels_array, test_fields, test_labels_array
+                    train_values, train_labels_array, test_values, test_labels_array
                 )
                 rows.append({
                     "seed": seed,
@@ -383,7 +418,12 @@ def write_accuracy_svg(path: Path, rows: list[dict[str, float | int | str]]) -> 
     path.write_text("\n".join(parts), encoding="utf-8")
 
 
-def write_report(path: Path, summary: list[dict[str, float | str]], rows: list[dict[str, float | int | str]]) -> None:
+def write_report(
+    path: Path,
+    summary: list[dict[str, float | str]],
+    rows: list[dict[str, float | int | str]],
+    readout: str = "full",
+) -> None:
     ranked = sorted(summary, key=lambda row: float(row["accuracy_mean"]), reverse=True)
     best = ranked[0]
     field_rows = [row for row in summary if str(row["model"]).startswith("feld_")]
@@ -399,7 +439,7 @@ def write_report(path: Path, summary: list[dict[str, float | str]], rows: list[d
         "",
         "## Vorab festgelegte Aufgabe",
         "",
-        "Sechs 4×4-Muster werden mit Verstärkungsstreuung, Offset, Pixelausfällen und drei Rauschstufen beaufschlagt. Pro Rauschstufe laufen fünf unabhängige Zufallsstarts. Die Auswertung verwendet ausschließlich die 16 Feldwerte am Ende des Eingangspulses und einen einfachen Nächste-Zentroid-Auswerter.",
+        "Sechs 4×4-Muster werden mit Verstärkungsstreuung, Offset, Pixelausfällen und drei Rauschstufen beaufschlagt. Pro Rauschstufe laufen fünf unabhängige Zufallsstarts. " + ("Die Auswertung verwendet acht vorab festgelegte Skalare: Summe, Betragsenergie, zwei Schwerpunktkoordinaten, zwei räumliche Ausdehnungen sowie positiven und negativen Spitzenwert." if readout == "compact" else "Die Auswertung verwendet ausschließlich die 16 Feldwerte am Ende des Eingangspulses.") + " In beiden Fällen wird ein einfacher Nächste-Zentroid-Auswerter eingesetzt.",
         "",
         "## Gesamtergebnis",
         "",
@@ -412,7 +452,7 @@ def write_report(path: Path, summary: list[dict[str, float | str]], rows: list[d
         "## Zentrale Befunde und Nichtnachweise",
         "",
         f"- Die vier Feldkennlinien liegen bei der mittleren Trennrate eng beieinander. Der Abstand zwischen bester und schwächster Feldvariante beträgt nur {100*(max(float(row['accuracy_mean']) for row in field_rows)-min(float(row['accuracy_mean']) for row in field_rows)):.1f} Prozentpunkte. Aus diesem Lauf folgt daher kein besonderer Vorteil von zwei, drei, vier oder geglätteten Regimen.",
-        f"- Die beste Feldvariante liegt {abs(100*advantage):.1f} Prozentpunkte hinter der besten Baseline. Für die hier verwendete Vollfeldauslese ist ein zusätzlicher Nutzen der nichtlinearen Feldbildung nicht nachgewiesen.",
+        f"- Die beste Feldvariante liegt {abs(100*advantage):.1f} Prozentpunkte " + ("vor" if advantage > 0 else "hinter") + " der besten Baseline. Für die hier verwendete " + ("kompakte Auslese" if readout == "compact" else "Vollfeldauslese") + " ist ein zusätzlicher Nutzen der nichtlinearen Feldbildung " + ("vorläufig sichtbar, aber noch nicht unabhängig bestätigt." if advantage > 0.01 else "nicht nachgewiesen."),
         f"- Der Rückkehrerfolg der Feldvarianten liegt nach fünf normierten Sekunden nur zwischen {100*min(float(row['return_success_mean']) for row in field_rows):.1f} % und {100*max(float(row['return_success_mean']) for row in field_rows):.1f} %. Die gewählte schwache innere Rückführung erfüllt das Rückkehrkriterium damit nicht.",
         f"- Im regulären Lauf traten bei keiner Feldvariante versuchte Grenzüberschreitungen auf. Der höchste mittlere Betrag blieb bei {max(float(row['max_abs_mean']) for row in field_rows):.3f} und damit deutlich innerhalb des Bereichs −3 bis +3.",
         "- Die feste digitale Diffusion glättet die kleinen 4×4-Muster stark und ist in dieser einzelnen Parametrierung deutlich schlechter. Das ist kein allgemeiner Nachweis gegen digitale Verfahren; dafür wäre ein eigener Parametersweep erforderlich.",
@@ -454,6 +494,7 @@ def write_outputs(
     rows: list[dict[str, object]],
     examples: dict[str, np.ndarray],
     config: SimulationConfig | None = None,
+    readout: str = "full",
 ) -> list[dict[str, float | str]]:
     output_dir.mkdir(parents=True, exist_ok=True)
     config = config or SimulationConfig()
@@ -462,10 +503,12 @@ def write_outputs(
     write_csv(output_dir / "summary.csv", summary)
     write_accuracy_svg(output_dir / "accuracy_comparison.svg", rows)  # type: ignore[arg-type]
     write_field_svg(output_dir / "field_examples.svg", examples)
-    write_report(output_dir / "ERGEBNISBERICHT.md", summary, rows)  # type: ignore[arg-type]
+    write_report(output_dir / "ERGEBNISBERICHT.md", summary, rows, readout)  # type: ignore[arg-type]
     manifest = {
         "schema_version": 1,
         "grid": "4x4",
+        "readout": readout,
+        "readout_channels": 8 if readout == "compact" else 16,
         "models": MODEL_NAMES,
         "patterns": PATTERN_NAMES,
         "noise_levels": NOISE_LEVELS,

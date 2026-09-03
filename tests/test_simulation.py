@@ -6,6 +6,7 @@ from src.feldchip_simulation import (
     MODEL_NAMES,
     SimulationConfig,
     canonical_patterns,
+    compact_readout,
     laplacian_neumann,
     return_gain,
     simulate_batch,
@@ -53,6 +54,12 @@ class FeldchipSimulationTests(unittest.TestCase):
         )
         np.testing.assert_array_equal(first, second)
         self.assertEqual(first_metrics, second_metrics)
+
+    def test_compact_readout_has_eight_finite_channels(self) -> None:
+        fields = np.stack(list(canonical_patterns().values()))
+        features = compact_readout(fields)
+        self.assertEqual(features.shape, (6, 8))
+        self.assertTrue(np.all(np.isfinite(features)))
 
 
 if __name__ == "__main__":
