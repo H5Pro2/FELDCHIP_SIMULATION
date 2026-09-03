@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="620" viewBox="0 0 1180 620">
+<rect width="100%" height="100%" fill="white"/>
+<text x="30" y="30" font-family="Arial" font-size="20" font-weight="bold">Mustertrennung nach Rauschstufe</text>
+<line x1="110" y1="485.0" x2="1140" y2="485.0" stroke="#d8dde1"/>
+<text x="98" y="490.0" text-anchor="end" font-family="Arial" font-size="12">0.0</text>
+<line x1="110" y1="399.0" x2="1140" y2="399.0" stroke="#d8dde1"/>
+<text x="98" y="404.0" text-anchor="end" font-family="Arial" font-size="12">0.2</text>
+<line x1="110" y1="313.0" x2="1140" y2="313.0" stroke="#d8dde1"/>
+<text x="98" y="318.0" text-anchor="end" font-family="Arial" font-size="12">0.4</text>
+<line x1="110" y1="227.0" x2="1140" y2="227.0" stroke="#d8dde1"/>
+<text x="98" y="232.0" text-anchor="end" font-family="Arial" font-size="12">0.6</text>
+<line x1="110" y1="141.0" x2="1140" y2="141.0" stroke="#d8dde1"/>
+<text x="98" y="146.0" text-anchor="end" font-family="Arial" font-size="12">0.8</text>
+<line x1="110" y1="55.0" x2="1140" y2="55.0" stroke="#d8dde1"/>
+<text x="98" y="60.0" text-anchor="end" font-family="Arial" font-size="12">1.0</text>
+<text x="265" y="520" text-anchor="middle" font-family="Arial" font-size="14">σ = 0.15</text>
+<rect x="201" y="96.56666666666678" width="11" height="388.4333333333332" fill="#245b78"/>
+<rect x="217" y="97.28333333333336" width="11" height="387.71666666666664" fill="#4b8a68"/>
+<rect x="233" y="96.20833333333337" width="11" height="388.79166666666663" fill="#a96f24"/>
+<rect x="249" y="96.20833333333337" width="11" height="388.79166666666663" fill="#915f8c"/>
+<rect x="265" y="81.51666666666671" width="11" height="403.4833333333333" fill="#63717a"/>
+<rect x="281" y="92.9833333333333" width="11" height="392.0166666666667" fill="#3d7ca6"/>
+<rect x="297" y="91.19166666666669" width="11" height="393.8083333333333" fill="#b24e43"/>
+<rect x="313" y="70.04999999999997" width="11" height="414.95000000000005" fill="#444444"/>
+<text x="600" y="520" text-anchor="middle" font-family="Arial" font-size="14">σ = 0.35</text>
+<rect x="536" y="112.33333333333337" width="11" height="372.66666666666663" fill="#245b78"/>
+<rect x="552" y="113.40833333333339" width="11" height="371.5916666666666" fill="#4b8a68"/>
+<rect x="568" y="114.12499999999997" width="11" height="370.875" fill="#a96f24"/>
+<rect x="584" y="111.61666666666665" width="11" height="373.3833333333333" fill="#915f8c"/>
+<rect x="600" y="92.625" width="11" height="392.375" fill="#63717a"/>
+<rect x="616" y="105.16666666666663" width="11" height="379.83333333333337" fill="#3d7ca6"/>
+<rect x="632" y="123.80000000000007" width="11" height="361.19999999999993" fill="#b24e43"/>
+<rect x="648" y="134.9083333333333" width="11" height="350.0916666666667" fill="#444444"/>
+<text x="935" y="520" text-anchor="middle" font-family="Arial" font-size="14">σ = 0.55</text>
+<rect x="871" y="148.16666666666663" width="11" height="336.83333333333337" fill="#245b78"/>
+<rect x="887" y="148.16666666666663" width="11" height="336.83333333333337" fill="#4b8a68"/>
+<rect x="903" y="147.80833333333334" width="11" height="337.19166666666666" fill="#a96f24"/>
+<rect x="919" y="147.45000000000005" width="11" height="337.54999999999995" fill="#915f8c"/>
+<rect x="935" y="123.44166666666668" width="11" height="361.55833333333334" fill="#63717a"/>
+<rect x="951" y="138.49166666666662" width="11" height="346.5083333333334" fill="#3d7ca6"/>
+<rect x="967" y="190.09166666666664" width="11" height="294.90833333333336" fill="#b24e43"/>
+<rect x="983" y="233.80833333333337" width="11" height="251.19166666666663" fill="#444444"/>
+<rect x="40" y="522" width="15" height="15" fill="#245b78"/>
+<text x="62" y="535" font-family="Arial" font-size="12">feld_2_regime</text>
+<rect x="325" y="522" width="15" height="15" fill="#4b8a68"/>
+<text x="347" y="535" font-family="Arial" font-size="12">feld_3_regime</text>
+<rect x="610" y="522" width="15" height="15" fill="#a96f24"/>
+<text x="632" y="535" font-family="Arial" font-size="12">feld_4_regime</text>
+<rect x="895" y="522" width="15" height="15" fill="#915f8c"/>
+<text x="917" y="535" font-family="Arial" font-size="12">feld_glatt</text>
+<rect x="40" y="552" width="15" height="15" fill="#63717a"/>
+<text x="62" y="565" font-family="Arial" font-size="12">baseline_ungekoppelt</text>
+<rect x="325" y="552" width="15" height="15" fill="#3d7ca6"/>
+<text x="347" y="565" font-family="Arial" font-size="12">baseline_linear_rc</text>
+<rect x="610" y="552" width="15" height="15" fill="#b24e43"/>
+<text x="632" y="565" font-family="Arial" font-size="12">baseline_digital_diffusion</text>
+<rect x="895" y="552" width="15" height="15" fill="#444444"/>
+<text x="917" y="565" font-family="Arial" font-size="12">baseline_rohsignal</text>
+</svg>

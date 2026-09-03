@@ -9,10 +9,10 @@ Der Projektname **Wahrnehmungschip** bezeichnet in den begleitenden Papieren
 ausschließlich diese technisch messbare Sensor-zu-Feld-Abbildung.
 
 Die aktuelle Forschungsfrage betrifft nicht mehr die statische Mustertrennung,
-sondern die kompakte Abbildung zeitlich-räumlicher Eingangsdynamik. Der nächste
-Hauptversuch ist vor seiner Ausführung in
-[`TEMPORALER_VERSUCHSPLAN.md`](TEMPORALER_VERSUCHSPLAN.md) festgelegt. Die
-technische Rückführung wird davon getrennt in
+sondern die kompakte Abbildung zeitlich-räumlicher Eingangsdynamik. Der
+Hauptversuch wurde vor seiner Ausführung in
+[`TEMPORALER_VERSUCHSPLAN.md`](TEMPORALER_VERSUCHSPLAN.md) festgelegt und ist
+inzwischen ausgeführt. Die technische Rückführung wird davon getrennt in
 [`RUECKFUEHRUNGS_ARBEITSPAKET.md`](RUECKFUEHRUNGS_ARBEITSPAKET.md) untersucht.
 
 ## Forschungsstatus
@@ -33,6 +33,21 @@ Der erste Lauf vergleicht bei identischem Arbeitsbereich:
 - das unverarbeitete Rohsignal.
 
 ## Aktueller Befund
+
+Der vorregistrierte zeitlich-räumliche Hauptversuch umfasst zehn Sequenzklassen
+und eine für alle Modelle identische 16-Kanal-Auslese. Die beste Feldvariante
+`feld_glatt` erreicht `85,3 %`; die beste Baseline
+`baseline_ungekoppelt` erreicht `89,7 %`. Die gepaarte Differenz beträgt `−4,5`
+Prozentpunkte mit einem approximativen 95-%-Intervall von `−5,5` bis `−3,5`
+Prozentpunkten. Beide vorregistrierten Erfolgskriterien werden verfehlt.
+
+Der zeitliche Zustand ist in dieser Parametrierung besonders bei stärkerem
+Rauschen nützlich, ein zusätzlicher Nutzen der räumlichen Kopplung ist jedoch
+nicht nachgewiesen. Vielmehr liegt das ungekoppelte dynamische Array in der
+festgelegten Aufgabe vor allen gekoppelten Feldvarianten. Dieser Befund gilt
+nicht automatisch für andere Kopplungstopologien oder zeitliche Auslesen.
+
+Der zuvor abgeschlossene statische Lauf ergab:
 
 Über sechs Eingangsmuster, drei Rauschstufen und fünf feste Zufallsstarts
 erreichte die beste Feldvariante `86,9 %` Mustertrennung. Die Rohsignal-Baseline
@@ -63,6 +78,7 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 python run_experiment.py
+python run_temporal_experiment.py
 ```
 
 Der Hauptlauf erzeugt `120` aggregierte Modellläufe. Seine beiden zentralen
@@ -77,6 +93,14 @@ erzeugt.
 - [`manifest.json`](results/manifest.json): vollständige Versuchsparameter
 - [`accuracy_comparison.svg`](results/accuracy_comparison.svg): Modellvergleich
 - [`field_examples.svg`](results/field_examples.svg): beispielhafte Feldkarten
+
+Zeitlich-räumlicher Hauptversuch:
+
+- [`ERGEBNISBERICHT.md`](results_temporal/ERGEBNISBERICHT.md): Ergebnis und Aussagegrenze
+- [`summary.csv`](results_temporal/summary.csv): aggregierte Kennzahlen
+- [`trials.csv`](results_temporal/trials.csv): alle gepaarten Einzelwerte
+- [`manifest.json`](results_temporal/manifest.json): vorab festgelegte Parameter
+- [`accuracy_comparison.svg`](results_temporal/accuracy_comparison.svg): Vergleich nach Rauschstufe
 
 ## Projektstruktur
 

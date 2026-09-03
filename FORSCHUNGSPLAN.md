@@ -67,11 +67,18 @@ zwei Prozentpunkte übertrifft. Andernfalls bleibt der Nutzen nicht nachgewiesen
 Der beobachtete Vorsprung von `0,8` Prozentpunkten und das gepaarte Intervall von
 `−0,8` bis `+2,3` Prozentpunkten erfüllen das Entscheidungskriterium nicht.
 
-## Aktueller Hauptversuch: zeitlich-räumliche Dynamik
+## Abgeschlossener Hauptversuch: zeitlich-räumliche Dynamik
 
 Die Forschungsfrage wird auf wandernde, überlagerte, zeitlich integrierte und
 kurze Eingangsmuster mit Nachlauf verschoben. Sequenzen, gemeinsame Auslese und
 Erfolgskriterium stehen vor Ausführung in `TEMPORALER_VERSUCHSPLAN.md`.
+
+Der unveränderte Lauf ergab `85,3 %` für die beste Feldvariante und `89,7 %`
+für die beste Baseline. Die gepaarte Differenz von `−4,5` Prozentpunkten mit
+einem approximativen 95-%-Intervall von `−5,5` bis `−3,5` Prozentpunkten
+verfehlt beide Erfolgskriterien. In dieser Aufgabe ist ein Nutzen des
+zeitlichen Zustands sichtbar, aber kein zusätzlicher Nutzen der räumlichen
+Kopplung.
 
 ## Separater Rückführungsversuch
 

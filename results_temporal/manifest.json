@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "experiment": "vorregistrierter_zeitlich_raeumlicher_hauptversuch",
+  "grid": "4x4",
+  "sequence_steps": 80,
+  "readout_channels": 16,
+  "models": [
+    "feld_2_regime",
+    "feld_3_regime",
+    "feld_4_regime",
+    "feld_glatt",
+    "baseline_ungekoppelt",
+    "baseline_linear_rc",
+    "baseline_digital_diffusion",
+    "baseline_rohsignal"
+  ],
+  "sequences": [
+    "punkt_links_rechts",
+    "punkt_rechts_links",
+    "punkt_oben_unten",
+    "punkt_unten_oben",
+    "pulse_kreuzen",
+    "pulse_ueberlagern",
+    "gradient_aufbau",
+    "gradient_abbau",
+    "stoerung_mitte_nachlauf",
+    "stoerung_rand_nachlauf"
+  ],
+  "noise_levels": [
+    0.15,
+    0.35,
+    0.55
+  ],
+  "seeds": [
+    11,
+    23,
+    37,
+    53,
+    71
+  ],
+  "train_per_sequence": 12,
+  "test_per_sequence": 24,
+  "simulation_config": {
+    "grid_size": 4,
+    "dt": 0.02,
+    "stimulus_time": 2.0,
+    "return_time": 5.0,
+    "coupling": 0.34,
+    "input_gain": 1.25,
+    "return_low": 0.15,
+    "return_high": 1.0,
+    "smooth_width": 0.12,
+    "soft_limit_start": 2.65,
+    "soft_limit_gain": 2.5,
+    "hard_limit": 3.0,
+    "mismatch_sigma": 0.08,
+    "offset_sigma": 0.04,
+    "dynamic_noise_scale": 0.035,
+    "dropout_probability": 0.08,
+    "return_tolerance": 0.05
+  },
+  "success_rule": "Differenz > 0.02 und untere gepaarte approximative 95-%-Grenze > 0",
+  "interpretation": "Dimensionsloses mathematisches Referenzmodell; keine elektrische Energiemessung."
+}

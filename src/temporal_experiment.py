@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import asdict
 from pathlib import Path
+import hashlib
 import json
 import math
 
@@ -20,6 +21,7 @@ from .feldchip_simulation import (
     laplacian_neumann,
     nearest_centroid_metrics,
     return_gain,
+    write_accuracy_svg,
     write_csv,
 )
 
@@ -235,6 +237,9 @@ def write_temporal_outputs(output_dir: Path, rows: list[dict[str, object]], conf
     paired = paired_result(rows, summary)  # type: ignore[arg-type]
     write_csv(output_dir / "trials.csv", rows)
     write_csv(output_dir / "summary.csv", summary)
+    write_accuracy_svg(output_dir / "accuracy_comparison.svg", rows)  # type: ignore[arg-type]
+    summary_hash = hashlib.sha256((output_dir / "summary.csv").read_bytes()).hexdigest().upper()
+    trials_hash = hashlib.sha256((output_dir / "trials.csv").read_bytes()).hexdigest().upper()
     manifest = {
         "schema_version": 1, "experiment": "vorregistrierter_zeitlich_raeumlicher_hauptversuch",
         "grid": "4x4", "sequence_steps": SEQUENCE_STEPS, "readout_channels": 16,
@@ -253,11 +258,19 @@ def write_temporal_outputs(output_dir: Path, rows: list[dict[str, object]], conf
         f"Gepaarte Differenz: {100*float(paired['difference']):+.1f} Prozentpunkte; approximatives 95-%-Intervall {100*float(paired['ci95_low']):+.1f} bis {100*float(paired['ci95_high']):+.1f} Prozentpunkte.", "",
         ("Beide vorregistrierten Bedingungen sind erfüllt. Ein Vorteil ist in dieser Simulation vorläufig sichtbar." if paired["success"] else "Mindestens eine vorregistrierte Bedingung ist nicht erfüllt. Ein Vorteil ist in dieser Aufgabe nicht nachgewiesen."),
         "", "Die Auswahl der jeweils besten Variante war vorregistriert, enthält aber einen explorativen Auswahlanteil.",
+        "", "Das ungekoppelte dynamische Array liegt in allen drei Rauschstufen vor den gekoppelten Feldvarianten. Die zeitliche Zustandsbildung ist damit in dieser Aufgabe nützlich, die zusätzliche räumliche Kopplung in der festgelegten Parametrierung jedoch nicht. Daraus folgt keine allgemeine Aussage über andere Kopplungstopologien oder Ausleseverfahren.",
         "", "## Modellübersicht", "", "| Modell | Trennrate | Trennverhältnis | Wiederhol-RMSE | Maximalbetrag |", "|---|---:|---:|---:|---:|",
     ]
     for row in summary:
         lines.append(f"| {row['model']} | {100*float(row['accuracy_mean']):.1f} ± {100*float(row['accuracy_std']):.1f} % | {float(row['separability_ratio_mean']):.3f} | {float(row['repeatability_rmse_mean']):.3f} | {float(row['max_abs_mean']):.3f} |")
-    lines.extend(["", "## Aussagegrenze", "", "Das Ergebnis gilt nur für die festgelegten Sequenzen, Störungen, Modelle und die feste Auslese. Fertigbarkeit und elektrische Größen sind damit nicht geprüft.", ""])
+    lines.extend([
+        "", "## Abbildung", "", "![Trennrate nach Rauschstufe](accuracy_comparison.svg)",
+        "", "## Aussagegrenze", "",
+        "Das Ergebnis gilt nur für die festgelegten Sequenzen, Störungen, Modelle und die feste Auslese. Fertigbarkeit und elektrische Größen sind damit nicht geprüft.",
+        "", "## Reproduzierbarkeit", "",
+        "Die CSV-Dateien werden mit festen Seeds deterministisch erzeugt. Zwei vollständige Läufe wurden zusätzlich bitgenau verglichen.",
+        "", f"- `summary.csv`: SHA-256 `{summary_hash}`",
+        f"- `trials.csv`: SHA-256 `{trials_hash}`", "",
+    ])
     (output_dir / "ERGEBNISBERICHT.md").write_text("\n".join(lines), encoding="utf-8")
     return summary
-
