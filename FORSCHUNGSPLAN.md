@@ -122,6 +122,12 @@ Ein-Zustands-Pflichtbaseline. Modellraum, technische Zulassung, zwei Aufgaben
 und Auswahlregel sind in `MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md` vorab
 festgelegt.
 
+Der ausgeführte Lauf lässt 19 von 28 Modellen technisch zu und wählt gemäß der
+vorregistrierten Regel `zwei_zustaende_l1.2_s2_a0.5` als explorativen Kandidaten
+aus. Der Gesamtvorsprung von `2,38` Prozentpunkten entsteht überwiegend in der
+Zeitskalenaufgabe; die Kontinuitätsaufgabe bleibt leicht positiv. Vor jeder
+Bestätigung ist ein neuer Plan mit frischen Seeds erforderlich.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist

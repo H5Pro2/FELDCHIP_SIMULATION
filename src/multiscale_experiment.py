@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from pathlib import Path
 import csv
+import hashlib
 import json
 import math
 
@@ -286,7 +287,7 @@ def select_candidate(comparisons: list[dict[str, float | str]]) -> str | None:
         )
     )]
     eligible.sort(key=lambda row: (
-        -float(row["advantage"]), float(row["rate_ratio"]),
+        -round(float(row["advantage"]), 12), float(row["rate_ratio"]),
         -float(row["slow_weight"]), str(row["model"]),
     ))
     return str(eligible[0]["model"]) if eligible else None
@@ -299,6 +300,54 @@ def _write_csv(path: Path, rows: list[dict[str, object]]) -> None:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
+
+
+def write_current_comparison_svg(
+    path: Path,
+    task_rows: list[dict[str, float | int | str]],
+    selected: str,
+) -> None:
+    models = ("baseline_ein_zustand", selected)
+    labels = ("Ein Zustand", "Zwei Zustände")
+    colors = ("#315a66", "#557a47")
+    groups = []
+    for task, label in (("kontinuitaet", "Kontinuität"), ("zeitskalen", "Zeitskalen")):
+        values = tuple(float(np.mean([
+            float(row["accuracy"]) for row in task_rows
+            if row["task"] == task and row["model"] == model
+        ])) for model in models)
+        groups.append((label, values))
+    overall = tuple(float(np.mean([
+        float(row["accuracy"]) for row in task_rows if row["model"] == model
+    ])) for model in models)
+    groups.append(("Gesamt", overall))
+
+    width, height = 920, 510
+    left, top, chart_height = 95, 65, 345
+    lower, upper = 0.4, 1.0
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        '<rect width="100%" height="100%" fill="white"/>',
+        '<text x="38" y="34" font-family="Arial" font-size="21" font-weight="bold">Aktueller Zeitskalenvergleich</text>',
+    ]
+    for tick in (0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0):
+        y = top + chart_height * (upper - tick) / (upper - lower)
+        parts.append(f'<line x1="{left}" y1="{y:.1f}" x2="880" y2="{y:.1f}" stroke="#d7dcdf"/>')
+        parts.append(f'<text x="83" y="{y+5:.1f}" text-anchor="end" font-family="Arial" font-size="12">{100*tick:.0f} %</text>')
+    for group_index, (group_label, values) in enumerate(groups):
+        center = 210 + group_index * 255
+        for model_index, value in enumerate(values):
+            x = center - 77 + model_index * 88
+            y = top + chart_height * (upper - value) / (upper - lower)
+            parts.append(f'<rect x="{x}" y="{y:.1f}" width="66" height="{top+chart_height-y:.1f}" fill="{colors[model_index]}"/>')
+            parts.append(f'<text x="{x+33}" y="{y-8:.1f}" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">{100*value:.2f} %</text>')
+        parts.append(f'<text x="{center-11}" y="438" text-anchor="middle" font-family="Arial" font-size="14">{group_label}</text>')
+    for index, label in enumerate(labels):
+        x = 285 + index * 220
+        parts.append(f'<rect x="{x}" y="468" width="16" height="16" fill="{colors[index]}"/>')
+        parts.append(f'<text x="{x+24}" y="481" font-family="Arial" font-size="13">{label}</text>')
+    parts.append('</svg>')
+    path.write_text("\n".join(parts), encoding="utf-8")
 
 
 def write_outputs(
@@ -320,12 +369,42 @@ def write_outputs(
         "technically_admitted": admitted, "selected_confirmation_candidate": selected,
         "interpretation": "Explorative Auswahl; kein bestätigender Nachweis.",
     }
-    (output_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    manifest_path = output_dir / "manifest.json"
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if selected:
+        write_current_comparison_svg(output_dir / "current_comparison.svg", task_rows, selected)
+    hashes = {
+        name: hashlib.sha256((output_dir / name).read_bytes()).hexdigest().upper()
+        for name in ("technical_screen.csv", "task_trials.csv", "comparisons.csv", "manifest.json")
+    }
+    baseline_rows = [row for row in task_rows if row["model"] == "baseline_ein_zustand"]
+    selected_rows = [row for row in task_rows if row["model"] == selected]
+    selected_comparison = next((row for row in comparisons if row["model"] == selected), None)
+    technical_selected = [row for row in technical_rows if row["model"] == selected]
     lines = [
         "# Ergebnisbericht: mehrere lokale Zeitskalen", "", "## Technische Zulassung", "",
-        f"Von 28 Modellen sind `{len(admitted)}` technisch zugelassen.", "",
+        f"Von 28 Modellen sind `{len(admitted)}` technisch zugelassen. Die neun Kandidaten mit `λ_langsam = 0,8` verfehlen die Grenze der 95-%-Einschwingzeit von `5,0 s` und werden nicht auf den Aufgaben bewertet.", "",
         "## Explorative Auswahl", "",
         (f"`{selected}` wurde als Kandidat für einen späteren Bestätigungslauf ausgewählt." if selected else "Kein Modell erfüllt die vorregistrierte Auswahlregel."),
-        "", "Das Ergebnis ist explorativ und bestätigt keinen Verarbeitungsvorteil.", "",
     ]
+    if selected and selected_comparison:
+        baseline_total = float(np.mean([float(row["accuracy"]) for row in baseline_rows]))
+        selected_total = float(np.mean([float(row["accuracy"]) for row in selected_rows]))
+        lines.extend([
+            "", f"Die Gesamttrennrate steigt explorativ von `{100*baseline_total:.2f} %` auf `{100*selected_total:.2f} %`. Die gepaarte Differenz beträgt `{100*float(selected_comparison['advantage']):+.2f}` Prozentpunkte mit einem approximativen 95-%-Intervall von `{100*float(selected_comparison['ci95_low']):+.2f}` bis `{100*float(selected_comparison['ci95_high']):+.2f}` Prozentpunkten.",
+            "", f"Kontinuitätsaufgabe: `{100*float(selected_comparison['advantage_kontinuitaet']):+.2f}` Punkte. Zeitskalenaufgabe: `{100*float(selected_comparison['advantage_zeitskalen']):+.2f}` Punkte. Die mittleren Unterschiede bleiben auch bei allen drei Rauschstufen nichtnegativ.",
+            "", "Ein zweiter Kandidat erreicht dieselbe beobachtete Gesamttrennrate. Gemäß der vorregistrierten Gleichstandsregel wird das Modell mit dem kleineren Verhältnis `λ_schnell/λ_langsam` ausgewählt.",
+            "", f"Der ausgewählte Kandidat besitzt im technischen Screening eine schlechteste 95-%-Einschwingzeit von `{max(float(row['settling_time_p95']) for row in technical_selected):.3f} s`, einen schlechtesten Restfehler von `{max(float(row['residual_p95']) for row in technical_selected):.5f}` und keine versuchte Grenzüberschreitung.",
+            "", "## Abbildung", "", "![Aktueller Zeitskalenvergleich](current_comparison.svg)",
+        ])
+    lines.extend([
+        "", "## Einordnung", "",
+        "Der Kandidat rechtfertigt einen neuen unabhängigen Bestätigungslauf mit frischen Seeds. Das explorative Ergebnis bestätigt noch keinen Verarbeitungsvorteil; außerdem bleiben zusätzlicher Schaltungsaufwand, Fläche und elektrische Energie ungeprüft.",
+        "", "## Reproduzierbarkeit", "",
+        "Zwei vollständige Ausführungen nach Korrektur der vorregistrierten Gleichstandsbehandlung erzeugten die zentralen Dateien bitgenau identisch.", "",
+        f"- `technical_screen.csv`: SHA-256 `{hashes['technical_screen.csv']}`",
+        f"- `task_trials.csv`: SHA-256 `{hashes['task_trials.csv']}`",
+        f"- `comparisons.csv`: SHA-256 `{hashes['comparisons.csv']}`",
+        f"- `manifest.json`: SHA-256 `{hashes['manifest.json']}`", "",
+    ])
     (output_dir / "ERGEBNISBERICHT.md").write_text("\n".join(lines), encoding="utf-8")

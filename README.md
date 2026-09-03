@@ -16,21 +16,19 @@ Energie-, Leistungs- oder Verarbeitungsvorteil.
   Abweichung vom Referenzfeld.
 - Positive symmetrische Nachbarschaftskopplung zeigte weder bei statischen noch
   bei zeitlich-räumlichen Aufgaben einen Vorteil gegenüber den Baselines.
-- Alle 26 gerichteten und anisotropen Varianten waren technisch stabil. Keine
-  erfüllte die vorregistrierte Auswahlregel für einen Bestätigungslauf.
-- Die ungekoppelte dynamische Baseline bleibt der stärkste Kandidat der zuletzt
-  untersuchten Aufgabe.
+- Gerichtete und anisotrope Kopplung lieferte keinen Kandidaten und ist für die
+  untersuchte Aufgabe abgeschlossen.
+- Mehrere lokale Zeitskalen liefern erstmals einen klar begrenzten explorativen
+  Kandidaten: `λ_langsam=1,2`, `λ_schnell=2,0`, Mischgewicht `0,5`.
+- Der beobachtete Gesamtvorsprung beträgt `2,38` Prozentpunkte. Ein unabhängiger
+  Bestätigungslauf mit frischen Seeds steht noch aus.
 
-![Aktueller Architekturvergleich](results_anisotropic/current_comparison.svg)
+![Aktueller Zeitskalenvergleich](results_multiscale/current_comparison.svg)
 
-Der Mechanismus „gerichtete beziehungsweise anisotrope Kopplung“ ist für diese
-Aufgabe abgeschlossen. Ein weiterer Architekturmechanismus benötigt eine neue
-Vorregistrierung. Der aktuelle Forschungsrahmen steht in
+Das Ergebnis ist explorativ und noch kein Nachweis eines Verarbeitungsvorteils.
+Der nächste Schritt ist ein gesondert vorregistrierter Bestätigungslauf. Der
+Forschungsrahmen steht in
 [`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md).
-
-Als nächster Mechanismus sind mehrere lokale Zeitskalen ohne räumliche Kopplung
-in [`MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md`](MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md)
-festgelegt. Der Ergebnislauf wurde noch nicht gestartet.
 
 ## Reproduzieren
 
@@ -46,6 +44,7 @@ python run_compact_readout.py
 python run_temporal_experiment.py
 python run_return_experiment.py
 python run_anisotropic_experiment.py
+python run_multiscale_experiment.py
 ```
 
 Die veröffentlichten Hauptläufe wurden jeweils vollständig wiederholt. Die
@@ -59,7 +58,7 @@ zugehörigen Berichte enthalten die bitgenau verglichenen SHA-256-Prüfsummen.
 | Zeitlich-räumlicher Hauptversuch | [`TEMPORALER_VERSUCHSPLAN.md`](TEMPORALER_VERSUCHSPLAN.md) | [`results_temporal/`](results_temporal/) |
 | Technische Rückführung | [`RUECKFUEHRUNG_VORREGISTRIERUNG.md`](RUECKFUEHRUNG_VORREGISTRIERUNG.md) | [`results_return/`](results_return/) |
 | Gerichtete und anisotrope Kopplung | [`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md`](ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md) | [`results_anisotropic/`](results_anisotropic/) |
-| Mehrere lokale Zeitskalen | [`MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md`](MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md) | noch nicht ausgeführt |
+| Mehrere lokale Zeitskalen | [`MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md`](MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale/`](results_multiscale/) |
 
 Konzept- und Konstruktionspapiere liegen unter [`Docs/`](Docs/).
 

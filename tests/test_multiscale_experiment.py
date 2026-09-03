@@ -47,7 +47,17 @@ class MultiscaleExperimentTests(unittest.TestCase):
         rejected = {"model": "abgelehnt", "advantage": 0.04, "advantage_kontinuitaet": -0.01, "advantage_zeitskalen": 0.09, **common}
         self.assertEqual(select_candidate([rejected, accepted]), "akzeptiert")
 
+    def test_observational_tie_uses_smaller_rate_ratio(self) -> None:
+        common = {
+            "mean_accuracy": 0.7, "ci95_low": 0.0, "ci95_high": 0.05,
+            "advantage_kontinuitaet": 0.01, "advantage_zeitskalen": 0.04,
+            "advantage_noise_015": 0.02, "advantage_noise_035": 0.02,
+            "advantage_noise_055": 0.02, "slow_weight": 0.5,
+        }
+        wider = {"model": "weiter", "advantage": 0.02384259259259259, "rate_ratio": 2.0, **common}
+        narrower = {"model": "enger", "advantage": 0.02384259259259258, "rate_ratio": 1.5, **common}
+        self.assertEqual(select_candidate([wider, narrower]), "enger")
+
 
 if __name__ == "__main__":
     unittest.main()
-

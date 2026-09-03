@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "experiment": "exploration_mehrere_lokale_zeitskalen",
+  "development_seeds": [
+    101,
+    131,
+    167
+  ],
+  "noise_levels": [
+    0.15,
+    0.35,
+    0.55
+  ],
+  "tasks": [
+    "kontinuitaet",
+    "zeitskalen"
+  ],
+  "models": [
+    {
+      "name": "baseline_ein_zustand",
+      "slow_rate": 1.6,
+      "fast_rate": 1.6,
+      "fast_weight": 1.0,
+      "state_count": 1
+    },
+    {
+      "name": "zwei_zustaende_l0.8_s2_a0.25",
+      "slow_rate": 0.8,
+      "fast_rate": 2.0,
+      "fast_weight": 0.25,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l0.8_s2_a0.5",
+      "slow_rate": 0.8,
+      "fast_rate": 2.0,
+      "fast_weight": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l0.8_s2_a0.75",
+      "slow_rate": 0.8,
+      "fast_rate": 2.0,
+      "fast_weight": 0.75,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l0.8_s3.2_a0.25",
+      "slow_rate": 0.8,
+      "fast_rate": 3.2,
+      "fast_weight": 0.25,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l0.8_s3.2_a0.5",
+      "slow_rate": 0.8,
+      "fast_rate": 3.2,
+      "fast_weight": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l0.8_s3.2_a0.75",
+      "slow_rate": 0.8,
+      "fast_rate": 3.2,
+      "fast_weight": 0.75,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l0.8_s4.8_a0.25",
+      "slow_rate": 0.8,
+      "fast_rate": 4.8,
+      "fast_weight": 0.25,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l0.8_s4.8_a0.5",
+      "slow_rate": 0.8,
+      "fast_rate": 4.8,
+      "fast_weight": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l0.8_s4.8_a0.75",
+      "slow_rate": 0.8,
+      "fast_rate": 4.8,
+      "fast_weight": 0.75,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1_s2_a0.25",
+      "slow_rate": 1.0,
+      "fast_rate": 2.0,
+      "fast_weight": 0.25,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1_s2_a0.5",
+      "slow_rate": 1.0,
+      "fast_rate": 2.0,
+      "fast_weight": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1_s2_a0.75",
+      "slow_rate": 1.0,
+      "fast_rate": 2.0,
+      "fast_weight": 0.75,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1_s3.2_a0.25",
+      "slow_rate": 1.0,
+      "fast_rate": 3.2,
+      "fast_weight": 0.25,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1_s3.2_a0.5",
+      "slow_rate": 1.0,
+      "fast_rate": 3.2,
+      "fast_weight": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1_s3.2_a0.75",
+      "slow_rate": 1.0,
+      "fast_rate": 3.2,
+      "fast_weight": 0.75,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1_s4.8_a0.25",
+      "slow_rate": 1.0,
+      "fast_rate": 4.8,
+      "fast_weight": 0.25,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1_s4.8_a0.5",
+      "slow_rate": 1.0,
+      "fast_rate": 4.8,
+      "fast_weight": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1_s4.8_a0.75",
+      "slow_rate": 1.0,
+      "fast_rate": 4.8,
+      "fast_weight": 0.75,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1.2_s2_a0.25",
+      "slow_rate": 1.2,
+      "fast_rate": 2.0,
+      "fast_weight": 0.25,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1.2_s2_a0.5",
+      "slow_rate": 1.2,
+      "fast_rate": 2.0,
+      "fast_weight": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1.2_s2_a0.75",
+      "slow_rate": 1.2,
+      "fast_rate": 2.0,
+      "fast_weight": 0.75,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1.2_s3.2_a0.25",
+      "slow_rate": 1.2,
+      "fast_rate": 3.2,
+      "fast_weight": 0.25,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1.2_s3.2_a0.5",
+      "slow_rate": 1.2,
+      "fast_rate": 3.2,
+      "fast_weight": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1.2_s3.2_a0.75",
+      "slow_rate": 1.2,
+      "fast_rate": 3.2,
+      "fast_weight": 0.75,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1.2_s4.8_a0.25",
+      "slow_rate": 1.2,
+      "fast_rate": 4.8,
+      "fast_weight": 0.25,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1.2_s4.8_a0.5",
+      "slow_rate": 1.2,
+      "fast_rate": 4.8,
+      "fast_weight": 0.5,
+      "state_count": 2
+    },
+    {
+      "name": "zwei_zustaende_l1.2_s4.8_a0.75",
+      "slow_rate": 1.2,
+      "fast_rate": 4.8,
+      "fast_weight": 0.75,
+      "state_count": 2
+    }
+  ],
+  "technically_admitted": [
+    "baseline_ein_zustand",
+    "zwei_zustaende_l1_s2_a0.25",
+    "zwei_zustaende_l1_s2_a0.5",
+    "zwei_zustaende_l1_s2_a0.75",
+    "zwei_zustaende_l1_s3.2_a0.25",
+    "zwei_zustaende_l1_s3.2_a0.5",
+    "zwei_zustaende_l1_s3.2_a0.75",
+    "zwei_zustaende_l1_s4.8_a0.25",
+    "zwei_zustaende_l1_s4.8_a0.5",
+    "zwei_zustaende_l1_s4.8_a0.75",
+    "zwei_zustaende_l1.2_s2_a0.25",
+    "zwei_zustaende_l1.2_s2_a0.5",
+    "zwei_zustaende_l1.2_s2_a0.75",
+    "zwei_zustaende_l1.2_s3.2_a0.25",
+    "zwei_zustaende_l1.2_s3.2_a0.5",
+    "zwei_zustaende_l1.2_s3.2_a0.75",
+    "zwei_zustaende_l1.2_s4.8_a0.25",
+    "zwei_zustaende_l1.2_s4.8_a0.5",
+    "zwei_zustaende_l1.2_s4.8_a0.75"
+  ],
+  "selected_confirmation_candidate": "zwei_zustaende_l1.2_s2_a0.5",
+  "interpretation": "Explorative Auswahl; kein bestätigender Nachweis."
+}
