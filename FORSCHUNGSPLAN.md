@@ -191,6 +191,12 @@ Relaxationskennwerte, sechs Übergabewerte, Pflichtbaselines und den Fehler der
 Kraft-Zeit-Fläche als primäre Erfolgsgröße fest. Messwerte und Modellparameter
 liegen noch nicht vor.
 
+Unter `measurement_interface/` sind CSV-Vertrag, Metadatenschema und eine
+Kopfzeilenvorlage für reale Vorversuche festgelegt. Der lesende Validator
+`validate_measurement_data.py` prüft nur Datenintegrität und Prüfsummen. Er
+erzeugt weder Messwerte noch Modellparameter. Bis reale Daten vorliegen, bleibt
+der Abschnitt ohne Mess- und Modellfreigabe pausiert.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist

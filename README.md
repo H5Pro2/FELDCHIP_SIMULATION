@@ -46,6 +46,9 @@ festgehalten. Szenario A wurde im
 ausgewählt; das zugehörige
 [`Mess- und Parametrisierungsprotokoll`](Docs/MESS_UND_PARAMETRISIERUNGSPROTOKOLL_DRUCKSENSORFLAECHE.md)
 liegt ohne Simulation vor.
+Die rein lesende [`Messdatenschnittstelle`](measurement_interface/README.md)
+ist vorbereitet. Bis reale Hardware oder reale Rohdaten vorliegen, bleibt die
+physikalische Phase ohne Modellfreigabe pausiert.
 
 ## Reproduzieren
 

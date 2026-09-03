@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/H5Pro2/FELDCHIP_SIMULATION/measurement_interface/measurement_metadata.schema.json",
+  "title": "Metadaten eines realen Drucksensor-Vorversuchs",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "phase",
+    "trial_id",
+    "randomization_id",
+    "sensor",
+    "setup",
+    "acquisition",
+    "contact",
+    "recording"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "phase": {
+      "const": "pretest"
+    },
+    "trial_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "randomization_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "sensor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sensor_id",
+        "manufacturer",
+        "model",
+        "serial_number",
+        "sensor_class",
+        "array_shape"
+      ],
+      "properties": {
+        "sensor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "manufacturer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "serial_number": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sensor_class": {
+          "const": "piezoresistive_polymer"
+        },
+        "array_shape": {
+          "const": [4, 4]
+        }
+      }
+    },
+    "setup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "setup_id",
+        "reference_force_sensor_id",
+        "reference_force_calibration_id",
+        "actuator_id",
+        "adc_id"
+      ],
+      "properties": {
+        "setup_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_force_sensor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_force_calibration_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actuator_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "adc_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "acquisition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adc_resolution_bits",
+        "sample_rate_hz"
+      ],
+      "properties": {
+        "adc_resolution_bits": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32
+        },
+        "sample_rate_hz": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geometry",
+        "position",
+        "tilt_deg",
+        "target_load_N",
+        "sequence_index"
+      ],
+      "properties": {
+        "geometry": {
+          "enum": [
+            "single_cell",
+            "central_2x2"
+          ]
+        },
+        "position": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "row",
+            "column",
+            "x_mm",
+            "y_mm"
+          ],
+          "properties": {
+            "row": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            },
+            "column": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            },
+            "x_mm": {
+              "type": "number"
+            },
+            "y_mm": {
+              "type": "number"
+            }
+          }
+        },
+        "tilt_deg": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "x",
+            "y"
+          ],
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            }
+          }
+        },
+        "target_load_N": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "sequence_index": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "recording": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timestamp_utc",
+        "operator_id"
+      ],
+      "properties": {
+        "timestamp_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "operator_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
