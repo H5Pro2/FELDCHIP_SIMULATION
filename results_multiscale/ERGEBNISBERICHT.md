@@ -14,6 +14,12 @@ Kontinuitätsaufgabe: `+0.37` Punkte. Zeitskalenaufgabe: `+4.40` Punkte. Die mit
 
 Ein zweiter Kandidat erreicht dieselbe beobachtete Gesamttrennrate. Gemäß der vorregistrierten Gleichstandsregel wird das Modell mit dem kleineren Verhältnis `λ_schnell/λ_langsam` ausgewählt.
 
+## Methodischer Nachtrag zur Auswahl
+
+Die ursprüngliche Implementierung sortierte die mittleren Vorteile als ungerundete binäre Fließkommazahlen. Die Rohwerte `0,02384259259259259` und `0,02384259259259258` führten trotz gleicher beobachteter Gesamttrennrate zunächst zur Auswahl von `zwei_zustaende_l1_s2_a0.5`. Vor dem Ergebnis-Commit wurde Gleichstand als Übereinstimmung nach Rundung auf `12` Dezimalstellen präzisiert. Danach greift die vorregistrierte Tie-Break-Regel und wählt `zwei_zustaende_l1.2_s2_a0.5` wegen des kleineren Zeitskalenverhältnisses.
+
+Die Korrektur betrifft nur die Kandidatenauswahl und das entsprechende Manifestfeld. Simulationsdaten, Kandidatenmenge, Einzelwerte, Effektschätzungen und die drei CSV-Dateien blieben unverändert. Der vollständige Audit-Nachtrag steht in `../METHODISCHER_NACHTRAG_ZEITSKALEN.md`.
+
 Der ausgewählte Kandidat besitzt im technischen Screening eine schlechteste 95-%-Einschwingzeit von `3.490 s`, einen schlechtesten Restfehler von `0.00891` und keine versuchte Grenzüberschreitung.
 
 ## Abbildung
