@@ -179,6 +179,11 @@ Das erste Hypothesenpapier liegt unter
 prüfbare Szenarien, trifft aber noch keine Auswahl. Auswahl, Vorregistrierung
 und Modellierung bleiben getrennte nachfolgende Schritte.
 
+Mit `Docs/AUSWAHLBESCHLUSS_001_DRUCKSENSORFLAECHE.md` wurde Szenario A als
+einziger erster Anwendungsabschnitt ausgewählt. Der Beschluss enthält noch kein
+Modell. Vor jeder Modellierung folgt ein getrennt versioniertes Mess- und
+Parametrisierungsprotokoll.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist
