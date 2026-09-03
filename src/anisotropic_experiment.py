@@ -283,6 +283,52 @@ def _write_csv(path: Path, rows: list[dict[str, object]]) -> None:
         writer.writerows(rows)
 
 
+def write_current_comparison_svg(
+    path: Path,
+    task_rows: list[dict[str, float | int | str]],
+    comparisons: list[dict[str, float | str]],
+) -> None:
+    means = {
+        model: float(np.mean([float(row["accuracy"]) for row in task_rows if row["model"] == model]))
+        for model in ("baseline_ungekoppelt", "kontrolle_isotrop_0.34")
+    }
+    best_anisotropic = max(
+        (row for row in comparisons if row["family"] == "anisotrop"),
+        key=lambda row: float(row["advantage"]),
+    )
+    best_directional = max(
+        (row for row in comparisons if row["family"] == "gerichtet"),
+        key=lambda row: float(row["advantage"]),
+    )
+    entries = (
+        ("Ungekoppelte Baseline", means["baseline_ungekoppelt"], "#2f5964"),
+        ("Isotroper Kontrollfall", means["kontrolle_isotrop_0.34"], "#8b6f47"),
+        ("Beste Anisotropie", float(best_anisotropic["mean_accuracy"]), "#537a4b"),
+        ("Beste gerichtete Kopplung", float(best_directional["mean_accuracy"]), "#8a4f63"),
+    )
+    width, height = 920, 500
+    chart_left, chart_top, chart_height = 100, 70, 315
+    lower, upper = 0.75, 1.0
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        '<rect width="100%" height="100%" fill="white"/>',
+        '<text x="40" y="36" font-family="Arial" font-size="21" font-weight="bold">Aktueller Architekturvergleich</text>',
+    ]
+    for tick in (0.75, 0.80, 0.85, 0.90, 0.95, 1.00):
+        y = chart_top + chart_height * (upper - tick) / (upper - lower)
+        parts.append(f'<line x1="{chart_left}" y1="{y:.1f}" x2="880" y2="{y:.1f}" stroke="#d7dcdf"/>')
+        parts.append(f'<text x="88" y="{y+5:.1f}" text-anchor="end" font-family="Arial" font-size="12">{100*tick:.0f} %</text>')
+    for index, (label, value, color) in enumerate(entries):
+        x = 145 + index * 185
+        y = chart_top + chart_height * (upper - value) / (upper - lower)
+        parts.append(f'<rect x="{x}" y="{y:.1f}" width="92" height="{chart_top+chart_height-y:.1f}" fill="{color}"/>')
+        parts.append(f'<text x="{x+46}" y="{y-10:.1f}" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold">{100*value:.2f} %</text>')
+        for line, word in enumerate(label.split()):
+            parts.append(f'<text x="{x+46}" y="{415+line*17}" text-anchor="middle" font-family="Arial" font-size="12">{word}</text>')
+    parts.append('</svg>')
+    path.write_text("\n".join(parts), encoding="utf-8")
+
+
 def write_outputs(
     output_dir: Path,
     technical_rows: list[dict[str, float | int | str]],
@@ -294,6 +340,7 @@ def write_outputs(
     _write_csv(output_dir / "technical_screen.csv", technical_rows)
     _write_csv(output_dir / "task_trials.csv", task_rows)
     _write_csv(output_dir / "comparisons.csv", comparisons)  # type: ignore[arg-type]
+    write_current_comparison_svg(output_dir / "current_comparison.svg", task_rows, comparisons)
     admitted = [candidate.name for candidate in coupling_candidates() if technical_passes(technical_rows, candidate.name)]
     manifest = {
         "schema_version": 1, "experiment": "exploration_gerichtete_anisotrope_kopplung",
@@ -336,6 +383,7 @@ def write_outputs(
         )
     lines.extend([
         "", "Auch die jeweils besten neuen Modelle liegen bei jeder einzelnen Rauschstufe im Mittel unter der Baseline. Der Mechanismus liefert in diesem festgelegten Aufgaben- und Ausleseschema daher kein Signal für einen Bestätigungslauf.",
+        "", "## Abbildung", "", "![Aktueller Architekturvergleich](current_comparison.svg)",
         "", "## Reproduzierbarkeit", "",
         "Zwei vollständige Ausführungen erzeugten die zentralen Dateien bitgenau identisch.", "",
         f"- `technical_screen.csv`: SHA-256 `{hashes['technical_screen.csv']}`",

@@ -17,6 +17,10 @@ Die ungekoppelte Pflichtbaseline erreicht `92.59 %`. Der isotrope Kontrollfall e
 
 Auch die jeweils besten neuen Modelle liegen bei jeder einzelnen Rauschstufe im Mittel unter der Baseline. Der Mechanismus liefert in diesem festgelegten Aufgaben- und Ausleseschema daher kein Signal für einen Bestätigungslauf.
 
+## Abbildung
+
+![Aktueller Architekturvergleich](current_comparison.svg)
+
 ## Reproduzierbarkeit
 
 Zwei vollständige Ausführungen erzeugten die zentralen Dateien bitgenau identisch.

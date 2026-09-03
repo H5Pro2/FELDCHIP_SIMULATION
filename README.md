@@ -1,92 +1,32 @@
 # FELDCHIP_SIMULATION
 
-Reproduzierbares mathematisches Referenzmodell für einen hypothetischen
-feldbasierten Sensorprozessor. Ein gekoppeltes `4×4`-Zellfeld bildet räumliche
-Eingangssignale in kontinuierliche Zustände im normierten Arbeitsbereich
-`−3…+3` ab und kehrt nach dem Eingangspuls zu einem Referenzfeld zurück.
+Reproduzierbares mathematisches `4×4`-Referenzmodell für einen hypothetischen
+feldbasierten Sensorprozessor im normierten Arbeitsbereich `−3…+3`. Der
+Projektname **Wahrnehmungschip** bezeichnet ausschließlich eine technisch
+messbare Sensor-zu-Feld-Abbildung.
 
-Der Projektname **Wahrnehmungschip** bezeichnet in den begleitenden Papieren
-ausschließlich diese technisch messbare Sensor-zu-Feld-Abbildung.
+Das Repository enthält Simulationsmodelle, Vorregistrierungen und vollständige
+Ergebnisdaten. Es enthält keinen gefertigten Chip und keinen nachgewiesenen
+Energie-, Leistungs- oder Verarbeitungsvorteil.
 
-Die bisher getestete positive, symmetrische Nachbarschaftskopplung wird nach
-drei Simulationsabschnitten nicht als Vorteilskandidat weitergeführt. Die neue
-Leitfrage und die möglichen Mechanismen sind in
-[`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md) festgelegt.
-Die technische Rückführung wurde getrennt gemäß
-[`RUECKFUEHRUNGS_ARBEITSPAKET.md`](RUECKFUEHRUNGS_ARBEITSPAKET.md) geprüft.
-Das genaue Protokoll wurde vor Ausführung in
-[`RUECKFUEHRUNG_VORREGISTRIERUNG.md`](RUECKFUEHRUNG_VORREGISTRIERUNG.md)
-festgelegt.
+## Aktueller Stand
 
-## Forschungsstatus
+- Eine zuverlässige Rückführung ist im Modell technisch nachgewiesen. Der
+  Referenzkandidat verwendet konstante Rückführung `1,6` und koppelt die
+  Abweichung vom Referenzfeld.
+- Positive symmetrische Nachbarschaftskopplung zeigte weder bei statischen noch
+  bei zeitlich-räumlichen Aufgaben einen Vorteil gegenüber den Baselines.
+- Alle 26 gerichteten und anisotropen Varianten waren technisch stabil. Keine
+  erfüllte die vorregistrierte Auswahlregel für einen Bestätigungslauf.
+- Die ungekoppelte dynamische Baseline bleibt der stärkste Kandidat der zuletzt
+  untersuchten Aufgabe.
 
-Das Repository enthält eine prüfbare Arbeitshypothese und einen ersten
-Referenzversuch. Es enthält keinen fertigen Schaltplan, keinen gefertigten Chip
-und keinen nachgewiesenen Energie- oder Leistungsvorteil.
+![Aktueller Architekturvergleich](results_anisotropic/current_comparison.svg)
 
-Der erste Lauf vergleicht bei identischem Arbeitsbereich:
-
-- zwei Rückführungsregime,
-- drei Rückführungsregime,
-- vier Rückführungsregime,
-- eine geglättete Dreiregime-Kennlinie,
-- ein ungekoppeltes dynamisches Sensorarray,
-- ein lineares RC-Diffusionsnetz,
-- digitale Diffusion mit 12-Bit-Quantisierung,
-- das unverarbeitete Rohsignal.
-
-## Aktueller Befund
-
-Die technische Rückführungsprüfung lässt `10` von `87` Kandidaten zu. Alle drei
-nach vorregistrierter Rangfolge ausgewählten Kandidaten bestehen zusätzlich die
-Zeitschrittprüfung. Der bestplatzierte Kandidat verwendet konstante
-Rückführungsverstärkung `1,6`, Kopplungsstärke `0,34` und die Kopplung der
-Abweichung vom Referenzfeld. Seine schlechteste 95-%-Einschwingzeit beträgt
-`2,726 s`, sein schlechtester Restfehler `0,00618`; Grenzverletzungen traten
-nicht auf.
-
-Damit existieren im mathematischen Modell technisch rückführbare Kandidaten.
-Dies ist noch kein Nachweis eines Verarbeitungsvorteils und keine Auswahl einer
-Architektur für eine reale Schaltung.
-
-Der erste explorative Architekturmechanismus wurde vor Ausführung in
-[`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md`](ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md)
-festgelegt und inzwischen ausgeführt. Alle 26 Modelle sind technisch zulässig,
-aber kein Modell erfüllt die Auswahlregel für einen Bestätigungslauf.
-
-Der vorregistrierte zeitlich-räumliche Hauptversuch umfasst zehn Sequenzklassen
-und eine für alle Modelle identische 16-Kanal-Auslese. Die beste Feldvariante
-`feld_glatt` erreicht `85,3 %`; die beste Baseline
-`baseline_ungekoppelt` erreicht `89,7 %`. Die gepaarte Differenz beträgt `−4,5`
-Prozentpunkte mit einem approximativen 95-%-Intervall von `−5,5` bis `−3,5`
-Prozentpunkten. Beide vorregistrierten Erfolgskriterien werden verfehlt.
-
-Der zeitliche Zustand ist in dieser Parametrierung besonders bei stärkerem
-Rauschen nützlich, ein zusätzlicher Nutzen der räumlichen Kopplung ist jedoch
-nicht nachgewiesen. Vielmehr liegt das ungekoppelte dynamische Array in der
-festgelegten Aufgabe vor allen gekoppelten Feldvarianten. Dieser Befund gilt
-nicht automatisch für andere Kopplungstopologien oder zeitliche Auslesen.
-
-Der zuvor abgeschlossene statische Lauf ergab:
-
-Über sechs Eingangsmuster, drei Rauschstufen und fünf feste Zufallsstarts
-erreichte die beste Feldvariante `86,9 %` Mustertrennung. Die Rohsignal-Baseline
-erreichte `92,3 %`. Die Feldvarianten lagen nur `0,3` Prozentpunkte auseinander.
-
-Damit gilt für die untersuchte Vollfeldauslese:
-
-- reproduzierbar unterscheidbare Feldformen: **beobachtet**,
-- Einhaltung des Bereichs `−3…+3`: **beobachtet**,
-- besonderer Vorteil einer Regimezahl: **nicht nachgewiesen**,
-- Vorteil gegenüber der besten Baseline: **nicht nachgewiesen**,
-- ausreichend schnelle Rückführung: **mit der aktuellen Parametrierung nicht erreicht**.
-
-Die Ergebnisse dürfen nicht auf andere Aufgaben oder eine reale Schaltung
-übertragen werden, ohne diese gesondert zu prüfen.
-
-![Trennraten der Modelle](results/accuracy_comparison.svg)
-
-![Beispielhafte 4x4-Feldkarten](results/field_examples.svg)
+Der Mechanismus „gerichtete beziehungsweise anisotrope Kopplung“ ist für diese
+Aufgabe abgeschlossen. Ein weiterer Architekturmechanismus benötigt eine neue
+Vorregistrierung. Der aktuelle Forschungsrahmen steht in
+[`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md).
 
 ## Reproduzieren
 
@@ -98,75 +38,29 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 python run_experiment.py
+python run_compact_readout.py
 python run_temporal_experiment.py
+python run_return_experiment.py
+python run_anisotropic_experiment.py
 ```
 
-Der Hauptlauf erzeugt `120` aggregierte Modellläufe. Seine beiden zentralen
-CSV-Dateien wurden in zwei vollständigen Wiederholungen bitgenau identisch
-erzeugt.
+Die veröffentlichten Hauptläufe wurden jeweils vollständig wiederholt. Die
+zugehörigen Berichte enthalten die bitgenau verglichenen SHA-256-Prüfsummen.
 
-## Ergebnisse
+## Dokumentation
 
-- [`ERGEBNISBERICHT.md`](results/ERGEBNISBERICHT.md): Befunde und Grenzen
-- [`summary.csv`](results/summary.csv): aggregierte Kennzahlen
-- [`trials.csv`](results/trials.csv): alle Seeds und Rauschstufen
-- [`manifest.json`](results/manifest.json): vollständige Versuchsparameter
-- [`accuracy_comparison.svg`](results/accuracy_comparison.svg): Modellvergleich
-- [`field_examples.svg`](results/field_examples.svg): beispielhafte Feldkarten
+| Abschnitt | Vorregistrierung oder Plan | Ergebnis |
+|---|---|---|
+| Statische Referenz und kompakte Auslese | [`FORSCHUNGSPLAN.md`](FORSCHUNGSPLAN.md) | [`results/`](results/), [`results_compact/`](results_compact/) |
+| Zeitlich-räumlicher Hauptversuch | [`TEMPORALER_VERSUCHSPLAN.md`](TEMPORALER_VERSUCHSPLAN.md) | [`results_temporal/`](results_temporal/) |
+| Technische Rückführung | [`RUECKFUEHRUNG_VORREGISTRIERUNG.md`](RUECKFUEHRUNG_VORREGISTRIERUNG.md) | [`results_return/`](results_return/) |
+| Gerichtete und anisotrope Kopplung | [`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md`](ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md) | [`results_anisotropic/`](results_anisotropic/) |
 
-Zeitlich-räumlicher Hauptversuch:
-
-- [`ERGEBNISBERICHT.md`](results_temporal/ERGEBNISBERICHT.md): Ergebnis und Aussagegrenze
-- [`summary.csv`](results_temporal/summary.csv): aggregierte Kennzahlen
-- [`trials.csv`](results_temporal/trials.csv): alle gepaarten Einzelwerte
-- [`manifest.json`](results_temporal/manifest.json): vorab festgelegte Parameter
-- [`accuracy_comparison.svg`](results_temporal/accuracy_comparison.svg): Vergleich nach Rauschstufe
-
-Technische Rückführungsprüfung:
-
-- [`ERGEBNISBERICHT.md`](results_return/ERGEBNISBERICHT.md): technischer Befund
-- [`trials.csv`](results_return/trials.csv): vollständiger Hauptsweep
-- [`dt_validation.csv`](results_return/dt_validation.csv): Zeitschrittprüfung
-- [`manifest.json`](results_return/manifest.json): Auswahl und bestätigte Kandidaten
-
-Gerichtete und anisotrope Kopplung:
-
-- [`ERGEBNISBERICHT.md`](results_anisotropic/ERGEBNISBERICHT.md): explorativer Befund
-- [`technical_screen.csv`](results_anisotropic/technical_screen.csv): technische Zulassung
-- [`task_trials.csv`](results_anisotropic/task_trials.csv): vollständige Aufgabenläufe
-- [`comparisons.csv`](results_anisotropic/comparisons.csv): Vergleiche zur Pflichtbaseline
-- [`manifest.json`](results_anisotropic/manifest.json): Kandidatenraum und Auswahlentscheidung
-
-## Projektstruktur
-
-```text
-Docs/                         Konzept- und Konstruktionspapiere
-src/feldchip_simulation.py    Modell, Baselines und Auswertung
-src/temporal_experiment.py    vorregistrierter zeitlich-räumlicher Versuch
-src/return_experiment.py      vorregistrierte Rückführungsprüfung
-src/anisotropic_experiment.py gerichtete und anisotrope Kopplung
-tests/test_simulation.py      mathematische und reproduktive Tests
-run_experiment.py             ausführbarer Referenzversuch
-run_temporal_experiment.py    ausführbarer zeitlich-räumlicher Hauptversuch
-run_return_experiment.py      noch nicht ausgeführter Rückführungssweep
-run_anisotropic_experiment.py noch nicht ausgeführte Architektur-Exploration
-results/                      Manifest, Rohwerte, Bericht und Diagramme
-FORSCHUNGSPLAN.md             aktueller Forschungsstand und Reihenfolge
-ARCHITEKTUR_NEUAUSRICHTUNG.md Regeln für die weitere Mechanismensuche
-RUECKFUEHRUNGS_ARBEITSPAKET.md technische Pflichtprüfung
-RUECKFUEHRUNG_VORREGISTRIERUNG.md festes Prüfprotokoll
-ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md erster Architekturversuch
-```
+Konzept- und Konstruktionspapiere liegen unter [`Docs/`](Docs/).
 
 ## Wissenschaftliche Grenze
 
-Das Modell prüft dimensionslose Dynamik, Trennbarkeit, Reproduzierbarkeit,
-Rückführung und Bereichseinhaltung. Es ersetzt weder eine SPICE-Simulation mit
-realistischen Bauteilmodellen noch Messungen an physischer Hardware. Der
-Aktivitätswert ist keine elektrische Energiemessung.
-
-Neue Varianten werden nur dann als Fortschritt gewertet, wenn sie eine vorher
-festgelegte Messgröße gegenüber denselben Baselines verbessern. Negative und
-neutrale Ergebnisse bleiben Bestandteil der Dokumentation. Neue
-Architekturvarianten werden erst nach einem getrennten Plan für technische
-Eignung, explorative Auswahl und vorregistrierte Bestätigung gerechnet.
+Alle Aussagen gelten nur für die jeweils vorregistrierten dimensionslosen
+Modelle, Aufgaben und Ausleseverfahren. SPICE-Modelle, reale Bauteilstreuung,
+Temperaturverhalten, elektrische Energie und Fertigbarkeit erfordern getrennte
+Untersuchungen. Negative und neutrale Ergebnisse bleiben dokumentiert.

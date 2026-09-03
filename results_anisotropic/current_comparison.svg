@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500">
+<rect width="100%" height="100%" fill="white"/>
+<text x="40" y="36" font-family="Arial" font-size="21" font-weight="bold">Aktueller Architekturvergleich</text>
+<line x1="100" y1="385.0" x2="880" y2="385.0" stroke="#d7dcdf"/>
+<text x="88" y="390.0" text-anchor="end" font-family="Arial" font-size="12">75 %</text>
+<line x1="100" y1="322.0" x2="880" y2="322.0" stroke="#d7dcdf"/>
+<text x="88" y="327.0" text-anchor="end" font-family="Arial" font-size="12">80 %</text>
+<line x1="100" y1="259.0" x2="880" y2="259.0" stroke="#d7dcdf"/>
+<text x="88" y="264.0" text-anchor="end" font-family="Arial" font-size="12">85 %</text>
+<line x1="100" y1="196.0" x2="880" y2="196.0" stroke="#d7dcdf"/>
+<text x="88" y="201.0" text-anchor="end" font-family="Arial" font-size="12">90 %</text>
+<line x1="100" y1="133.0" x2="880" y2="133.0" stroke="#d7dcdf"/>
+<text x="88" y="138.0" text-anchor="end" font-family="Arial" font-size="12">95 %</text>
+<line x1="100" y1="70.0" x2="880" y2="70.0" stroke="#d7dcdf"/>
+<text x="88" y="75.0" text-anchor="end" font-family="Arial" font-size="12">100 %</text>
+<rect x="145" y="163.3" width="92" height="221.7" fill="#2f5964"/>
+<text x="191" y="153.3" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold">92.59 %</text>
+<text x="191" y="415" text-anchor="middle" font-family="Arial" font-size="12">Ungekoppelte</text>
+<text x="191" y="432" text-anchor="middle" font-family="Arial" font-size="12">Baseline</text>
+<rect x="330" y="221.7" width="92" height="163.3" fill="#8b6f47"/>
+<text x="376" y="211.7" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold">87.96 %</text>
+<text x="376" y="415" text-anchor="middle" font-family="Arial" font-size="12">Isotroper</text>
+<text x="376" y="432" text-anchor="middle" font-family="Arial" font-size="12">Kontrollfall</text>
+<rect x="515" y="191.9" width="92" height="193.1" fill="#537a4b"/>
+<text x="561" y="181.9" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold">90.32 %</text>
+<text x="561" y="415" text-anchor="middle" font-family="Arial" font-size="12">Beste</text>
+<text x="561" y="432" text-anchor="middle" font-family="Arial" font-size="12">Anisotropie</text>
+<rect x="700" y="190.7" width="92" height="194.3" fill="#8a4f63"/>
+<text x="746" y="180.7" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold">90.42 %</text>
+<text x="746" y="415" text-anchor="middle" font-family="Arial" font-size="12">Beste</text>
+<text x="746" y="432" text-anchor="middle" font-family="Arial" font-size="12">gerichtete</text>
+<text x="746" y="449" text-anchor="middle" font-family="Arial" font-size="12">Kopplung</text>
+</svg>
