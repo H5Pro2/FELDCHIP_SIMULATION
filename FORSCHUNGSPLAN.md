@@ -84,15 +84,18 @@ Kopplung.
 
 ## Separater Rückführungsversuch
 
-Die Rückführung ist die nächste technische Pflichtprüfung und wird unabhängig
-von der Sequenztrennung isoliert untersucht.
+Die Rückführung wurde als technische Pflichtprüfung unabhängig von der
+Sequenztrennung untersucht.
 Dabei werden keine Musterkennzahlen zur Auswahl der Parameter verwendet.
 Primäre Größe ist der Anteil der Zustände, die innerhalb der festgelegten Zeit
 zum Referenzbereich zurückkehren.
 
-Parameterraum, Anfangsauslenkungen, Grenzwerte und numerische Bestätigung sind
-in `RUECKFUEHRUNG_VORREGISTRIERUNG.md` festgelegt. Der Sweep ist noch nicht
-ausgeführt.
+Parameterraum, Anfangsauslenkungen, Grenzwerte und numerische Bestätigung wurden
+vor dem Lauf in `RUECKFUEHRUNG_VORREGISTRIERUNG.md` festgelegt. Zehn von 87
+Kandidaten erfüllen die Hauptkriterien; alle drei nach Rangfolge ausgewählten
+Kandidaten bestehen auch die Zeitschrittprüfung. Der bestplatzierte Kandidat ist
+damit technisch zugelassen, aber noch nicht als Verarbeitungsarchitektur
+ausgewählt.
 
 ## Architektur-Neuausrichtung
 

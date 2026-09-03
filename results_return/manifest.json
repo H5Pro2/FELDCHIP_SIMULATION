@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "experiment": "vorregistrierte_technische_rueckfuehrungspruefung",
+  "candidate_count": 87,
+  "corners": {
+    "nominal": [
+      0.04,
+      0.08,
+      0.035
+    ],
+    "erhoeht": [
+      0.08,
+      0.16,
+      0.07
+    ]
+  },
+  "seeds": [
+    11,
+    23,
+    37,
+    53,
+    71
+  ],
+  "initial_conditions": [
+    "homogen_0.5_plus",
+    "homogen_0.5_minus",
+    "homogen_1.5_plus",
+    "homogen_1.5_minus",
+    "homogen_2.5_plus",
+    "homogen_2.5_minus",
+    "homogen_3_plus",
+    "homogen_3_minus",
+    "impuls_mitte_plus",
+    "impuls_mitte_minus",
+    "impuls_rand_plus",
+    "impuls_rand_minus",
+    "schachbrett_a",
+    "schachbrett_b",
+    "gradient_horizontal_a",
+    "gradient_horizontal_b",
+    "gradient_vertikal_a",
+    "gradient_vertikal_b"
+  ],
+  "duration": 6.0,
+  "dt": 0.02,
+  "hold_time": 0.5,
+  "tolerance": 0.05,
+  "admissible_candidates": [
+    "konstant_lo1.6_hi1.6_s1_k0.34_abweichung",
+    "konstant_lo1.6_hi1.6_s1_k0.34_absolut",
+    "konstant_lo1.6_hi1.6_s1_k0_abweichung",
+    "konstant_lo1.2_hi1.2_s1_k0.34_abweichung",
+    "konstant_lo1.2_hi1.2_s1_k0.34_absolut",
+    "konstant_lo1.2_hi1.2_s1_k0_abweichung",
+    "glatt_lo0.8_hi1.6_s0.75_k0.34_abweichung",
+    "drei_regime_lo0.8_hi1.6_s0.75_k0.34_abweichung",
+    "glatt_lo0.8_hi1.6_s1_k0.34_abweichung",
+    "drei_regime_lo0.8_hi1.6_s1_k0.34_abweichung"
+  ],
+  "selected_for_dt_validation": [
+    "konstant_lo1.6_hi1.6_s1_k0.34_abweichung",
+    "konstant_lo1.6_hi1.6_s1_k0.34_absolut",
+    "konstant_lo1.6_hi1.6_s1_k0_abweichung"
+  ],
+  "dt_confirmed_candidates": [
+    "konstant_lo1.6_hi1.6_s1_k0.34_abweichung",
+    "konstant_lo1.6_hi1.6_s1_k0.34_absolut",
+    "konstant_lo1.6_hi1.6_s1_k0_abweichung"
+  ]
+}

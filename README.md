@@ -12,9 +12,9 @@ Die bisher getestete positive, symmetrische Nachbarschaftskopplung wird nach
 drei Simulationsabschnitten nicht als Vorteilskandidat weitergeführt. Die neue
 Leitfrage und die möglichen Mechanismen sind in
 [`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md) festgelegt.
-Zuvor wird die technische Rückführung getrennt gemäß
+Die technische Rückführung wurde getrennt gemäß
 [`RUECKFUEHRUNGS_ARBEITSPAKET.md`](RUECKFUEHRUNGS_ARBEITSPAKET.md) geprüft.
-Das genaue Protokoll ist vor Ausführung in
+Das genaue Protokoll wurde vor Ausführung in
 [`RUECKFUEHRUNG_VORREGISTRIERUNG.md`](RUECKFUEHRUNG_VORREGISTRIERUNG.md)
 festgelegt.
 
@@ -36,6 +36,18 @@ Der erste Lauf vergleicht bei identischem Arbeitsbereich:
 - das unverarbeitete Rohsignal.
 
 ## Aktueller Befund
+
+Die technische Rückführungsprüfung lässt `10` von `87` Kandidaten zu. Alle drei
+nach vorregistrierter Rangfolge ausgewählten Kandidaten bestehen zusätzlich die
+Zeitschrittprüfung. Der bestplatzierte Kandidat verwendet konstante
+Rückführungsverstärkung `1,6`, Kopplungsstärke `0,34` und die Kopplung der
+Abweichung vom Referenzfeld. Seine schlechteste 95-%-Einschwingzeit beträgt
+`2,726 s`, sein schlechtester Restfehler `0,00618`; Grenzverletzungen traten
+nicht auf.
+
+Damit existieren im mathematischen Modell technisch rückführbare Kandidaten.
+Dies ist noch kein Nachweis eines Verarbeitungsvorteils und keine Auswahl einer
+Architektur für eine reale Schaltung.
 
 Der vorregistrierte zeitlich-räumliche Hauptversuch umfasst zehn Sequenzklassen
 und eine für alle Modelle identische 16-Kanal-Auslese. Die beste Feldvariante
@@ -104,6 +116,13 @@ Zeitlich-räumlicher Hauptversuch:
 - [`trials.csv`](results_temporal/trials.csv): alle gepaarten Einzelwerte
 - [`manifest.json`](results_temporal/manifest.json): vorab festgelegte Parameter
 - [`accuracy_comparison.svg`](results_temporal/accuracy_comparison.svg): Vergleich nach Rauschstufe
+
+Technische Rückführungsprüfung:
+
+- [`ERGEBNISBERICHT.md`](results_return/ERGEBNISBERICHT.md): technischer Befund
+- [`trials.csv`](results_return/trials.csv): vollständiger Hauptsweep
+- [`dt_validation.csv`](results_return/dt_validation.csv): Zeitschrittprüfung
+- [`manifest.json`](results_return/manifest.json): Auswahl und bestätigte Kandidaten
 
 ## Projektstruktur
 
