@@ -161,6 +161,19 @@ liegt `15,08` Prozentpunkte hinter der bisherigen und `11,82` Punkte hinter der
 normierten Kontrolle. Die konkrete Delta-Modulation mit Endakkumulatoren wird
 deshalb nicht bestätigt und nicht innerhalb dieses Parameterraums nachoptimiert.
 
+## Abschluss der Suchphase
+
+Die aktuelle mechanismenorientierte Suchphase ist abgeschlossen. Im geprüften
+dimensionslosen `4×4`-Modell ist die ungekoppelte Ein-Zustands-Dynamik mit
+Mittelwert-/Steigungs-Auslese die belastbare Referenz. Rückführung und
+numerische Stabilität sind technisch erreichbar; für die geprüften
+Erweiterungen wurde kein bestätigter Zusatznutzen nachgewiesen.
+
+Eine neue Phase wird nicht durch weitere Kombinationen bereits untersuchter
+Parameter eröffnet. Voraussetzung ist eine vorab formulierte Hypothese, die
+entweder eine konkrete physikalische Ursache oder einen klar abgegrenzten
+Anwendungsbedarf mit messbarem Erfolgskriterium adressiert.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist

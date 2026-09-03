@@ -33,20 +33,12 @@ Energie-, Leistungs- oder Verarbeitungsvorteil.
 
 ![Aktueller Ereignisauslese-Vergleich](results_event_readout/current_comparison.svg)
 
-Der Bestätigungslauf wurde vor Ausführung in
-[`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md)
-festgelegt. Sein negativer Entscheidungsbefund wird nicht durch nachträgliche
-Grenzwertänderung weiterverfolgt. Der Forschungsrahmen steht in
+Die aktuelle Suchphase ist abgeschlossen. Im geprüften Modell bleibt die
+ungekoppelte Ein-Zustands-Dynamik mit Mittelwert-/Steigungs-Auslese die
+belastbare Referenz. Ein neuer Abschnitt beginnt erst mit einer Hypothese zu
+einer konkreten physikalischen Ursache oder einem klaren Anwendungsbedarf. Der
+Forschungsrahmen steht in
 [`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md).
-
-Die lokale begrenzte Adaptation wurde vor Ausführung in
-[`ADAPTATION_VORREGISTRIERUNG.md`](ADAPTATION_VORREGISTRIERUNG.md) festgelegt.
-Der Ergebnisbericht liegt unter [`results_adaptation/`](results_adaptation/).
-
-Die Ereignisauslese wurde vorab in
-[`EREIGNISAUSLESE_VORREGISTRIERUNG.md`](EREIGNISAUSLESE_VORREGISTRIERUNG.md)
-festgelegt. Der Ergebnisbericht liegt unter
-[`results_event_readout/`](results_event_readout/).
 
 ## Reproduzieren
 

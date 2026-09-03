@@ -107,3 +107,16 @@ Der ausgeführte Lauf ergab für alle zwölf Varianten deutliche Nachteile. Die
 stärkste Variante liegt `15,08` Prozentpunkte hinter der bisherigen Auslese.
 Diese konkrete Ereignisbildung mit Endakkumulation wird ohne Bestätigungslauf
 abgeschlossen; der Befund wird nicht auf andere Ereigniscodes verallgemeinert.
+
+## Abschluss der aktuellen Suchphase
+
+Im geprüften dimensionslosen `4×4`-Modell bleibt die ungekoppelte
+Ein-Zustands-Dynamik mit Mittelwert-/Steigungs-Auslese die belastbare
+Referenzarchitektur. Technische Rückführung und numerische Stabilität sind
+erreichbar. Räumliche Kopplung, mehrere lokale Zustände, begrenzte Adaptation
+und die geprüfte Ereignis-Endakkumulation liefern keinen bestätigten
+Zusatznutzen.
+
+Damit endet die aktuelle Suchphase. Ein neuer Architekturabschnitt setzt eine
+konkrete physikalische Ursache oder einen klaren Anwendungsbedarf voraus. Eine
+bloße Erweiterung oder Verfeinerung der bisherigen Parameterräume genügt nicht.
