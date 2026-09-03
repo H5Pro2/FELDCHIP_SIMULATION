@@ -39,6 +39,9 @@ belastbare Referenz. Ein neuer Abschnitt beginnt erst mit einer Hypothese zu
 einer konkreten physikalischen Ursache oder einem klaren Anwendungsbedarf. Der
 Forschungsrahmen steht in
 [`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md).
+Die drei Anwendungshypothesen sind im
+[`Hypothesenpapier zur physikalischen Wahrnehmungsebene`](Docs/HYPOTHESENPAPIER_PHYSIKALISCHE_WAHRNEHMUNGSEBENE.md)
+festgehalten; eine Auswahl wurde noch nicht getroffen.
 
 ## Reproduzieren
 

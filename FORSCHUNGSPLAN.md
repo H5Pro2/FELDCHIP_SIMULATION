@@ -174,6 +174,11 @@ Parameter eröffnet. Voraussetzung ist eine vorab formulierte Hypothese, die
 entweder eine konkrete physikalische Ursache oder einen klar abgegrenzten
 Anwendungsbedarf mit messbarem Erfolgskriterium adressiert.
 
+Das erste Hypothesenpapier liegt unter
+`Docs/HYPOTHESENPAPIER_PHYSIKALISCHE_WAHRNEHMUNGSEBENE.md`. Es beschreibt drei
+prüfbare Szenarien, trifft aber noch keine Auswahl. Auswahl, Vorregistrierung
+und Modellierung bleiben getrennte nachfolgende Schritte.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist
