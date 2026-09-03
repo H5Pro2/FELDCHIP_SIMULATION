@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "experiment": "exploration_gerichtete_anisotrope_kopplung",
+  "development_seeds": [
+    101,
+    131,
+    167
+  ],
+  "noise_levels": [
+    0.15,
+    0.35,
+    0.55
+  ],
+  "models": [
+    {
+      "name": "baseline_ungekoppelt",
+      "family": "baseline",
+      "up": 0.0,
+      "down": 0.0,
+      "left": 0.0,
+      "right": 0.0
+    },
+    {
+      "name": "kontrolle_isotrop_0.34",
+      "family": "isotrop",
+      "up": 0.34,
+      "down": 0.34,
+      "left": 0.34,
+      "right": 0.34
+    },
+    {
+      "name": "anisotrop_horizontal_d0.34_t0",
+      "family": "anisotrop",
+      "up": 0.0,
+      "down": 0.0,
+      "left": 0.34,
+      "right": 0.34
+    },
+    {
+      "name": "anisotrop_horizontal_d0.34_t0.17",
+      "family": "anisotrop",
+      "up": 0.17,
+      "down": 0.17,
+      "left": 0.34,
+      "right": 0.34
+    },
+    {
+      "name": "anisotrop_horizontal_d0.68_t0",
+      "family": "anisotrop",
+      "up": 0.0,
+      "down": 0.0,
+      "left": 0.68,
+      "right": 0.68
+    },
+    {
+      "name": "anisotrop_horizontal_d0.68_t0.17",
+      "family": "anisotrop",
+      "up": 0.17,
+      "down": 0.17,
+      "left": 0.68,
+      "right": 0.68
+    },
+    {
+      "name": "anisotrop_vertikal_d0.34_t0",
+      "family": "anisotrop",
+      "up": 0.34,
+      "down": 0.34,
+      "left": 0.0,
+      "right": 0.0
+    },
+    {
+      "name": "anisotrop_vertikal_d0.34_t0.17",
+      "family": "anisotrop",
+      "up": 0.34,
+      "down": 0.34,
+      "left": 0.17,
+      "right": 0.17
+    },
+    {
+      "name": "anisotrop_vertikal_d0.68_t0",
+      "family": "anisotrop",
+      "up": 0.68,
+      "down": 0.68,
+      "left": 0.0,
+      "right": 0.0
+    },
+    {
+      "name": "anisotrop_vertikal_d0.68_t0.17",
+      "family": "anisotrop",
+      "up": 0.68,
+      "down": 0.68,
+      "left": 0.17,
+      "right": 0.17
+    },
+    {
+      "name": "gerichtet_oben_d0.34_g0",
+      "family": "gerichtet",
+      "up": 0.34,
+      "down": 0.0,
+      "left": 0.17,
+      "right": 0.17
+    },
+    {
+      "name": "gerichtet_oben_d0.34_g0.17",
+      "family": "gerichtet",
+      "up": 0.34,
+      "down": 0.17,
+      "left": 0.17,
+      "right": 0.17
+    },
+    {
+      "name": "gerichtet_oben_d0.68_g0",
+      "family": "gerichtet",
+      "up": 0.68,
+      "down": 0.0,
+      "left": 0.17,
+      "right": 0.17
+    },
+    {
+      "name": "gerichtet_oben_d0.68_g0.17",
+      "family": "gerichtet",
+      "up": 0.68,
+      "down": 0.17,
+      "left": 0.17,
+      "right": 0.17
+    },
+    {
+      "name": "gerichtet_unten_d0.34_g0",
+      "family": "gerichtet",
+      "up": 0.0,
+      "down": 0.34,
+      "left": 0.17,
+      "right": 0.17
+    },
+    {
+      "name": "gerichtet_unten_d0.34_g0.17",
+      "family": "gerichtet",
+      "up": 0.17,
+      "down": 0.34,
+      "left": 0.17,
+      "right": 0.17
+    },
+    {
+      "name": "gerichtet_unten_d0.68_g0",
+      "family": "gerichtet",
+      "up": 0.0,
+      "down": 0.68,
+      "left": 0.17,
+      "right": 0.17
+    },
+    {
+      "name": "gerichtet_unten_d0.68_g0.17",
+      "family": "gerichtet",
+      "up": 0.17,
+      "down": 0.68,
+      "left": 0.17,
+      "right": 0.17
+    },
+    {
+      "name": "gerichtet_links_d0.34_g0",
+      "family": "gerichtet",
+      "up": 0.17,
+      "down": 0.17,
+      "left": 0.34,
+      "right": 0.0
+    },
+    {
+      "name": "gerichtet_links_d0.34_g0.17",
+      "family": "gerichtet",
+      "up": 0.17,
+      "down": 0.17,
+      "left": 0.34,
+      "right": 0.17
+    },
+    {
+      "name": "gerichtet_links_d0.68_g0",
+      "family": "gerichtet",
+      "up": 0.17,
+      "down": 0.17,
+      "left": 0.68,
+      "right": 0.0
+    },
+    {
+      "name": "gerichtet_links_d0.68_g0.17",
+      "family": "gerichtet",
+      "up": 0.17,
+      "down": 0.17,
+      "left": 0.68,
+      "right": 0.17
+    },
+    {
+      "name": "gerichtet_rechts_d0.34_g0",
+      "family": "gerichtet",
+      "up": 0.17,
+      "down": 0.17,
+      "left": 0.0,
+      "right": 0.34
+    },
+    {
+      "name": "gerichtet_rechts_d0.34_g0.17",
+      "family": "gerichtet",
+      "up": 0.17,
+      "down": 0.17,
+      "left": 0.17,
+      "right": 0.34
+    },
+    {
+      "name": "gerichtet_rechts_d0.68_g0",
+      "family": "gerichtet",
+      "up": 0.17,
+      "down": 0.17,
+      "left": 0.0,
+      "right": 0.68
+    },
+    {
+      "name": "gerichtet_rechts_d0.68_g0.17",
+      "family": "gerichtet",
+      "up": 0.17,
+      "down": 0.17,
+      "left": 0.17,
+      "right": 0.68
+    }
+  ],
+  "technically_admitted": [
+    "baseline_ungekoppelt",
+    "kontrolle_isotrop_0.34",
+    "anisotrop_horizontal_d0.34_t0",
+    "anisotrop_horizontal_d0.34_t0.17",
+    "anisotrop_horizontal_d0.68_t0",
+    "anisotrop_horizontal_d0.68_t0.17",
+    "anisotrop_vertikal_d0.34_t0",
+    "anisotrop_vertikal_d0.34_t0.17",
+    "anisotrop_vertikal_d0.68_t0",
+    "anisotrop_vertikal_d0.68_t0.17",
+    "gerichtet_oben_d0.34_g0",
+    "gerichtet_oben_d0.34_g0.17",
+    "gerichtet_oben_d0.68_g0",
+    "gerichtet_oben_d0.68_g0.17",
+    "gerichtet_unten_d0.34_g0",
+    "gerichtet_unten_d0.34_g0.17",
+    "gerichtet_unten_d0.68_g0",
+    "gerichtet_unten_d0.68_g0.17",
+    "gerichtet_links_d0.34_g0",
+    "gerichtet_links_d0.34_g0.17",
+    "gerichtet_links_d0.68_g0",
+    "gerichtet_links_d0.68_g0.17",
+    "gerichtet_rechts_d0.34_g0",
+    "gerichtet_rechts_d0.34_g0.17",
+    "gerichtet_rechts_d0.68_g0",
+    "gerichtet_rechts_d0.68_g0.17"
+  ],
+  "selected_confirmation_candidate": null,
+  "interpretation": "Explorative Auswahl; kein bestätigender Nachweis."
+}

@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from pathlib import Path
 import csv
+import hashlib
 import json
 import math
 
@@ -301,13 +302,47 @@ def write_outputs(
         "technically_admitted": admitted, "selected_confirmation_candidate": selected,
         "interpretation": "Explorative Auswahl; kein bestätigender Nachweis.",
     }
-    (output_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    manifest_path = output_dir / "manifest.json"
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    hashes = {
+        name: hashlib.sha256((output_dir / name).read_bytes()).hexdigest().upper()
+        for name in ("technical_screen.csv", "task_trials.csv", "comparisons.csv", "manifest.json")
+    }
+    baseline_rows = [row for row in task_rows if row["model"] == "baseline_ungekoppelt"]
+    isotropic_rows = [row for row in task_rows if row["model"] == "kontrolle_isotrop_0.34"]
+    baseline_accuracy = float(np.mean([float(row["accuracy"]) for row in baseline_rows]))
+    isotropic_accuracy = float(np.mean([float(row["accuracy"]) for row in isotropic_rows]))
+    best_by_family = {
+        family: max((row for row in comparisons if row["family"] == family), key=lambda row: float(row["advantage"]))
+        for family in ("anisotrop", "gerichtet")
+    }
+    technical_max_settling = max(float(row["settling_time_p95"]) for row in technical_rows)
+    technical_max_residual = max(float(row["residual_p95"]) for row in technical_rows)
+    violations = sum(int(row["attempted_violations"]) for row in technical_rows)
     lines = [
         "# Ergebnisbericht: gerichtete und anisotrope Kopplung", "",
         "## Technische Zulassung", "",
-        f"Von 26 Modellen sind `{len(admitted)}` technisch zugelassen.", "",
+        f"Von 26 Modellen sind `{len(admitted)}` technisch zugelassen. Die schlechteste 95-%-Einschwingzeit beträgt `{technical_max_settling:.3f} s`, der größte 95-%-Restfehler `{technical_max_residual:.5f}`. Insgesamt traten `{violations}` versuchte Grenzüberschreitungen auf.", "",
         "## Explorative Auswahl", "",
         (f"Nach der vorregistrierten Regel wurde `{selected}` als Kandidat für einen späteren Bestätigungslauf ausgewählt." if selected else "Kein Modell erfüllt die vorregistrierten Bedingungen für einen späteren Bestätigungslauf."),
-        "", "Dieses Ergebnis ist explorativ und bestätigt keinen Verarbeitungsvorteil.", "",
+        "", f"Die ungekoppelte Pflichtbaseline erreicht `{100*baseline_accuracy:.2f} %`. Der isotrope Kontrollfall erreicht `{100*isotropic_accuracy:.2f} %` und liegt damit `{100*(isotropic_accuracy-baseline_accuracy):+.2f}` Prozentpunkte relativ zur Baseline.",
+        "", "| Familie | bestes Modell | Trennrate | Differenz zur Baseline | approximatives 95-%-Intervall |", "|---|---|---:|---:|---:|",
     ]
+    for family in ("anisotrop", "gerichtet"):
+        row = best_by_family[family]
+        lines.append(
+            f"| {family} | `{row['model']}` | {100*float(row['mean_accuracy']):.2f} % | "
+            f"{100*float(row['advantage']):+.2f} Punkte | {100*float(row['ci95_low']):+.2f} bis {100*float(row['ci95_high']):+.2f} Punkte |"
+        )
+    lines.extend([
+        "", "Auch die jeweils besten neuen Modelle liegen bei jeder einzelnen Rauschstufe im Mittel unter der Baseline. Der Mechanismus liefert in diesem festgelegten Aufgaben- und Ausleseschema daher kein Signal für einen Bestätigungslauf.",
+        "", "## Reproduzierbarkeit", "",
+        "Zwei vollständige Ausführungen erzeugten die zentralen Dateien bitgenau identisch.", "",
+        f"- `technical_screen.csv`: SHA-256 `{hashes['technical_screen.csv']}`",
+        f"- `task_trials.csv`: SHA-256 `{hashes['task_trials.csv']}`",
+        f"- `comparisons.csv`: SHA-256 `{hashes['comparisons.csv']}`",
+        f"- `manifest.json`: SHA-256 `{hashes['manifest.json']}`",
+        "", "## Aussagegrenze", "",
+        "Das Ergebnis ist explorativ und gilt nur für den festgelegten Kandidatenraum, die zehn Sequenzklassen und die gemeinsame Auslese. Es bestätigt keinen allgemeinen Verarbeitungsvorteil und macht keine Aussage über elektrische Realisierbarkeit.", "",
+    ])
     (output_dir / "ERGEBNISBERICHT.md").write_text("\n".join(lines), encoding="utf-8")

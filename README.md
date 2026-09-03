@@ -49,9 +49,10 @@ Damit existieren im mathematischen Modell technisch rückführbare Kandidaten.
 Dies ist noch kein Nachweis eines Verarbeitungsvorteils und keine Auswahl einer
 Architektur für eine reale Schaltung.
 
-Der erste explorative Architekturmechanismus ist vor Ausführung in
+Der erste explorative Architekturmechanismus wurde vor Ausführung in
 [`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md`](ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md)
-festgelegt. Der zugehörige Ergebnislauf wurde noch nicht gestartet.
+festgelegt und inzwischen ausgeführt. Alle 26 Modelle sind technisch zulässig,
+aber kein Modell erfüllt die Auswahlregel für einen Bestätigungslauf.
 
 Der vorregistrierte zeitlich-räumliche Hauptversuch umfasst zehn Sequenzklassen
 und eine für alle Modelle identische 16-Kanal-Auslese. Die beste Feldvariante
@@ -127,6 +128,14 @@ Technische Rückführungsprüfung:
 - [`trials.csv`](results_return/trials.csv): vollständiger Hauptsweep
 - [`dt_validation.csv`](results_return/dt_validation.csv): Zeitschrittprüfung
 - [`manifest.json`](results_return/manifest.json): Auswahl und bestätigte Kandidaten
+
+Gerichtete und anisotrope Kopplung:
+
+- [`ERGEBNISBERICHT.md`](results_anisotropic/ERGEBNISBERICHT.md): explorativer Befund
+- [`technical_screen.csv`](results_anisotropic/technical_screen.csv): technische Zulassung
+- [`task_trials.csv`](results_anisotropic/task_trials.csv): vollständige Aufgabenläufe
+- [`comparisons.csv`](results_anisotropic/comparisons.csv): Vergleiche zur Pflichtbaseline
+- [`manifest.json`](results_anisotropic/manifest.json): Kandidatenraum und Auswahlentscheidung
 
 ## Projektstruktur
 

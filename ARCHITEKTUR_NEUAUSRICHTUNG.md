@@ -73,5 +73,7 @@ Die technische Rückführung wurde gemäß
 bestätigt; daraus folgt noch keine Auswahl eines Verarbeitungsmechanismus. Als
 nächster Schritt wird für den ersten Architekturmechanismus ein eigener
 explorativer Versuchsplan erstellt. Dieser Plan liegt nun unter
-`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md` vor; der Lauf ist noch nicht
-ausgeführt.
+`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md` vor und wurde ausgeführt. Alle
+Varianten sind technisch stabil, aber keine erfüllt die Auswahlregel. Der
+Mechanismus wird für diese Aufgabe ohne Bestätigungslauf abgeschlossen. Ein
+weiterer Mechanismus benötigt erneut einen eigenen vorregistrierten Plan.

@@ -110,6 +110,12 @@ Kopplung auf Basis der bestätigten konstanten Rückführung `1,6`. Kandidatenra
 technische Zulassung, Entwicklungsdaten und Auswahlregel sind vor Ausführung in
 `ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md` festgelegt.
 
+Der ausgeführte Lauf lässt alle 26 Modelle technisch zu, aber kein neues Modell
+erfüllt die explorative Auswahlregel. Die beste gerichtete Variante liegt
+`2,18` Prozentpunkte und die beste reziprok anisotrope Variante `2,27`
+Prozentpunkte unter der ungekoppelten Pflichtbaseline. Für diesen Mechanismus
+wird daher kein Bestätigungslauf angelegt.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist
