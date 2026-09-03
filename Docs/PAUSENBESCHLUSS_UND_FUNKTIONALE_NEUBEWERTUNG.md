@@ -187,4 +187,3 @@ automatisch. Nach Validierung der Eingänge ist ein eigener versionierter
 Wiederaufnahmebeschluss erforderlich. Er benennt den realen Aufbau, friert die
 numerischen H1-Wartezeiten und Unsicherheitsgrenzen ein und legt die getrennte
 Messserie fest.
-
