@@ -72,5 +72,6 @@ Die technische Rückführung wurde gemäß
 `RUECKFUEHRUNG_VORREGISTRIERUNG.md` geprüft. Drei Kandidaten sind technisch
 bestätigt; daraus folgt noch keine Auswahl eines Verarbeitungsmechanismus. Als
 nächster Schritt wird für den ersten Architekturmechanismus ein eigener
-explorativer Versuchsplan erstellt. Ohne dessen Festlegung wird kein neuer
-Parametersweep ausgeführt.
+explorativer Versuchsplan erstellt. Dieser Plan liegt nun unter
+`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md` vor; der Lauf ist noch nicht
+ausgeführt.

@@ -105,6 +105,11 @@ ereignisbasierte Auslese. Das methodische Vorgehen ist in
 `ARCHITEKTUR_NEUAUSRICHTUNG.md` festgelegt. Größere Arrays folgen erst, wenn ein
 Mechanismus auf `4×4` einen vorab definierten Vorteilskandidaten liefert.
 
+Der erste Mechanismus ist gerichtete beziehungsweise reziprok anisotrope
+Kopplung auf Basis der bestätigten konstanten Rückführung `1,6`. Kandidatenraum,
+technische Zulassung, Entwicklungsdaten und Auswahlregel sind vor Ausführung in
+`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md` festgelegt.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist

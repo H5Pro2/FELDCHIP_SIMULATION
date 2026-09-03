@@ -49,6 +49,10 @@ Damit existieren im mathematischen Modell technisch rückführbare Kandidaten.
 Dies ist noch kein Nachweis eines Verarbeitungsvorteils und keine Auswahl einer
 Architektur für eine reale Schaltung.
 
+Der erste explorative Architekturmechanismus ist vor Ausführung in
+[`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md`](ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md)
+festgelegt. Der zugehörige Ergebnislauf wurde noch nicht gestartet.
+
 Der vorregistrierte zeitlich-räumliche Hauptversuch umfasst zehn Sequenzklassen
 und eine für alle Modelle identische 16-Kanal-Auslese. Die beste Feldvariante
 `feld_glatt` erreicht `85,3 %`; die beste Baseline
@@ -131,15 +135,18 @@ Docs/                         Konzept- und Konstruktionspapiere
 src/feldchip_simulation.py    Modell, Baselines und Auswertung
 src/temporal_experiment.py    vorregistrierter zeitlich-räumlicher Versuch
 src/return_experiment.py      vorregistrierte Rückführungsprüfung
+src/anisotropic_experiment.py gerichtete und anisotrope Kopplung
 tests/test_simulation.py      mathematische und reproduktive Tests
 run_experiment.py             ausführbarer Referenzversuch
 run_temporal_experiment.py    ausführbarer zeitlich-räumlicher Hauptversuch
 run_return_experiment.py      noch nicht ausgeführter Rückführungssweep
+run_anisotropic_experiment.py noch nicht ausgeführte Architektur-Exploration
 results/                      Manifest, Rohwerte, Bericht und Diagramme
 FORSCHUNGSPLAN.md             aktueller Forschungsstand und Reihenfolge
 ARCHITEKTUR_NEUAUSRICHTUNG.md Regeln für die weitere Mechanismensuche
 RUECKFUEHRUNGS_ARBEITSPAKET.md technische Pflichtprüfung
 RUECKFUEHRUNG_VORREGISTRIERUNG.md festes Prüfprotokoll
+ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md erster Architekturversuch
 ```
 
 ## Wissenschaftliche Grenze
