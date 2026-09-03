@@ -220,3 +220,17 @@ Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen 
 und mindestens ein Mechanismus einen klaren, reproduzierbaren Kandidaten
 liefert. Bis dahin bleiben elektrische Energie, reale Bauteilstreuung,
 Temperaturverhalten und Fertigbarkeit ungeprüft.
+
+## Formeller Projektstatus
+
+Der Forschungsstand ist mit
+`Docs/PAUSENBESCHLUSS_UND_FUNKTIONALE_NEUBEWERTUNG.md` formell pausiert.
+Phase I ist abgeschlossen. Phase II besitzt einen Architekturrahmen und einen
+festgelegten H1-Messpfad, ist ohne reale Sensor- und Referenzkraftdaten jedoch
+nicht ausführbar.
+
+Bis zu einem eigenen versionierten Wiederaufnahmebeschluss werden keine neuen
+Simulationen, Parametersuchen, synthetischen Kontaktversuche oder
+Modellvarianten begonnen. Die Wiederaufnahme setzt eine reale `4×4`-
+Sensorfläche mit Rohzugriff, eine synchronisierte Referenzkraft und valide
+Paar-Dateien gemäß `measurement_interface/` voraus.

@@ -9,6 +9,12 @@ Das Repository enthält Simulationsmodelle, Vorregistrierungen und vollständige
 Ergebnisdaten. Es enthält keinen gefertigten Chip und keinen nachgewiesenen
 Energie-, Leistungs- oder Verarbeitungsvorteil.
 
+> **Projektstatus: formell pausiert.** Phase I ist abgeschlossen. Phase II ist
+> bis zum Eingang einer realen `4×4`-Sensorfläche mit Rohzugriff und
+> synchronen Referenzkraftdaten nicht ausführbar. Der
+> [`Pausenbeschluss und die funktionale Neubewertung`](Docs/PAUSENBESCHLUSS_UND_FUNKTIONALE_NEUBEWERTUNG.md)
+> halten die erreichte Grenze und die korrigierte Interpretation fest.
+
 ## Aktueller Stand
 
 - Eine zuverlässige Rückführung ist im Modell technisch nachgewiesen. Der
@@ -31,8 +37,6 @@ Energie-, Leistungs- oder Verarbeitungsvorteil.
   die stärkste Variante lag `15,08` Punkte hinter der bisherigen und `11,82`
   Punkte hinter der normierten Auslese.
 
-![Aktueller Ereignisauslese-Vergleich](results_event_readout/current_comparison.svg)
-
 Die aktuelle Suchphase ist abgeschlossen. Im geprüften Modell bleibt die
 ungekoppelte Ein-Zustands-Dynamik mit Mittelwert-/Steigungs-Auslese die
 belastbare Referenz. Ein neuer Abschnitt beginnt erst mit einer Hypothese zu
@@ -54,8 +58,9 @@ Phase II beschreibt unabhängig davon die
 [`kontinuierliche sensorische Zustandsfläche`](Docs/ARCHITEKTURPAPIER_PHASE_II_KONTINUIERLICHE_SENSORISCHE_ZUSTANDSFLAECHE.md)
 als technischen Architekturrahmen. Mit
 [`Auswahlbeschluss 002`](Docs/AUSWAHLBESCHLUSS_002_H1_VORZUSTANDSABHAENGIGE_DISSIPATIVE_REAKTION.md)
-ist H1 als erste Operationalisierung ausgewählt. Ohne reale Rohdaten beginnt
-weiterhin keine Modellierung oder Simulation.
+ist H1 als erste Operationalisierung ausgewählt. Das Gesamtprojekt ist bis zu
+realen Rohdaten formell pausiert; es beginnt keine Modellierung oder
+Simulation.
 
 ## Reproduzieren
 
@@ -94,6 +99,9 @@ zugehörigen Berichte enthalten die bitgenau verglichenen SHA-256-Prüfsummen.
 | Ereignisbasierte zeitliche Auslese | [`EREIGNISAUSLESE_VORREGISTRIERUNG.md`](EREIGNISAUSLESE_VORREGISTRIERUNG.md) | [`results_event_readout/`](results_event_readout/) |
 
 Konzept- und Konstruktionspapiere liegen unter [`Docs/`](Docs/).
+Der aktuelle Abschlussstand ist im
+[`Pausenbeschluss und der funktionalen Neubewertung`](Docs/PAUSENBESCHLUSS_UND_FUNKTIONALE_NEUBEWERTUNG.md)
+zusammengefasst.
 
 ## Wissenschaftliche Grenze
 

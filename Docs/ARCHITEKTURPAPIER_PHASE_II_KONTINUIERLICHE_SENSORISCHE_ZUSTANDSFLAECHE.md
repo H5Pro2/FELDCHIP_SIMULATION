@@ -1,10 +1,11 @@
 # Architekturpapier Phase II: kontinuierliche sensorische Zustandsfläche
 
-**Version:** 1.0
+**Version:** 1.1
 
 **Datum:** 3. September 2026
 
-**Status:** Architekturrahmen vor Auswahl einer Operationalisierung
+**Status:** Architekturrahmen; H1 getrennt ausgewählt, Ausführung formell
+pausiert
 
 ## 1. Zweck
 
@@ -361,8 +362,10 @@ Energieangaben.
 
 ## 9. Kandidaten für die spätere Einzelentscheidung
 
-Das Papier stellt drei voneinander getrennte Architekturhypothesen bereit. Es
-wählt keine davon aus.
+Das Papier stellt drei voneinander getrennte Architekturhypothesen bereit. Die
+spätere Auswahl von H1 ist getrennt in
+`AUSWAHLBESCHLUSS_002_H1_VORZUSTANDSABHAENGIGE_DISSIPATIVE_REAKTION.md`
+dokumentiert.
 
 ### H1: vorzustandsabhängige dissipative Reaktion
 
@@ -421,9 +424,10 @@ Die Drucksensorlinie definiert nicht die Phase-II-Architektur. Umgekehrt hebt
 das Architekturpapier den physischen Datenbedarf der Drucksensorlinie nicht
 auf.
 
-## 12. Nächster zulässiger Schritt
+## 12. Folgestatus
 
-Nach Veröffentlichung dieses Papiers folgt ein getrennter versionierter
-Auswahlbeschluss für genau eine der Hypothesen H1 bis H3. Vor diesem Beschluss
-werden keine neuen Modelle, Simulationen, Parameterbereiche oder
-Aufgabenresultate erzeugt.
+H1 wurde mit einem getrennten versionierten Auswahlbeschluss als erste
+Operationalisierung festgelegt. Der Gesamtstand ist gemäß
+`PAUSENBESCHLUSS_UND_FUNKTIONALE_NEUBEWERTUNG.md` formell pausiert. Ohne reale
+Hardware oder Rohdaten werden keine neuen Modelle, Simulationen,
+Parameterbereiche oder Aufgabenresultate erzeugt.

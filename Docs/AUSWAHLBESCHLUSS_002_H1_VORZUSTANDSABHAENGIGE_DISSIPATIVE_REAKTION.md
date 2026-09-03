@@ -1,10 +1,11 @@
 # Auswahlbeschluss 002: H1 - vorzustandsabhängige dissipative Reaktion
 
-**Version:** 1.0
+**Version:** 1.1
 
 **Datum:** 3. September 2026
 
-**Status:** beschlossen, nicht zur Modellierung freigegeben
+**Status:** beschlossen, Ausführung formell pausiert und nicht zur Modellierung
+freigegeben
 
 **Grundlage:**
 `ARCHITEKTURPAPIER_PHASE_II_KONTINUIERLICHE_SENSORISCHE_ZUSTANDSFLAECHE.md`

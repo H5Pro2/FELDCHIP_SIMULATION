@@ -2,7 +2,12 @@
 
 **Projekt:** FELDCHIP_SIMULATION
 
-**Status:** Kandidatenbildung vor Auswahl und Vorregistrierung
+**Version:** 1.1
+
+**Datum:** 3. September 2026
+
+**Status:** Kandidatenbildung abgeschlossen; Szenario A getrennt ausgewählt,
+Gesamtprojekt formell pausiert
 
 **Geltungsbereich:** technische Sensor-zu-Zustand-Abbildung
 
@@ -19,8 +24,10 @@ verdichtet werden sollte. Sie muss außerdem gegen Rohdatenerfassung und gegen
 die bisherige Referenz aus ungekoppelter Ein-Zustands-Dynamik mit
 Mittelwert-/Steigungs-Auslese prüfbar sein.
 
-Dieses Papier beschreibt genau drei Anwendungsszenarien. Es wählt noch keines
-davon aus und enthält weder Simulation noch Parametersuche.
+Dieses Papier beschreibt genau drei Anwendungsszenarien und nimmt selbst keine
+Auswahl vor. Die spätere Auswahl von Szenario A ist in
+`AUSWAHLBESCHLUSS_001_DRUCKSENSORFLAECHE.md` dokumentiert. Das Papier enthält
+weder Simulation noch Parametersuche.
 
 ## 2. Gemeinsame Randbedingungen
 

@@ -132,3 +132,15 @@ Mit `Docs/AUSWAHLBESCHLUSS_002_H1_VORZUSTANDSABHAENGIGE_DISSIPATIVE_REAKTION.md`
 ist H1 als erste Operationalisierung ausgewählt. Der Beschluss definiert die
 physikalische Prüfbeziehung, gibt aber ohne reale Rohdaten weder Modellierung
 noch Simulation frei. H2 und H3 bleiben zurückgestellt.
+
+## Formelle Pause und funktionale Neubewertung
+
+Mit `Docs/PAUSENBESCHLUSS_UND_FUNKTIONALE_NEUBEWERTUNG.md` ist die ohne
+Hardware erreichbare Forschung abgeschlossen und das Gesamtprojekt formell
+pausiert. Die Neubewertung verwirft die Deutung eines allgemeinen
+Rechenvorteils oder eines automatisch nützlichen gekoppelten Feldes.
+
+Als technisch zulässige Interpretation bleibt eine begrenzte sensorische
+Zustandsfläche: lokale physikalische Eingänge, messbare Nachwirkung,
+kontrollierte Rückkehr und eine reduzierte Schnittstelle zur Prozessorebene.
+Ein Nutzen dieser Funktion ist erst durch reale H1-Messdaten zu prüfen.
