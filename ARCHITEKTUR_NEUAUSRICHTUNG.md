@@ -126,5 +126,9 @@ bloße Erweiterung oder Verfeinerung der bisherigen Parameterräume genügt nich
 Der neue Architekturrahmen ist in
 `Docs/ARCHITEKTURPAPIER_PHASE_II_KONTINUIERLICHE_SENSORISCHE_ZUSTANDSFLAECHE.md`
 versioniert. Er beschreibt eine kontinuierliche technische Zustandsfläche
-zwischen modalspezifischem Sensoradapter und Prozessorebene. Eine einzelne
-Architekturhypothese wurde noch nicht ausgewählt oder operationalisiert.
+zwischen modalspezifischem Sensoradapter und Prozessorebene.
+
+Mit `Docs/AUSWAHLBESCHLUSS_002_H1_VORZUSTANDSABHAENGIGE_DISSIPATIVE_REAKTION.md`
+ist H1 als erste Operationalisierung ausgewählt. Der Beschluss definiert die
+physikalische Prüfbeziehung, gibt aber ohne reale Rohdaten weder Modellierung
+noch Simulation frei. H2 und H3 bleiben zurückgestellt.

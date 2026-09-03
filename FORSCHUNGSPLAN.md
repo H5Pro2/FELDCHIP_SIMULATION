@@ -205,9 +205,14 @@ Er trennt Sensoradapter, lokale Zustandsfläche, reduzierte Prozessschnittstelle
 und optionalen Umweltpfad. Die alte Drucksensorlinie bleibt bis zu realen Daten
 pausiert und ist nur eine mögliche spätere Eingangsquelle.
 
-Das Papier enthält drei getrennte Architekturhypothesen, trifft aber noch keine
-Auswahl. Vor einem eigenen Auswahlbeschluss werden keine neuen Simulationen,
-Parameterbereiche oder Änderungen abgeschlossener Mechanismen zugelassen.
+Von den drei getrennten Architekturhypothesen wurde H1, die
+vorzustandsabhängige dissipative Reaktion, im versionierten
+`Docs/AUSWAHLBESCHLUSS_002_H1_VORZUSTANDSABHAENGIGE_DISSIPATIVE_REAKTION.md`
+als erste Operationalisierung ausgewählt. Der Beschluss definiert Vorzustand,
+identische Folgereize, Wartezeiten, Reaktionsdifferenz, Unsicherheitsgrenze und
+Falsifikation. Er erteilt keine Modell- oder Simulationsfreigabe. Die reale
+Drucksensorfläche bleibt die erste mögliche Quelle und bis zu realen Daten
+pausiert.
 
 ## Übergang zu SPICE
 

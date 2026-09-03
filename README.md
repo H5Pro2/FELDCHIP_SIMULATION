@@ -52,8 +52,10 @@ physikalische Phase ohne Modellfreigabe pausiert.
 
 Phase II beschreibt unabhängig davon die
 [`kontinuierliche sensorische Zustandsfläche`](Docs/ARCHITEKTURPAPIER_PHASE_II_KONTINUIERLICHE_SENSORISCHE_ZUSTANDSFLAECHE.md)
-als technischen Architekturrahmen. Noch wurde keine einzelne
-Architekturhypothese zur Operationalisierung ausgewählt.
+als technischen Architekturrahmen. Mit
+[`Auswahlbeschluss 002`](Docs/AUSWAHLBESCHLUSS_002_H1_VORZUSTANDSABHAENGIGE_DISSIPATIVE_REAKTION.md)
+ist H1 als erste Operationalisierung ausgewählt. Ohne reale Rohdaten beginnt
+weiterhin keine Modellierung oder Simulation.
 
 ## Reproduzieren
 
