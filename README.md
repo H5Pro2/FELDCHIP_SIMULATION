@@ -8,12 +8,12 @@ Eingangssignale in kontinuierliche Zustände im normierten Arbeitsbereich
 Der Projektname **Wahrnehmungschip** bezeichnet in den begleitenden Papieren
 ausschließlich diese technisch messbare Sensor-zu-Feld-Abbildung.
 
-Die aktuelle Forschungsfrage betrifft nicht mehr die statische Mustertrennung,
-sondern die kompakte Abbildung zeitlich-räumlicher Eingangsdynamik. Der
-Hauptversuch wurde vor seiner Ausführung in
-[`TEMPORALER_VERSUCHSPLAN.md`](TEMPORALER_VERSUCHSPLAN.md) festgelegt und ist
-inzwischen ausgeführt. Die technische Rückführung wird davon getrennt in
-[`RUECKFUEHRUNGS_ARBEITSPAKET.md`](RUECKFUEHRUNGS_ARBEITSPAKET.md) untersucht.
+Die bisher getestete positive, symmetrische Nachbarschaftskopplung wird nach
+drei Simulationsabschnitten nicht als Vorteilskandidat weitergeführt. Die neue
+Leitfrage und die möglichen Mechanismen sind in
+[`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md) festgelegt.
+Zuvor wird die technische Rückführung getrennt gemäß
+[`RUECKFUEHRUNGS_ARBEITSPAKET.md`](RUECKFUEHRUNGS_ARBEITSPAKET.md) geprüft.
 
 ## Forschungsstatus
 
@@ -112,7 +112,9 @@ tests/test_simulation.py      mathematische und reproduktive Tests
 run_experiment.py             ausführbarer Referenzversuch
 run_temporal_experiment.py    ausführbarer zeitlich-räumlicher Hauptversuch
 results/                      Manifest, Rohwerte, Bericht und Diagramme
-FORSCHUNGSPLAN.md             vorab festgelegte nächste Untersuchung
+FORSCHUNGSPLAN.md             aktueller Forschungsstand und Reihenfolge
+ARCHITEKTUR_NEUAUSRICHTUNG.md Regeln für die weitere Mechanismensuche
+RUECKFUEHRUNGS_ARBEITSPAKET.md technische Pflichtprüfung
 ```
 
 ## Wissenschaftliche Grenze
@@ -124,14 +126,6 @@ Aktivitätswert ist keine elektrische Energiemessung.
 
 Neue Varianten werden nur dann als Fortschritt gewertet, wenn sie eine vorher
 festgelegte Messgröße gegenüber denselben Baselines verbessern. Negative und
-neutrale Ergebnisse bleiben Bestandteil der Dokumentation.
-
-Der nächste Versuch verändert die Felddynamik nicht. Er reduziert jedes Feld
-vor der Auswertung auf acht feste Skalare und prüft damit eine begrenzte
-Auslesebandbreite. Die langsame Rückkehr wird davon getrennt untersucht.
-
-Dieser kompakte Versuch wurde inzwischen ausgeführt. Die beste Feldvariante
-erreichte `63,2 %`, die beste identisch ausgelesene Baseline `62,4 %`. Der
-Vorsprung von `0,8` Prozentpunkten liegt unter der vorab festgelegten Schwelle
-und ist daher kein bestätigter Vorteil. Der vollständige Bericht liegt unter
-[`results_compact/ERGEBNISBERICHT.md`](results_compact/ERGEBNISBERICHT.md).
+neutrale Ergebnisse bleiben Bestandteil der Dokumentation. Neue
+Architekturvarianten werden erst nach einem getrennten Plan für technische
+Eignung, explorative Auswahl und vorregistrierte Bestätigung gerechnet.

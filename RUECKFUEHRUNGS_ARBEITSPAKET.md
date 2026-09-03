@@ -6,6 +6,10 @@ Dieses Arbeitspaket sucht unabhängig von jeder Klassifikationsaufgabe einen
 Parameterbereich, in dem ein angeregtes `4×4`-Feld zuverlässig und schnell zum
 individuellen Referenzzustand zurückkehrt.
 
+Die Rückführung ist eine technische Pflichtprüfung. Solange kein belastbarer
+Parameterbereich gefunden ist, wird keine untersuchte Dynamik als hinreichend
+definierte Chipmethode behandelt.
+
 ## Trennung vom Hauptversuch
 
 Parameter werden ausschließlich anhand technischer Rückführungsgrößen gewählt.
@@ -32,4 +36,3 @@ Hauptversuchs dürfen die Auswahl nicht beeinflussen.
 Ein konkreter Sweep und seine Grenzwerte werden vor seiner Ausführung gesondert
 vorregistriert. Ergebnisse dieses Arbeitspakets dürfen nicht rückwirkend in den
 zeitlichen Hauptversuch eingesetzt werden.
-

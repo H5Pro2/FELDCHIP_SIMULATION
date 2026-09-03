@@ -2,9 +2,11 @@
 
 ## Zweck
 
-Der nächste Forschungsabschnitt prüft, ob die gekoppelte Feldbildung erst dann
-einen messbaren Nutzen zeigt, wenn nicht sämtliche 16 Zellwerte ausgelesen
-werden. Der bestehende Vollfeldbefund bleibt unverändert dokumentiert.
+Das Projekt untersucht, welche Zustands- oder Kopplungsdynamik gegenüber einem
+ungekoppelten dynamischen Array einen konstruktiven Nutzen für einen möglichen
+Sensor-Front-End-Chip erzeugen könnte. Die bisher geprüfte positive,
+symmetrische Nachbarschaftskopplung wird nicht als Vorteilskandidat
+weitergeführt.
 
 Alle Aussagen bleiben auf die jeweils simulierte Aufgabe begrenzt.
 
@@ -15,9 +17,9 @@ Alle Aussagen bleiben auf die jeweils simulierte Aufgabe begrenzt.
 - Die aktuelle innere Rückführung erreicht den Referenzbereich zu langsam.
 - Im regulären Lauf treten keine Grenzüberschreitungen auf.
 
-Die Regimezahl wird deshalb im nächsten Versuch nicht optimiert. Die langsame
-Rückkehr wird als separater Parameterbefund geführt und nicht mit der
-Mustertrennung vermischt.
+Die Regimezahl wird nicht weiter optimiert. Die langsame Rückkehr wird als
+separater technischer Parameterbefund geführt und nicht mit der
+Klassifikationsleistung vermischt.
 
 ## Abgeschlossener Versuch: kompakte Auslese
 
@@ -82,14 +84,23 @@ Kopplung.
 
 ## Separater Rückführungsversuch
 
-Die Rückführung wird unabhängig von der Sequenztrennung isoliert untersucht.
+Die Rückführung ist die nächste technische Pflichtprüfung und wird unabhängig
+von der Sequenztrennung isoliert untersucht.
 Dabei werden keine Musterkennzahlen zur Auswahl der Parameter verwendet.
 Primäre Größe ist der Anteil der Zustände, die innerhalb der festgelegten Zeit
 zum Referenzbereich zurückkehren.
 
+## Architektur-Neuausrichtung
+
+Die allgemeinere Architektursuche prüft getrennt gerichtete oder anisotrope
+Kopplung, hemmende Kopplungsanteile, mehrere Zeitskalen, lokale Adaptation und
+ereignisbasierte Auslese. Das methodische Vorgehen ist in
+`ARCHITEKTUR_NEUAUSRICHTUNG.md` festgelegt. Größere Arrays folgen erst, wenn ein
+Mechanismus auf `4×4` einen vorab definierten Vorteilskandidaten liefert.
+
 ## Übergang zu SPICE
 
-Eine SPICE-Einzelzelle ist erst begründet, wenn mindestens eine mathematische
-Aufgabe einen klaren, reproduzierbaren Kandidaten liefert. Bis dahin bleiben
-elektrische Energie, reale Bauteilstreuung, Temperaturverhalten und
-Fertigbarkeit ungeprüft.
+Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist
+und mindestens ein Mechanismus einen klaren, reproduzierbaren Kandidaten
+liefert. Bis dahin bleiben elektrische Energie, reale Bauteilstreuung,
+Temperaturverhalten und Fertigbarkeit ungeprüft.
