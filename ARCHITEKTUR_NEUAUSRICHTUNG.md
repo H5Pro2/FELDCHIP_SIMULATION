@@ -120,3 +120,11 @@ Zusatznutzen.
 Damit endet die aktuelle Suchphase. Ein neuer Architekturabschnitt setzt eine
 konkrete physikalische Ursache oder einen klaren Anwendungsbedarf voraus. Eine
 bloße Erweiterung oder Verfeinerung der bisherigen Parameterräume genügt nicht.
+
+## Phase II
+
+Der neue Architekturrahmen ist in
+`Docs/ARCHITEKTURPAPIER_PHASE_II_KONTINUIERLICHE_SENSORISCHE_ZUSTANDSFLAECHE.md`
+versioniert. Er beschreibt eine kontinuierliche technische Zustandsfläche
+zwischen modalspezifischem Sensoradapter und Prozessorebene. Eine einzelne
+Architekturhypothese wurde noch nicht ausgewählt oder operationalisiert.

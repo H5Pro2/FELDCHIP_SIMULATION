@@ -197,6 +197,18 @@ Kopfzeilenvorlage für reale Vorversuche festgelegt. Der lesende Validator
 erzeugt weder Messwerte noch Modellparameter. Bis reale Daten vorliegen, bleibt
 der Abschnitt ohne Mess- und Modellfreigabe pausiert.
 
+## Phase II: kontinuierliche sensorische Zustandsfläche
+
+Der versionierte Architekturrahmen liegt unter
+`Docs/ARCHITEKTURPAPIER_PHASE_II_KONTINUIERLICHE_SENSORISCHE_ZUSTANDSFLAECHE.md`.
+Er trennt Sensoradapter, lokale Zustandsfläche, reduzierte Prozessschnittstelle
+und optionalen Umweltpfad. Die alte Drucksensorlinie bleibt bis zu realen Daten
+pausiert und ist nur eine mögliche spätere Eingangsquelle.
+
+Das Papier enthält drei getrennte Architekturhypothesen, trifft aber noch keine
+Auswahl. Vor einem eigenen Auswahlbeschluss werden keine neuen Simulationen,
+Parameterbereiche oder Änderungen abgeschlossener Mechanismen zugelassen.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist

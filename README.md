@@ -50,6 +50,11 @@ Die rein lesende [`Messdatenschnittstelle`](measurement_interface/README.md)
 ist vorbereitet. Bis reale Hardware oder reale Rohdaten vorliegen, bleibt die
 physikalische Phase ohne Modellfreigabe pausiert.
 
+Phase II beschreibt unabhängig davon die
+[`kontinuierliche sensorische Zustandsfläche`](Docs/ARCHITEKTURPAPIER_PHASE_II_KONTINUIERLICHE_SENSORISCHE_ZUSTANDSFLAECHE.md)
+als technischen Architekturrahmen. Noch wurde keine einzelne
+Architekturhypothese zur Operationalisierung ausgewählt.
+
 ## Reproduzieren
 
 Voraussetzung ist Python 3.11 oder neuer.
