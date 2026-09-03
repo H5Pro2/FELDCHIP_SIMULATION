@@ -28,6 +28,10 @@ Aufgabe abgeschlossen. Ein weiterer Architekturmechanismus benötigt eine neue
 Vorregistrierung. Der aktuelle Forschungsrahmen steht in
 [`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md).
 
+Als nächster Mechanismus sind mehrere lokale Zeitskalen ohne räumliche Kopplung
+in [`MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md`](MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md)
+festgelegt. Der Ergebnislauf wurde noch nicht gestartet.
+
 ## Reproduzieren
 
 Voraussetzung ist Python 3.11 oder neuer.
@@ -55,6 +59,7 @@ zugehörigen Berichte enthalten die bitgenau verglichenen SHA-256-Prüfsummen.
 | Zeitlich-räumlicher Hauptversuch | [`TEMPORALER_VERSUCHSPLAN.md`](TEMPORALER_VERSUCHSPLAN.md) | [`results_temporal/`](results_temporal/) |
 | Technische Rückführung | [`RUECKFUEHRUNG_VORREGISTRIERUNG.md`](RUECKFUEHRUNG_VORREGISTRIERUNG.md) | [`results_return/`](results_return/) |
 | Gerichtete und anisotrope Kopplung | [`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md`](ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md) | [`results_anisotropic/`](results_anisotropic/) |
+| Mehrere lokale Zeitskalen | [`MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md`](MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md) | noch nicht ausgeführt |
 
 Konzept- und Konstruktionspapiere liegen unter [`Docs/`](Docs/).
 

@@ -77,3 +77,7 @@ explorativer Versuchsplan erstellt. Dieser Plan liegt nun unter
 Varianten sind technisch stabil, aber keine erfüllt die Auswahlregel. Der
 Mechanismus wird für diese Aufgabe ohne Bestätigungslauf abgeschlossen. Ein
 weiterer Mechanismus benötigt erneut einen eigenen vorregistrierten Plan.
+
+Der nächste Mechanismus sind mehrere lokale Zeitskalen ohne räumliche Kopplung.
+Der explorative Plan liegt unter `MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md` vor;
+der Lauf ist noch nicht ausgeführt.

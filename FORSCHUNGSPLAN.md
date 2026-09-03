@@ -116,6 +116,12 @@ erfüllt die explorative Auswahlregel. Die beste gerichtete Variante liegt
 Prozentpunkte unter der ungekoppelten Pflichtbaseline. Für diesen Mechanismus
 wird daher kein Bestätigungslauf angelegt.
 
+Als nächster explorativer Mechanismus werden mehrere lokale Zeitskalen ohne
+räumliche Kopplung geprüft. Die bestätigte konstante Rückführung bleibt die
+Ein-Zustands-Pflichtbaseline. Modellraum, technische Zulassung, zwei Aufgaben
+und Auswahlregel sind in `MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md` vorab
+festgelegt.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist
