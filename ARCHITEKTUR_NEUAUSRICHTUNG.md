@@ -102,3 +102,8 @@ Der nächste Versuch verändert die lokale Felddynamik nicht. Eine
 ereignisbasierte zeitliche Auslese wird gegen die bisherige und eine normierte
 Mittelwert-/Steigungs-Auslese bei jeweils `16` externen Werten geprüft. Der
 ergebnisfreie Plan liegt unter `EREIGNISAUSLESE_VORREGISTRIERUNG.md`.
+
+Der ausgeführte Lauf ergab für alle zwölf Varianten deutliche Nachteile. Die
+stärkste Variante liegt `15,08` Prozentpunkte hinter der bisherigen Auslese.
+Diese konkrete Ereignisbildung mit Endakkumulation wird ohne Bestätigungslauf
+abgeschlossen; der Befund wird nicht auf andere Ereigniscodes verallgemeinert.

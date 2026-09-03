@@ -156,6 +156,11 @@ Dynamik variiert. `EREIGNISAUSLESE_VORREGISTRIERUNG.md` friert zwei
 16-Werte-Kontrollen, zwölf Ereignisvarianten, drei bestehende Aufgaben, neue
 Seeds und eine konservative Auswahl gegen beide Kontrollen ein.
 
+Der Lauf wurde ohne Kandidaten abgeschlossen. Die stärkste Ereignisvariante
+liegt `15,08` Prozentpunkte hinter der bisherigen und `11,82` Punkte hinter der
+normierten Kontrolle. Die konkrete Delta-Modulation mit Endakkumulatoren wird
+deshalb nicht bestätigt und nicht innerhalb dieses Parameterraums nachoptimiert.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist

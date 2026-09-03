@@ -27,10 +27,11 @@ Energie-, Leistungs- oder Verarbeitungsvorteil.
 - Lokale begrenzte Adaptation lieferte ebenfalls keinen Kandidaten. Die stärkste
   technisch zugelassene Variante erreichte `+1,02` Punkte, verfehlte damit die
   Mindestwirkung und lag bei einer Rauschstufe unter der Baseline.
-- Als nächster getrennter Mechanismus ist eine ereignisbasierte zeitliche
-  Auslese bei unveränderter Felddynamik vorregistriert.
+- Die ereignisbasierte Endakkumulator-Auslese lieferte keinen Kandidaten. Selbst
+  die stärkste Variante lag `15,08` Punkte hinter der bisherigen und `11,82`
+  Punkte hinter der normierten Auslese.
 
-![Aktueller Adaptationsvergleich](results_adaptation/current_comparison.svg)
+![Aktueller Ereignisauslese-Vergleich](results_event_readout/current_comparison.svg)
 
 Der Bestätigungslauf wurde vor Ausführung in
 [`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md)
@@ -41,6 +42,11 @@ Grenzwertänderung weiterverfolgt. Der Forschungsrahmen steht in
 Die lokale begrenzte Adaptation wurde vor Ausführung in
 [`ADAPTATION_VORREGISTRIERUNG.md`](ADAPTATION_VORREGISTRIERUNG.md) festgelegt.
 Der Ergebnisbericht liegt unter [`results_adaptation/`](results_adaptation/).
+
+Die Ereignisauslese wurde vorab in
+[`EREIGNISAUSLESE_VORREGISTRIERUNG.md`](EREIGNISAUSLESE_VORREGISTRIERUNG.md)
+festgelegt. Der Ergebnisbericht liegt unter
+[`results_event_readout/`](results_event_readout/).
 
 ## Reproduzieren
 
@@ -76,7 +82,7 @@ zugehörigen Berichte enthalten die bitgenau verglichenen SHA-256-Prüfsummen.
 | Mehrere lokale Zeitskalen | [`MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md`](MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale/`](results_multiscale/) |
 | Unabhängige Zeitskalen-Bestätigung | [`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale_confirmation/`](results_multiscale_confirmation/) |
 | Lokale begrenzte Adaptation | [`ADAPTATION_VORREGISTRIERUNG.md`](ADAPTATION_VORREGISTRIERUNG.md) | [`results_adaptation/`](results_adaptation/) |
-| Ereignisbasierte zeitliche Auslese | [`EREIGNISAUSLESE_VORREGISTRIERUNG.md`](EREIGNISAUSLESE_VORREGISTRIERUNG.md) | noch nicht ausgeführt |
+| Ereignisbasierte zeitliche Auslese | [`EREIGNISAUSLESE_VORREGISTRIERUNG.md`](EREIGNISAUSLESE_VORREGISTRIERUNG.md) | [`results_event_readout/`](results_event_readout/) |
 
 Konzept- und Konstruktionspapiere liegen unter [`Docs/`](Docs/).
 

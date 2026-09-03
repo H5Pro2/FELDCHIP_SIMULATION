@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "experiment": "exploration_ereignisbasierte_zeitliche_auslese",
+  "seeds": [
+    503,
+    541,
+    577
+  ],
+  "tasks": [
+    "kontinuitaet",
+    "zeitskalen",
+    "adaptation"
+  ],
+  "noise_levels": [
+    0.15,
+    0.35,
+    0.55
+  ],
+  "baseline_readouts": [
+    "mittelwert_steigung",
+    "mittelwert_steigung_normiert"
+  ],
+  "channel_scales": [
+    3.0,
+    3.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    3.0,
+    3.0
+  ],
+  "event_candidates": [
+    {
+      "name": "ereignis_t0.05_l0",
+      "threshold": 0.05,
+      "decay_rate": 0.0
+    },
+    {
+      "name": "ereignis_t0.05_l0.8",
+      "threshold": 0.05,
+      "decay_rate": 0.8
+    },
+    {
+      "name": "ereignis_t0.05_l1.6",
+      "threshold": 0.05,
+      "decay_rate": 1.6
+    },
+    {
+      "name": "ereignis_t0.05_l3.2",
+      "threshold": 0.05,
+      "decay_rate": 3.2
+    },
+    {
+      "name": "ereignis_t0.1_l0",
+      "threshold": 0.1,
+      "decay_rate": 0.0
+    },
+    {
+      "name": "ereignis_t0.1_l0.8",
+      "threshold": 0.1,
+      "decay_rate": 0.8
+    },
+    {
+      "name": "ereignis_t0.1_l1.6",
+      "threshold": 0.1,
+      "decay_rate": 1.6
+    },
+    {
+      "name": "ereignis_t0.1_l3.2",
+      "threshold": 0.1,
+      "decay_rate": 3.2
+    },
+    {
+      "name": "ereignis_t0.2_l0",
+      "threshold": 0.2,
+      "decay_rate": 0.0
+    },
+    {
+      "name": "ereignis_t0.2_l0.8",
+      "threshold": 0.2,
+      "decay_rate": 0.8
+    },
+    {
+      "name": "ereignis_t0.2_l1.6",
+      "threshold": 0.2,
+      "decay_rate": 1.6
+    },
+    {
+      "name": "ereignis_t0.2_l3.2",
+      "threshold": 0.2,
+      "decay_rate": 3.2
+    }
+  ],
+  "selected_confirmation_candidate": null,
+  "interpretation": "Explorative Auswahl; kein bestätigender Nachweis."
+}

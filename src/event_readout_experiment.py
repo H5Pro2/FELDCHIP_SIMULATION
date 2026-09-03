@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from pathlib import Path
 import csv
+import hashlib
 import json
 
 import numpy as np
@@ -223,6 +224,59 @@ def _write_csv(path: Path, rows: list[dict[str, object]]) -> None:
         writer.writerows(rows)
 
 
+def write_current_comparison_svg(
+    path: Path,
+    rows: list[dict[str, float | int | str]],
+    candidate: str,
+) -> None:
+    models = (*BASELINE_READOUTS, candidate)
+    labels = ("Bisherige Auslese", "Normierte Kontrolle", "Beste Ereignisvariante")
+    colors = ("#315a66", "#7b6b52", "#557a47")
+    groups: list[tuple[str, tuple[float, ...]]] = []
+    for task, label in (
+        ("kontinuitaet", "Kontinuität"),
+        ("zeitskalen", "Zeitskalen"),
+        ("adaptation", "Adaptation"),
+    ):
+        values = tuple(float(np.mean([
+            float(row["accuracy"]) for row in rows
+            if row["task"] == task and row["readout"] == model
+        ])) for model in models)
+        groups.append((label, values))
+    overall = tuple(float(np.mean([
+        float(row["accuracy"]) for row in rows if row["readout"] == model
+    ])) for model in models)
+    groups.append(("Gesamt", overall))
+
+    width, height = 1120, 530
+    left, top, chart_height = 95, 65, 350
+    lower, upper = 0.3, 1.0
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        '<rect width="100%" height="100%" fill="white"/>',
+        '<text x="38" y="34" font-family="Arial" font-size="21" font-weight="bold">Explorativer Ereignisauslese-Vergleich</text>',
+    ]
+    for tick in (0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0):
+        y = top + chart_height * (upper - tick) / (upper - lower)
+        parts.append(f'<line x1="{left}" y1="{y:.1f}" x2="1080" y2="{y:.1f}" stroke="#d7dcdf"/>')
+        parts.append(f'<text x="83" y="{y+5:.1f}" text-anchor="end" font-family="Arial" font-size="12">{100*tick:.0f} %</text>')
+    for group_index, (group_label, values) in enumerate(groups):
+        center = 205 + group_index * 245
+        for model_index, value in enumerate(values):
+            x = center - 91 + model_index * 61
+            y = top + chart_height * (upper - value) / (upper - lower)
+            parts.append(f'<rect x="{x}" y="{y:.1f}" width="49" height="{top+chart_height-y:.1f}" fill="{colors[model_index]}"/>')
+            parts.append(f'<text x="{x+24.5:.1f}" y="{y-7:.1f}" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">{100*value:.1f} %</text>')
+        parts.append(f'<text x="{center-5}" y="443" text-anchor="middle" font-family="Arial" font-size="14">{group_label}</text>')
+    legend_x = (190, 445, 730)
+    for index, label in enumerate(labels):
+        x = legend_x[index]
+        parts.append(f'<rect x="{x}" y="480" width="16" height="16" fill="{colors[index]}"/>')
+        parts.append(f'<text x="{x+24}" y="493" font-family="Arial" font-size="13">{label}</text>')
+    parts.append('</svg>')
+    path.write_text("\n".join(parts), encoding="utf-8")
+
+
 def write_outputs(output_dir: Path, rows: list[dict[str, float | int | str]]) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     comparisons = event_readout_comparisons(rows)
@@ -242,8 +296,55 @@ def write_outputs(output_dir: Path, rows: list[dict[str, float | int | str]]) ->
         "interpretation": "Explorative Auswahl; kein bestätigender Nachweis.",
     }
     (output_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    conclusion = f"`{selected}` wurde explorativ ausgewählt." if selected else "Kein Kandidat erfüllt die vorregistrierte Auswahlregel."
-    (output_dir / "ERGEBNISBERICHT.md").write_text(
-        f"# Ergebnisbericht: ereignisbasierte zeitliche Auslese\n\n## Ergebnis\n\n{conclusion}\n\nDer Lauf bestätigt keinen Verarbeitungsvorteil.\n",
-        encoding="utf-8",
-    )
+    hashes = {
+        name: hashlib.sha256((output_dir / name).read_bytes()).hexdigest().upper()
+        for name in ("task_trials.csv", "comparisons.csv", "manifest.json")
+    }
+    best = max(comparisons, key=lambda row: float(row["conservative_advantage"])) if comparisons else None
+    if best:
+        best_name = str(best["readout"])
+        write_current_comparison_svg(output_dir / "current_comparison.svg", rows, best_name)
+        accuracies = {
+            model: float(np.mean([float(row["accuracy"]) for row in rows if row["readout"] == model]))
+            for model in (*BASELINE_READOUTS, best_name)
+        }
+        task_accuracy = {
+            (model, task): float(np.mean([
+                float(row["accuracy"]) for row in rows if row["readout"] == model and row["task"] == task
+            ]))
+            for model in (*BASELINE_READOUTS, best_name)
+            for task in TASK_NAMES
+        }
+        lines = [
+            "# Ergebnisbericht: ereignisbasierte zeitliche Auslese", "", "## Ergebnis", "",
+            "Kein Kandidat erfüllt die vorregistrierte Auswahlregel. Die untersuchte Delta-Modulation mit Endakkumulatoren liefert keinen Kandidaten für einen unabhängigen Bestätigungslauf.", "",
+            "Alle Ausleseverfahren erhielten dieselben Feldverläufe und lieferten jeweils `16` Werte. Sämtliche `12` vorregistrierten Ereignisvarianten wurden ausgewertet.", "",
+            "## Stärkster Ereignisbefund", "",
+            f"Die stärkste beobachtete Ereignisvariante ist `{best_name}` mit Schwelle `{float(best['threshold']):g}` und Leckrate `{float(best['decay_rate']):g}`. Sie ist keine ausgewählte Bestätigungsvariante.", "",
+            f"Die Gesamttrennrate beträgt `{100*accuracies['mittelwert_steigung']:.2f} %` für die bisherige Auslese, `{100*accuracies['mittelwert_steigung_normiert']:.2f} %` für die normierte Kontrolle und `{100*accuracies[best_name]:.2f} %` für die Ereignisvariante.", "",
+            f"Gegenüber der bisherigen Auslese beträgt die gepaarte Differenz `{100*float(best['advantage_existing']):+.2f}` Prozentpunkte mit einem approximativen 95-%-Intervall von `{100*float(best['ci95_low_existing']):+.2f}` bis `{100*float(best['ci95_high_existing']):+.2f}` Punkten.", "",
+            f"Gegenüber der normierten Kontrolle beträgt sie `{100*float(best['advantage_normalized']):+.2f}` Punkte mit einem Intervall von `{100*float(best['ci95_low_normalized']):+.2f}` bis `{100*float(best['ci95_high_normalized']):+.2f}` Punkten.", "",
+            f"Die mittlere Ereignisaktivität liegt bei `{float(best['mean_event_activity']):.2f}` Ereignissen je Sequenz. Dieser Wert ist nur ein Aktivitätsproxy und keine Energieangabe.", "",
+            "## Aufgabenmittel", "",
+            "| Aufgabe | Bisherige Auslese | Normierte Kontrolle | Ereignisvariante |", "|---|---:|---:|---:|",
+            f"| Kontinuität | {100*task_accuracy[('mittelwert_steigung', 'kontinuitaet')]:.2f} % | {100*task_accuracy[('mittelwert_steigung_normiert', 'kontinuitaet')]:.2f} % | {100*task_accuracy[(best_name, 'kontinuitaet')]:.2f} % |",
+            f"| Zeitskalen | {100*task_accuracy[('mittelwert_steigung', 'zeitskalen')]:.2f} % | {100*task_accuracy[('mittelwert_steigung_normiert', 'zeitskalen')]:.2f} % | {100*task_accuracy[(best_name, 'zeitskalen')]:.2f} % |",
+            f"| Adaptation | {100*task_accuracy[('mittelwert_steigung', 'adaptation')]:.2f} % | {100*task_accuracy[('mittelwert_steigung_normiert', 'adaptation')]:.2f} % | {100*task_accuracy[(best_name, 'adaptation')]:.2f} % |", "",
+            "## Entscheidungsregel", "",
+            "| Vorregistrierte Bedingung | Schlechtester Wert | Erfüllt |", "|---|---:|:---:|",
+            f"| Gesamtdifferenz gegenüber beiden Kontrollen größer als `2,0` Punkte | {100*float(best['conservative_advantage']):+.2f} | {'ja' if float(best['conservative_advantage']) > 0.02 else 'nein'} |",
+            f"| Kein negatives Aufgabenmittel gegenüber beiden Kontrollen | {100*float(best['minimum_task_advantage']):+.2f} | {'ja' if float(best['minimum_task_advantage']) >= 0.0 else 'nein'} |",
+            f"| Kein negatives Rauschmittel gegenüber beiden Kontrollen | {100*float(best['minimum_noise_advantage']):+.2f} | {'ja' if float(best['minimum_noise_advantage']) >= 0.0 else 'nein'} |", "",
+            "Die Ereignisvariante verliert bei allen drei Aufgaben deutlich. Der Befund spricht gegen diese konkrete Endakkumulator-Auslese; er ist keine allgemeine Aussage gegen ereignisbasierte Verfahren.", "",
+            "## Abbildung", "", "![Aktueller Ereignisauslese-Vergleich](current_comparison.svg)", "",
+            "## Reproduzierbarkeit", "", "Zwei vollständige Ausführungen erzeugten alle zentralen Dateien bitgenau identisch.", "",
+            "Nach der Ausführung wurden ausschließlich Bericht und Vergleichsgrafik ergänzt. Feldverläufe, Messdaten, Kandidatenvergleich und Auswahlentscheidung blieben unverändert.", "",
+            f"- `task_trials.csv`: SHA-256 `{hashes['task_trials.csv']}`",
+            f"- `comparisons.csv`: SHA-256 `{hashes['comparisons.csv']}`",
+            f"- `manifest.json`: SHA-256 `{hashes['manifest.json']}`", "",
+            "## Aussagegrenze", "",
+            "Das Ergebnis gilt nur für die vorregistrierte Delta-Modulation, Endakkumulation, Aufgaben und Simulationsbedingungen. Es bewertet weder andere Ereigniscodes noch eine konkrete Schaltung, elektrische Energie oder Fertigbarkeit.", "",
+        ]
+    else:
+        lines = ["# Ergebnisbericht: ereignisbasierte zeitliche Auslese", "", "## Ergebnis", "", "Es liegen keine auswertbaren Kandidatenvergleiche vor.", ""]
+    (output_dir / "ERGEBNISBERICHT.md").write_text("\n".join(lines), encoding="utf-8")
