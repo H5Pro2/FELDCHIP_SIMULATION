@@ -88,3 +88,7 @@ Der Bestätigungslauf wurde ausgeführt. Der Effekt bleibt positiv, verfehlt abe
 die vorregistrierte Mindestgröße. Mehrere lokale Zeitskalen sind damit für die
 geprüften Aufgaben kein bestätigter Vorteilskandidat. Das Kriterium wird nicht
 nachträglich abgesenkt.
+
+Als nächster getrennt vorregistrierter Mechanismus folgt lokale begrenzte
+Adaptation ohne räumliche Kopplung. Der Plan liegt unter
+`ADAPTATION_VORREGISTRIERUNG.md`; der Lauf ist noch nicht ausgeführt.

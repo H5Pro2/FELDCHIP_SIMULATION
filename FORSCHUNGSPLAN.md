@@ -139,6 +139,12 @@ bis `+2,21` Punkten. Aufgaben- und Rauschmittel bleiben nichtnegativ, aber die
 vorregistrierte Mindestgröße von mehr als `2,0` Punkten wird verfehlt. Der
 explorative Vorteil ist damit nicht bestätigt.
 
+Der konkrete Zwei-Zustands-Kandidat wird nicht nachoptimiert und nicht erneut
+bestätigend geprüft. Als neuer explorativer Mechanismus folgt lokale begrenzte
+Adaptation ohne räumliche Kopplung. Modellraum, technische Zulassung, drei
+Aufgaben, neue Seeds und Auswahlregel sind in
+`ADAPTATION_VORREGISTRIERUNG.md` festgelegt.
+
 ## Übergang zu SPICE
 
 Eine SPICE-Einzelzelle ist erst begründet, wenn Rückführbarkeit nachgewiesen ist

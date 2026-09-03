@@ -33,6 +33,10 @@ festgelegt. Sein negativer Entscheidungsbefund wird nicht durch nachträgliche
 Grenzwertänderung weiterverfolgt. Der Forschungsrahmen steht in
 [`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md).
 
+Als neuer Mechanismus ist lokale begrenzte Adaptation ohne räumliche Kopplung
+in [`ADAPTATION_VORREGISTRIERUNG.md`](ADAPTATION_VORREGISTRIERUNG.md)
+festgelegt. Der Ergebnislauf wurde noch nicht gestartet.
+
 ## Reproduzieren
 
 Voraussetzung ist Python 3.11 oder neuer.
@@ -64,6 +68,7 @@ zugehörigen Berichte enthalten die bitgenau verglichenen SHA-256-Prüfsummen.
 | Gerichtete und anisotrope Kopplung | [`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md`](ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md) | [`results_anisotropic/`](results_anisotropic/) |
 | Mehrere lokale Zeitskalen | [`MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md`](MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale/`](results_multiscale/) |
 | Unabhängige Zeitskalen-Bestätigung | [`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale_confirmation/`](results_multiscale_confirmation/) |
+| Lokale begrenzte Adaptation | [`ADAPTATION_VORREGISTRIERUNG.md`](ADAPTATION_VORREGISTRIERUNG.md) | noch nicht ausgeführt |
 
 Konzept- und Konstruktionspapiere liegen unter [`Docs/`](Docs/).
 
