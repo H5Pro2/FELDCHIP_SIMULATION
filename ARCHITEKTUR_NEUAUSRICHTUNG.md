@@ -82,6 +82,9 @@ Der nächste Mechanismus sind mehrere lokale Zeitskalen ohne räumliche Kopplung
 Der explorative Plan liegt unter `MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md` vor;
 der Lauf wurde ausgeführt und liefert genau einen Kandidaten für einen späteren
 unabhängigen Bestätigungslauf. Dieser ist unter
-`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md` vorregistriert, aber noch nicht
-ausgeführt. Bis zu einem positiven Bestätigungsergebnis bleibt der Befund
-explorativ.
+`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md` vorregistriert worden.
+
+Der Bestätigungslauf wurde ausgeführt. Der Effekt bleibt positiv, verfehlt aber
+die vorregistrierte Mindestgröße. Mehrere lokale Zeitskalen sind damit für die
+geprüften Aufgaben kein bestätigter Vorteilskandidat. Das Kriterium wird nicht
+nachträglich abgesenkt.

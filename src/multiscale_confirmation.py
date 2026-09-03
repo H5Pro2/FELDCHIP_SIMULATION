@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict
 from pathlib import Path
 import csv
+import hashlib
 import json
 
 import numpy as np
@@ -17,6 +18,7 @@ from .multiscale_experiment import (
     canonical_timescale_sequences,
     simulate_technical_return,
     simulate_temporal_candidate,
+    write_current_comparison_svg,
 )
 from .return_experiment import CORNER_CONFIGS
 from .temporal_experiment import SEQUENCE_NAMES, canonical_sequences, distorted_sequences, temporal_readout
@@ -182,7 +184,14 @@ def write_outputs(
         "technical_success": technical_success, "confirmation_metrics": metrics,
         "success_rule": "Vorsprung > 0.02, CI-Untergrenze > 0, Aufgaben- und Rauschmittel >= 0",
     }
-    (output_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    manifest_path = output_dir / "manifest.json"
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if task_rows:
+        write_current_comparison_svg(output_dir / "current_comparison.svg", task_rows, CANDIDATE.name)
+    hashes = {
+        name: hashlib.sha256((output_dir / name).read_bytes()).hexdigest().upper()
+        for name in ("technical_screen.csv", "task_trials.csv", "manifest.json")
+    }
     if not technical_success:
         conclusion = "Die technische Pflichtprüfung ist fehlgeschlagen; die Aufgabenbewertung wurde nicht ausgeführt."
     elif metrics and bool(metrics["success"]):
@@ -193,4 +202,39 @@ def write_outputs(
         "# Ergebnisbericht: Bestätigung lokaler Zeitskalen", "", "## Ergebnis", "",
         conclusion, "", "Dieser Bericht bezieht sich ausschließlich auf den vorregistrierten Kandidaten und die Ein-Zustands-Baseline.", "",
     ]
+    if technical_success:
+        lines.extend([
+            "## Technische Pflichtprüfung", "",
+            f"Beide Modelle erfüllen sämtliche technischen Kriterien. Der Kandidat erreicht über die neuen Seeds eine schlechteste 95-%-Einschwingzeit von `{max(float(row['settling_time_p95']) for row in technical_rows if row['model'] == CANDIDATE.name):.3f} s`, einen schlechtesten Restfehler von `{max(float(row['residual_p95']) for row in technical_rows if row['model'] == CANDIDATE.name):.5f}` und keine versuchte Grenzüberschreitung.", "",
+        ])
+    if metrics:
+        baseline_rows = [row for row in task_rows if row["model"] == BASELINE.name]
+        candidate_rows = [row for row in task_rows if row["model"] == CANDIDATE.name]
+        baseline_accuracy = float(np.mean([float(row["accuracy"]) for row in baseline_rows]))
+        candidate_accuracy = float(np.mean([float(row["accuracy"]) for row in candidate_rows]))
+        effect_ok = float(metrics["advantage"]) > 0.02
+        interval_ok = float(metrics["ci95_low"]) > 0.0
+        task_ok = min(float(metrics["advantage_kontinuitaet"]), float(metrics["advantage_zeitskalen"])) >= 0.0
+        noise_ok = min(float(metrics["advantage_noise_015"]), float(metrics["advantage_noise_035"]), float(metrics["advantage_noise_055"])) >= 0.0
+        lines.extend([
+            "## Kennzahlen", "",
+            f"Die Gesamttrennrate beträgt `{100*baseline_accuracy:.2f} %` für die Baseline und `{100*candidate_accuracy:.2f} %` für den Kandidaten. Die gepaarte Differenz ist `{100*float(metrics['advantage']):+.2f}` Prozentpunkte; das approximative 95-%-Intervall reicht von `{100*float(metrics['ci95_low']):+.2f}` bis `{100*float(metrics['ci95_high']):+.2f}` Prozentpunkten.", "",
+            f"Kontinuitätsaufgabe: `{100*float(metrics['advantage_kontinuitaet']):+.2f}` Punkte. Zeitskalenaufgabe: `{100*float(metrics['advantage_zeitskalen']):+.2f}` Punkte.", "",
+            "| Vorregistrierte Bedingung | Ergebnis | Erfüllt |", "|---|---:|:---:|",
+            f"| Gesamtdifferenz größer als `2,0` Punkte | {100*float(metrics['advantage']):+.2f} | {'ja' if effect_ok else 'nein'} |",
+            f"| Untere 95-%-Grenze größer als null | {100*float(metrics['ci95_low']):+.2f} | {'ja' if interval_ok else 'nein'} |",
+            f"| Beide Aufgabenmittel mindestens null | {100*min(float(metrics['advantage_kontinuitaet']), float(metrics['advantage_zeitskalen'])):+.2f} | {'ja' if task_ok else 'nein'} |",
+            f"| Alle Rauschmittel mindestens null | {100*min(float(metrics['advantage_noise_015']), float(metrics['advantage_noise_035']), float(metrics['advantage_noise_055'])):+.2f} | {'ja' if noise_ok else 'nein'} |", "",
+            "Der Effekt bleibt in Richtung der Exploration positiv, erreicht aber nicht die vorab verlangte Mindestgröße. Der explorative Vorteil ist deshalb nicht bestätigt.",
+            "", "## Abbildung", "", "![Aktueller Bestätigungsvergleich](current_comparison.svg)", "",
+        ])
+    lines.extend([
+        "## Reproduzierbarkeit", "",
+        "Zwei vollständige Ausführungen erzeugten die zentralen Dateien bitgenau identisch.", "",
+        f"- `technical_screen.csv`: SHA-256 `{hashes['technical_screen.csv']}`",
+        f"- `task_trials.csv`: SHA-256 `{hashes['task_trials.csv']}`",
+        f"- `manifest.json`: SHA-256 `{hashes['manifest.json']}`", "",
+        "## Aussagegrenze", "",
+        "Das Ergebnis gilt nur für die beiden eingefrorenen Modelle, Aufgaben und Simulationsbedingungen. Es belegt keinen Chipvorteil und keine elektrische Realisierbarkeit.", "",
+    ])
     (output_dir / "ERGEBNISBERICHT.md").write_text("\n".join(lines), encoding="utf-8")

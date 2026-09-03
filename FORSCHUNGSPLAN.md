@@ -128,11 +128,16 @@ aus. Der Gesamtvorsprung von `2,38` Prozentpunkten entsteht überwiegend in der
 Zeitskalenaufgabe; die Kontinuitätsaufgabe bleibt leicht positiv. Vor jeder
 Bestätigung ist ein neuer Plan mit frischen Seeds erforderlich.
 
-Dieser Bestätigungsplan liegt unter
-`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md` vor. Er friert Kandidat,
+Der Bestätigungsplan unter
+`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md` fror Kandidat,
 Ein-Zustands-Baseline, beide Aufgaben, fünf neue Seeds und ein kombiniertes
-Effekt-, Intervall- und Erhaltungskriterium ein. Der Lauf ist noch nicht
-ausgeführt.
+Effekt-, Intervall- und Erhaltungskriterium vor der Ausführung ein.
+
+Der ausgeführte Bestätigungslauf ergibt einen positiven mittleren Unterschied
+von `1,18` Prozentpunkten mit einem approximativen 95-%-Intervall von `+0,15`
+bis `+2,21` Punkten. Aufgaben- und Rauschmittel bleiben nichtnegativ, aber die
+vorregistrierte Mindestgröße von mehr als `2,0` Punkten wird verfehlt. Der
+explorative Vorteil ist damit nicht bestätigt.
 
 ## Übergang zu SPICE
 

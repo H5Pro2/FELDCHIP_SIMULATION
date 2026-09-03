@@ -18,17 +18,19 @@ Energie-, Leistungs- oder Verarbeitungsvorteil.
   bei zeitlich-räumlichen Aufgaben einen Vorteil gegenüber den Baselines.
 - Gerichtete und anisotrope Kopplung lieferte keinen Kandidaten und ist für die
   untersuchte Aufgabe abgeschlossen.
-- Mehrere lokale Zeitskalen liefern erstmals einen klar begrenzten explorativen
-  Kandidaten: `λ_langsam=1,2`, `λ_schnell=2,0`, Mischgewicht `0,5`.
-- Der beobachtete Gesamtvorsprung beträgt `2,38` Prozentpunkte. Ein unabhängiger
-  Bestätigungslauf mit frischen Seeds steht noch aus.
+- Mehrere lokale Zeitskalen lieferten einen explorativen Kandidaten. Im
+  unabhängigen Bestätigungslauf blieb dessen Effekt positiv, erreichte mit
+  `1,18` Prozentpunkten aber nicht die geforderte Mindestgröße von `2,0`.
+- Das Intervall liegt bei `+0,15` bis `+2,21` Punkten. Da nicht alle
+  vorregistrierten Bedingungen erfüllt sind, gilt der Vorteil als nicht
+  bestätigt.
 
-![Aktueller Zeitskalenvergleich](results_multiscale/current_comparison.svg)
+![Aktueller Bestätigungsvergleich](results_multiscale_confirmation/current_comparison.svg)
 
-Das Ergebnis ist explorativ und noch kein Nachweis eines Verarbeitungsvorteils.
-Der Bestätigungslauf ist vor Ausführung in
+Der Bestätigungslauf wurde vor Ausführung in
 [`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md)
-festgelegt. Der Forschungsrahmen steht in
+festgelegt. Sein negativer Entscheidungsbefund wird nicht durch nachträgliche
+Grenzwertänderung weiterverfolgt. Der Forschungsrahmen steht in
 [`ARCHITEKTUR_NEUAUSRICHTUNG.md`](ARCHITEKTUR_NEUAUSRICHTUNG.md).
 
 ## Reproduzieren
@@ -46,6 +48,7 @@ python run_temporal_experiment.py
 python run_return_experiment.py
 python run_anisotropic_experiment.py
 python run_multiscale_experiment.py
+python run_multiscale_confirmation.py
 ```
 
 Die veröffentlichten Hauptläufe wurden jeweils vollständig wiederholt. Die
@@ -60,7 +63,7 @@ zugehörigen Berichte enthalten die bitgenau verglichenen SHA-256-Prüfsummen.
 | Technische Rückführung | [`RUECKFUEHRUNG_VORREGISTRIERUNG.md`](RUECKFUEHRUNG_VORREGISTRIERUNG.md) | [`results_return/`](results_return/) |
 | Gerichtete und anisotrope Kopplung | [`ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md`](ANISOTROPE_KOPPLUNG_VORREGISTRIERUNG.md) | [`results_anisotropic/`](results_anisotropic/) |
 | Mehrere lokale Zeitskalen | [`MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md`](MEHRERE_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale/`](results_multiscale/) |
-| Unabhängige Zeitskalen-Bestätigung | [`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md) | noch nicht ausgeführt |
+| Unabhängige Zeitskalen-Bestätigung | [`BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md`](BESTAETIGUNG_ZEITSKALEN_VORREGISTRIERUNG.md) | [`results_multiscale_confirmation/`](results_multiscale_confirmation/) |
 
 Konzept- und Konstruktionspapiere liegen unter [`Docs/`](Docs/).
 

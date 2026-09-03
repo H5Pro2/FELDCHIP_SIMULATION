@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "experiment": "bestaetigung_mehrere_lokale_zeitskalen",
+  "confirmation_seeds": [
+    211,
+    241,
+    277,
+    313,
+    349
+  ],
+  "noise_levels": [
+    0.15,
+    0.35,
+    0.55
+  ],
+  "tasks": [
+    "kontinuitaet",
+    "zeitskalen"
+  ],
+  "baseline": {
+    "name": "baseline_ein_zustand",
+    "slow_rate": 1.6,
+    "fast_rate": 1.6,
+    "fast_weight": 1.0,
+    "state_count": 1
+  },
+  "candidate": {
+    "name": "zwei_zustaende_l1.2_s2_a0.5",
+    "slow_rate": 1.2,
+    "fast_rate": 2.0,
+    "fast_weight": 0.5,
+    "state_count": 2
+  },
+  "technical_success": true,
+  "confirmation_metrics": {
+    "advantage": 0.01180555555555556,
+    "standard_error": 0.005251814035155399,
+    "ci95_low": 0.0015120000466509777,
+    "ci95_high": 0.022099111064460143,
+    "advantage_kontinuitaet": 0.00388888888888889,
+    "advantage_zeitskalen": 0.01972222222222223,
+    "advantage_noise_015": 0.015416666666666672,
+    "advantage_noise_035": 0.011249999999999993,
+    "advantage_noise_055": 0.008750000000000013,
+    "success": false
+  },
+  "success_rule": "Vorsprung > 0.02, CI-Untergrenze > 0, Aufgaben- und Rauschmittel >= 0"
+}
