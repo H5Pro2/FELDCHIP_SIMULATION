@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.venv/
+results/*.png
+Docs/_render*/
+Docs/PAPER_FELDBASIERTER_WAHRNEHMUNGSCHIP.md
